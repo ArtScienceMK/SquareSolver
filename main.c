@@ -10,20 +10,20 @@
 
 const int cntCoef = 3;
 const int INPUT_ERROR = 1;
+const int BAD_INPUT = 1;
 
 void greetings(void);
 void printRoots(const int cntRoots, const double x1, const double x2);
-int badInputEnd(char c);
+int badInput(void);
 
 int main() {
     greetings();
 
     double a = 0, b = 0, c = 0;
     double x1 = 0, x2 = 0;
-    char trash = EOF;
 
-    int cntInput = scanf("%lf %lf %lf%c", &a, &b, &c, &trash);
-    if (cntInput != cntCoef + 1 || badInputEnd(trash)) {
+    int cntInput = scanf("%lf %lf %lf", &a, &b, &c);
+    if (cntInput != cntCoef || badInput() == BAD_INPUT) {
         printf("Input error!\n");
         return INPUT_ERROR;
     }
@@ -66,9 +66,14 @@ void printRoots(const int cntRoots, const double x1, const double x2) {
     }
 }
 
-int badInputEnd(char c) {
-    printf("c:%c\n", c);
-    return !(isspace(c) || c == '\n');
+int badInput() {
+    char c;
+    while ((c = getchar()) != '\n') {
+        if (!isspace(c)) {
+            return BAD_INPUT;
+        }
+    }
+    return 0;
 }
 
 // TODO:
