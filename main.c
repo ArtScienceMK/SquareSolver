@@ -3,6 +3,7 @@
 #include <math.h>
 #include <assert.h>
 #include <stdlib.h>
+#include <ctype.h>
 
 
 #include "QuadraticSolver.h"
@@ -12,16 +13,17 @@ const int INPUT_ERROR = 1;
 
 void greetings(void);
 void printRoots(const int cntRoots, const double x1, const double x2);
-
+int badInputEnd(char c);
 
 int main() {
     greetings();
 
     double a = 0, b = 0, c = 0;
     double x1 = 0, x2 = 0;
+    char trash = EOF;
 
-    int cntInput = scanf("%lf %lf %lf", &a, &b, &c);
-    if (cntInput != cntCoef) {
+    int cntInput = scanf("%lf %lf %lf%c", &a, &b, &c, &trash);
+    if (cntInput != cntCoef + 1 || badInputEnd(trash)) {
         printf("Input error!\n");
         return INPUT_ERROR;
     }
@@ -64,6 +66,10 @@ void printRoots(const int cntRoots, const double x1, const double x2) {
     }
 }
 
+int badInputEnd(char c) {
+    printf("c:%c\n", c);
+    return !(isspace(c) || c == '\n');
+}
 
 // TODO:
 // 1. Сделать именованные константы HAVE_INF_ROOTS, ERROR +
