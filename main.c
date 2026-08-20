@@ -14,11 +14,16 @@ const int BAD_INPUT = 1;
 const char EXIT_CHAR = 'q';
 const int EXIT = 0;
 const int RESUME = 1;
+const int CHECK_SUCCESS = 1;
+const int CHECK_FAIL = 0;
+const int CHECK_ERROR = -1;
 
 void greetings(void);
 void printRoots(const int cntRoots, const double x1, const double x2);
 int badInput(void);
 int resume(void);
+int checkRoots(const double a, const double b, const double c, const int cntRoot, const double x1, const double x2);
+int checkRoot(const double a, const double b, const double c, const double x);
 
 int main() {
     greetings();
@@ -36,6 +41,21 @@ int main() {
         // printf("%lf %lf %lf\n", a, b, c);
 
         int cntRoots = QuadraticSolver(a, b, c, &x1, &x2);
+        int checkStatus = checkRoots(a, b, c, cntRoots, x1, x2);
+        switch (checkStatus) {
+            case CHECK_SUCCESS:
+                printf("Roots are valid!\n");
+                break;
+            case CHECK_FAIL:
+                printf("Roots are invalid!\n");
+                break;
+            case CHECK_ERROR:
+                printf("Error during testing!\n");
+                break;
+            default:
+                printf("Unknown error during testing!\n");
+                break;
+        }
         printRoots(cntRoots, x1, x2);
     }
     return 0;
@@ -89,6 +109,32 @@ int resume(void) {
         return EXIT;
     }
     return RESUME;
+}
+
+int checkRoots(const double a, const double b, const double c, const int cntRoot, const double x1, const double x2) {
+    switch (cntRoot) {
+        case 0:
+            return CHECK_SUCCESS;
+            break;
+        case 1:
+            return (checkRoot(a, b, c, x1)) ? CHECK_SUCCESS : CHECK_FAIL;
+            break;
+        case 2:
+            return (checkRoot(a, b, c, x1) && checkRoot(a, b, c, x2)) ? CHECK_SUCCESS : CHECK_FAIL;
+            break;
+        case INF_SOLUTIONS:
+            return (checkRoot(a, b, c, 0.0) && checkRoot(a, b, c, 1.0) && checkRoot(a, b, c, 2.0)) ? CHECK_SUCCESS : CHECK_FAIL;
+            break;
+        default:
+            return CHECK_ERROR;
+            break;
+    }
+}
+
+int checkRoot(const double a, const double b, const double c, const double x) {
+    int cmp_double(const double, const double);
+    double result = a * x * x + b * x + c;
+    return cmp_double(result, 0) == 0;
 }
 
 // TODO:
