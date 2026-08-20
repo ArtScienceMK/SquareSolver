@@ -7,10 +7,13 @@
 #define QUADRATIC_SOLVER_ERROR -1
 #define cntCoef 3
 #define INPUT_ERROR 1
+#define EPSILON 1e-6
 
 void greetings(void);
 int QuadraticSolver(const double a, const double b, const double c, double* x1, double* x2);
 void printRoots(const int cntRoots, const double x1, const double x2);
+int cmp_double(const double op1, const double op2);
+
 
 int main() {
     greetings();
@@ -41,9 +44,10 @@ int QuadraticSolver(const double a, const double b, const double c, double* x1, 
     assert(isfinite(a) && isfinite(b) && isfinite(c));
     assert(x1 != NULL && x2 != NULL);
 
-    if (a == (double)0) {
-        if (b == (double)0) {
-            if (c == (double)0) {
+    if (cmp_double(a, 0) == 0) {
+        // printf("HAVE ZERO A\n");
+        if (cmp_double(b, 0) == 0) {
+            if (cmp_double(c, 0) == 0) {
                 return INF_SOLUTIONS;
             }
             return 0; //  have NO solutions
@@ -90,6 +94,20 @@ void printRoots(const int cntRoots, const double x1, const double x2) {
             printf("Error: have %i roots\n", cntRoots);
             break;
     }
+}
+
+int cmp_double(const double op1, const double op2) {
+    // printf("(cmp_double) op1:%lf op2:%lf\n", op1, op2);
+    if (fabs(op1 - op2) < EPSILON) {
+        // printf("(cmp_double) equal\n");
+        return 0;
+    }
+    if (op1 - op2 > EPSILON) {
+        // printf("(cmp_double) more\n");
+        return 1;
+    }
+    // printf("(cmp_double) less\n");
+    return -1;
 }
 
 // TODO:
