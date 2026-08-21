@@ -1,3 +1,5 @@
 test.c
 *.out
 *.o
+TODO
+*.txt
