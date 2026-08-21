@@ -5,7 +5,8 @@
 #include "QuadraticSolver.h"
 #include "DoubleCmp.h"
 
-int QuadraticSolver(const double a, const double b, const double c, double* eq_root1, double* eq_root2) {
+int QuadraticSolver(const equationCoefs coefs, double* eq_root1, double* eq_root2) {
+    double a = coefs.a, b = coefs.b, c = coefs.c;
     assert(isfinite(a) && isfinite(b) && isfinite(c));
     assert(eq_root1 != NULL && eq_root2 != NULL);
 
