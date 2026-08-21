@@ -324,9 +324,12 @@ int badInput() {
 }
 
 void getResumeLine() {
-    int cnt_input_chars = 0;
-    scanf("%3s%n", RESUME_LINE, &cnt_input_chars);
-    RESUME_LINE[cnt_input_chars] = '\0';
+    int cnt_input_chars_before = 0, cnt_input_chars_after = 0;
+    scanf("%n%3s%n", &cnt_input_chars_before, RESUME_LINE, &cnt_input_chars_after);
+    if (cnt_input_chars_after - cnt_input_chars_before != 0) {
+        cnt_input_chars_after = 0;
+    }
+    RESUME_LINE[cnt_input_chars_after] = '\0';
     printf("(getResumeLine) RESUME_LINE:%s", RESUME_LINE);
 }
 
