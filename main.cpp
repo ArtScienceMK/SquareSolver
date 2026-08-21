@@ -9,19 +9,22 @@
 
 #include "QuadraticSolver.h"
 
-const int cntCoef = 3;
 const int INPUT_ERROR = 1;
 const int BAD_INPUT = 1;
 const int MAX_RESUME_LEN = 5; // yes\n\0
 
-enum CHECK_STATUS {CHECK_SUCCESS = 1,
-                   CHECK_FAIL = 0,
-                   CHECK_ERROR = -1};
+enum CHECK_STATUS {
+    CHECK_SUCCESS = 1,
+    CHECK_FAIL = 0,
+    CHECK_ERROR = -1
+};
+
 enum CNT_ROOTS {
     ZERO_ROOTS = 0,
     ONE_ROOT = 1,
     TWO_ROOTS = 2,
-    INF_ROOTS = 3};
+    INF_ROOTS = 3
+};
 
 enum INPUT_STATUSES {
     INPUT_ERROR_FIRST = 0,
@@ -29,12 +32,14 @@ enum INPUT_STATUSES {
     INPUT_ERROR_THIRD = 2,
     INPUT_ERROR_AFTER_THIRD = 3,
     UNKNOWN_INPUT_ERROR = 4,
-    INPUT_CORRECT = 5};
+    INPUT_CORRECT = 5
+};
 
 enum RESUME_RESULTS {
     EXIT_RESULT = 0,
     RESUME_RESULT = 1,
-    UNKNOWN_ERROR_RESULT = 2};
+    UNKNOWN_ERROR_RESULT = 2
+};
 
 
 const char* RESUME_STATEMENT = "yes";
@@ -326,7 +331,7 @@ void getResumeLine() {
 }
 
 RESUME_RESULTS resume(void) {
-    printf("Continue? yes/no\n");
+    printf("Continue? %s / %s:", RESUME_STATEMENT, EXIT_STATEMENT);
 
     getResumeLine();
     if (strcmp(RESUME_LINE, RESUME_STATEMENT) == 0) {
