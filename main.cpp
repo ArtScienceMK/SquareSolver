@@ -4,6 +4,7 @@
 #include <assert.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include <string.h>
 
 
 #include "QuadraticSolver.h"
@@ -11,9 +12,7 @@
 const int cntCoef = 3;
 const int INPUT_ERROR = 1;
 const int BAD_INPUT = 1;
-const char EXIT_CHAR = 'q';
-const int EXIT = 0;
-const int RESUME = 1;
+const int MAX_RESUME_LEN = 5; // yes\n\0
 
 enum CHECK_STATUS {CHECK_SUCCESS = 1,
                    CHECK_FAIL = 0,
@@ -32,6 +31,15 @@ enum INPUT_STATUSES {
     UNKNOWN_INPUT_ERROR = 4,
     INPUT_CORRECT = 5};
 
+enum RESUME_RESULTS {
+    EXIT_RESULT = 0,
+    RESUME_RESULT = 1,
+    UNKNOWN_ERROR_RESULT = 2};
+
+
+const char* RESUME_STATEMENT = "yes";
+const char* EXIT_STATEMENT = "no";
+
 struct equationCoefs equationCoefsInit(void);
 
 struct equationCoefs equationCoefsInit() {
@@ -39,16 +47,24 @@ struct equationCoefs equationCoefsInit() {
     coefs.a = 0;
     coefs.b = 0;
     coefs.c = 0;
+
+    coefs.cntRoot = 0;
+
+    coefs.eq_root1 = 0;
+    coefs.eq_root2 = 0;
+
     return coefs;
 }
 
-void equationCoefsInitPointers(equationCoefs* pcoefs);
+void equationCoefsInitPointers(equationCoefs* ptr_coefs);
 
-void equationCoefsInitPointers(equationCoefs* pcoefs) {
-    pcoefs->a = 0;
-    pcoefs->b = 0;
-    pcoefs->c = 0;
+void equationCoefsInitPointers(equationCoefs* ptr_coefs) {
+    ptr_coefs->a = 0;
+    ptr_coefs->b = 0;
+    ptr_coefs->c = 0;
 }
+
+char RESUME_LINE[MAX_RESUME_LEN];
 
 void greetings_attempts(void);
 int inputAttempts(void);
@@ -57,13 +73,14 @@ int processEnd(void);
 void startUserCycle(int attempts);
 void greetings(void);
 void printAttempts(int attempts);
-int getInput(equationCoefs* pcoefs);
+INPUT_STATUSES getInput(equationCoefs* ptr_coefs);
 bool goodEnd(void);
 void readToEnd(void);
 
 void printRoots(const int cntRoots, const double eq_root1, const double eq_root2);
 int badInput(void);
-int resume(void);
+void getResumeLine(void);
+RESUME_RESULTS resume(void);
 int checkRoots(const equationCoefs coefs, const int cntRoot, const double eq_root1, const double eq_root2);
 int checkRoot(const equationCoefs coefs, const double x);
 
@@ -82,21 +99,18 @@ void greetings_attempts() {
     printf("Enter the positive number of attempts:");
 }
 
-int inputAttempts() { // 2;ad;sflkjasdf
-    greetings_attempts();
-
+int inputAttempts() { // 2a
     int attempts = 0;
-    int processed_end = 0;
+//gjgghbkjbn
 
-    while (!scanf("%i", &attempts) || !(processed_end = processEnd()) || attempts <= 0) {
-        printf("Cannot process number of attempts!\n"
-               "Try again!\n");
+    while (true) {
         greetings_attempts();
-        if (!processed_end) {
-            processEnd();
+        if (!scanf("%i", &attempts)) {
+            readToEnd();
+        } else if (processEnd() && attempts >= 0) {
+            return attempts;
         }
     }
-    return attempts;
 }
 
 int processEnd() {
@@ -108,6 +122,8 @@ int processEnd() {
 }
 
 void printAttempts(int attempts) {
+    assert(attempts >= 0);
+
     switch (attempts) {
         case 0:
             printf("This is last attempt!\n");
@@ -126,42 +142,68 @@ void printAttempts(int attempts) {
 void startUserCycle(int attempts) {
     equationCoefs coefs;
 
-    equationCoefs* pcoefs = &coefs;
+    equationCoefs* ptr_coefs = &coefs;
 
-    equationCoefsInitPointers(pcoefs);
+    equationCoefsInitPointers(ptr_coefs);
 
     double eq_root1 = 0, eq_root2 = 0;
 
     while (attempts--) {
         printAttempts(attempts);
-        resume();
-        printf("Enter a, b, c:");
-        int inputStatus = getInput(pcoefs);
-        if (inputStatus != INPUT_CORRECT) {
-            switch (inputStatus) {
-                case INPUT_ERROR_FIRST:
-                    printf("Error: cannot process first coef\n");
-                    break;
+        bool stopImmediately = false;
+        RESUME_RESULTS resumeResult = resume();
+        switch (resumeResult) {
+            case EXIT_RESULT:
+                stopImmediately = true;
+                break;
 
-                case INPUT_ERROR_SECOND:
-                    printf("Error: cannot process second coef\n");
-                    break;
+            case RESUME_RESULT:
+                break;
 
-                case INPUT_ERROR_THIRD:
-                    printf("Error: cannot process third coef\n");
-                    break;
+            case UNKNOWN_ERROR_RESULT:
+                printf("Got an unknown error during resume() function!\n");
+                break;
 
-                case INPUT_ERROR_AFTER_THIRD:
-                    printf("Error: bad input after the third coef\n");
-                    break;
-
-                default:
-                    printf("Unknown error during the input!\n");
-                    break;
-            }
-            printf("Try another time!\n");
-            continue;
+            default:
+                printf("Got an unknown error in StartUserCycle() function!\n");
+                break;
         }
+        if (stopImmediately) {
+            break;
+        }
+        printf("Enter a, b, c:");
+        INPUT_STATUSES inputStatus = getInput(ptr_coefs);
+        switch (inputStatus) {
+            case INPUT_ERROR_FIRST:
+                printf("Error: cannot process first coef\n");
+                break;
+
+            case INPUT_ERROR_SECOND:
+                printf("Error: cannot process second coef\n");
+                break;
+
+            case INPUT_ERROR_THIRD:
+                printf("Error: cannot process third coef\n");
+                break;
+
+            case INPUT_ERROR_AFTER_THIRD:
+                printf("Error: bad input after the third coef\n");
+                break;
+
+            case INPUT_CORRECT:
+                printf("Input correct\n");
+                break;
+
+            case UNKNOWN_INPUT_ERROR:
+                printf("Unknown input error!\n");
+                break;
+
+            default:
+                printf("Unknown error during the input!\n");
+                break;
+        }
+        printf("Try another time!\n");
+        continue;
         // printf("%lf %lf %lf\n", a, b, c);
 
         int cntRoots = QuadraticSolver(coefs, &eq_root1, &eq_root2);
@@ -193,8 +235,8 @@ void greetings() {
            "Powered by AK\n");
 }
 
-int getInput(equationCoefs* pcoefs) {
-    int inputStatus = scanf("%lf %lf %lf", &(pcoefs->a), &(pcoefs->b), &(pcoefs->c));
+INPUT_STATUSES getInput(equationCoefs* ptr_coefs) {
+    int inputStatus = scanf("%lf %lf %lf", &(ptr_coefs->a), &(ptr_coefs->b), &(ptr_coefs->c));
     int is_good_end = processEnd();
     switch (inputStatus) {
         case 0:
@@ -222,9 +264,10 @@ int getInput(equationCoefs* pcoefs) {
 
 bool goodEnd() {
     char c = ' ';
-    while ((c = (char)getchar()) == ' ' || c == '\t') {
+    while (scanf("%c", &c) && (c == ' ' || c == '\t')) {
         ;
     }
+    printf("(goodEnd) last char:%c\n", c);
     return c == '\n' || c == EOF;
 }
 
@@ -257,10 +300,12 @@ void printRoots(const int cntRoots, const double eq_root1, const double eq_root2
 }
 
 void readToEnd() {
-    char c = ' ';
-    while ((c = (char)getchar()) != '\n' && c != EOF) {
+    char c = 'A';
+    while ((c = (char)getchar()) && c != '\n') {
         ;
     }
+    int res = c == '\n';
+    printf("(readToEnd) c == backslashn:%i\n", res);
 }
 
 int badInput() {
@@ -273,18 +318,24 @@ int badInput() {
     return 0;
 }
 
-int resume(void) {
-    printf("Enter q to exit, any other button to continue\n");
+void getResumeLine() {
+    int cnt_input_chars = 0;
+    scanf("%3s%n", RESUME_LINE, &cnt_input_chars);
+    RESUME_LINE[cnt_input_chars] = '\0';
+    printf("(getResumeLine) RESUME_LINE:%s", RESUME_LINE);
+}
 
-    char c = ' ';
+RESUME_RESULTS resume(void) {
+    printf("Continue? yes/no\n");
 
-    scanf("%c", &c);
-
-    if (c == EXIT_CHAR) {
-        return EXIT;
+    getResumeLine();
+    if (strcmp(RESUME_LINE, RESUME_STATEMENT) == 0) {
+        return RESUME_RESULT;
+    } else if (strcmp(RESUME_LINE, EXIT_STATEMENT) == 0) {
+        return EXIT_RESULT;
+    } else {
+        return UNKNOWN_ERROR_RESULT;
     }
-
-    return RESUME;
 }
 
 int checkRoots(const equationCoefs coefs, const int cntRoot, const double eq_root1, const double eq_root2) {
