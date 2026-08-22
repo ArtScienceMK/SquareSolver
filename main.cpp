@@ -8,22 +8,15 @@
 
 
 #include "QuadraticSolver.h"
+#include "CmpDouble.h"
 
 const int INPUT_ERROR = 1;
-const int BAD_INPUT = 1;
-const int MAX_RESUME_LEN = 5; // yes\n\0
+const int MAX_RESUME_LEN = 9; // yes\n\0
 
-enum CHECK_STATUS {
+enum CHECK_STATUSES {
     CHECK_SUCCESS = 1,
     CHECK_FAIL = 0,
     CHECK_ERROR = -1
-};
-
-enum CNT_ROOTS {
-    ZERO_ROOTS = 0,
-    ONE_ROOT = 1,
-    TWO_ROOTS = 2,
-    INF_ROOTS = 3
 };
 
 enum INPUT_STATUSES {
@@ -41,6 +34,16 @@ enum RESUME_RESULTS {
     UNKNOWN_ERROR_RESULT = 2
 };
 
+enum TEST_CHECK_STATUSES {
+    TEST_CHECK_SUCCESS = 0,
+    TEST_CHECK_FAIL = 1,
+    TEST_CHECK_ERROR = 2
+};
+
+enum RUN_ALL_TESTS_STATUSES {
+    RUN_ALL_TESTS_SUCCESS = 0,
+    RUN_ALL_TESTS_ERROR = 1
+};
 
 const char* RESUME_STATEMENT = "yes";
 const char* EXIT_STATEMENT = "no";
@@ -55,61 +58,78 @@ struct equationCoefs equationCoefsInit() {
 
     coefs.cntRoot = 0;
 
-    coefs.eq_root1 = 0;
-    coefs.eq_root2 = 0;
+    coefs.eqRoot1 = NAN;
+    coefs.eqRoot2 = NAN;
 
     return coefs;
 }
 
-void equationCoefsInitPointers(equationCoefs* ptr_coefs);
+void equationCoefsInitPointers(equationCoefs* ptrCoefs);
 
-void equationCoefsInitPointers(equationCoefs* ptr_coefs) {
-    ptr_coefs->a = 0;
-    ptr_coefs->b = 0;
-    ptr_coefs->c = 0;
+void equationCoefsInitPointers(equationCoefs* ptrCoefs) {
+    ptrCoefs->a = 0;
+    ptrCoefs->b = 0;
+    ptrCoefs->c = 0;
 }
 
-char RESUME_LINE[MAX_RESUME_LEN];
-
-void greetings_attempts(void);
-int inputAttempts(void);
+void greetingsIntInput(void);
+int getPositiveIntInputSafe(void);
 
 int processEnd(void);
 void startUserCycle(int attempts);
+void handleCoefInput(equationCoefs* ptrCoefs);
 void greetings(void);
+bool shouldResume(void);
 void printAttempts(int attempts);
-INPUT_STATUSES getInput(equationCoefs* ptr_coefs);
+
+const char* getStringInputStatus(INPUT_STATUSES);
+INPUT_STATUSES getInput(equationCoefs* ptrCoefs);
+
 bool goodEnd(void);
 void readToEnd(void);
 
-void printRoots(const int cntRoots, const double eq_root1, const double eq_root2);
-int badInput(void);
-void getResumeLine(void);
-RESUME_RESULTS resume(void);
-int checkRoots(const equationCoefs coefs, const int cntRoot, const double eq_root1, const double eq_root2);
-int checkRoot(const equationCoefs coefs, const double x);
+void printRoots(const int cntRoots, const double eqRoot1, const double eqRoot2);
+void getresumeLine(char* resumeLine);
 
+const char* getStringResumeResults(RESUME_RESULTS);
+RESUME_RESULTS resume(void);
+
+const char* getStringCheckStatus(CHECK_STATUSES);
+CHECK_STATUSES checkRoots(const equationCoefs coefs, const int cntRoot, const double eqRoot1, const double eqRoot2);
+
+int checkSingleRoot(const equationCoefs coefs, const double x);
+
+const char* getStringRunAllTestsStatus(RUN_ALL_TESTS_STATUSES);
+RUN_ALL_TESTS_STATUSES runAllTests();
+
+const char* getStringTestCheckStatus(TEST_CHECK_STATUSES);
+TEST_CHECK_STATUSES runSingleTest(equationCoefs* ptrCoefs, const int refCntRoots, const double refRoot1, const double refRoot2);
 
 int main() {
     greetings();
 
-    int attempts = inputAttempts();
+    RUN_ALL_TESTS_STATUSES runAllTestsStatus = runAllTests();
 
-    startUserCycle(attempts);
+    // const char* LineRunAllTestsStatus = getStringRunAllTestsStatus(runAllTestsStatus);
+
+    // printf("%s", LineRunAllTestsStatus);
+    //int attempts = getPositiveIntInputSafe();
+
+    //startUserCycle(attempts);
 
     return 0;
 }
 
-void greetings_attempts() {
-    printf("Enter the positive number of attempts:");
+void greetingsIntInput() {
+    printf("Enter the positive number:");
 }
 
-int inputAttempts() { // 2a
+int getPositiveIntInputSafe() { // 2a
     int attempts = 0;
 //gjgghbkjbn
 
     while (true) {
-        greetings_attempts();
+        greetingsIntInput();
         if (!scanf("%i", &attempts)) {
             readToEnd();
         } else if (processEnd() && attempts >= 0) {
@@ -119,11 +139,11 @@ int inputAttempts() { // 2a
 }
 
 int processEnd() {
-    int is_good_end = goodEnd();
-    if (!is_good_end) {
+    int isGoodEnd = goodEnd();
+    if (!isGoodEnd) {
            readToEnd();
     }
-    return is_good_end;
+    return isGoodEnd;
 }
 
 void printAttempts(int attempts) {
@@ -147,91 +167,34 @@ void printAttempts(int attempts) {
 void startUserCycle(int attempts) {
     equationCoefs coefs;
 
-    equationCoefs* ptr_coefs = &coefs;
+    equationCoefs* ptrCoefs = &coefs;
 
-    equationCoefsInitPointers(ptr_coefs);
+    equationCoefsInitPointers(ptrCoefs);
 
-    double eq_root1 = 0, eq_root2 = 0;
+    double eqRoot1 = NAN, eqRoot2 = NAN;
 
     while (attempts--) {
         printAttempts(attempts);
-        bool stopImmediately = false;
-        RESUME_RESULTS resumeResult = resume();
-        switch (resumeResult) {
-            case EXIT_RESULT:
-                stopImmediately = true;
-                break;
 
-            case RESUME_RESULT:
-                break;
-
-            case UNKNOWN_ERROR_RESULT:
-                printf("Got an unknown error during resume() function!\n");
-                break;
-
-            default:
-                printf("Got an unknown error in StartUserCycle() function!\n");
-                break;
-        }
-        if (stopImmediately) {
+        if (!shouldResume()) {
             break;
         }
-        printf("Enter a, b, c:");
-        INPUT_STATUSES inputStatus = getInput(ptr_coefs);
-        switch (inputStatus) {
-            case INPUT_ERROR_FIRST:
-                printf("Error: cannot process first coef\n");
-                break;
 
-            case INPUT_ERROR_SECOND:
-                printf("Error: cannot process second coef\n");
-                break;
+        handleCoefInput(ptrCoefs);
 
-            case INPUT_ERROR_THIRD:
-                printf("Error: cannot process third coef\n");
-                break;
-
-            case INPUT_ERROR_AFTER_THIRD:
-                printf("Error: bad input after the third coef\n");
-                break;
-
-            case INPUT_CORRECT:
-                printf("Input correct\n");
-                break;
-
-            case UNKNOWN_INPUT_ERROR:
-                printf("Unknown input error!\n");
-                break;
-
-            default:
-                printf("Unknown error during the input!\n");
-                break;
-        }
         printf("Try another time!\n");
         continue;
         // printf("%lf %lf %lf\n", a, b, c);
 
-        int cntRoots = QuadraticSolver(coefs, &eq_root1, &eq_root2);
-        int equationCheckStatus = checkRoots(coefs, cntRoots, eq_root1, eq_root2);
+        int cntRoots = QuadraticSolver(ptrCoefs, &eqRoot1, &eqRoot2);
 
-        switch (equationCheckStatus) {
-            case CHECK_SUCCESS:
-                printf("Roots are valid!\n");
-                break;
+        CHECK_STATUSES equationCheckStatus = checkRoots(coefs, cntRoots, eqRoot1, eqRoot2);
 
-            case CHECK_FAIL:
-                printf("Roots are invalid!\n");
-                break;
+        const char* equationCheckStatusLine = getStringCheckStatus(equationCheckStatus);
 
-            case CHECK_ERROR:
-                printf("Error during testing!\n");
-                break;
+        printf("%s", equationCheckStatusLine);
 
-            default:
-                printf("Unknown error during testing!\n");
-                break;
-        }
-        printRoots(cntRoots, eq_root1, eq_root2);
+        printRoots(cntRoots, eqRoot1, eqRoot2);
     }
 }
 
@@ -240,9 +203,41 @@ void greetings() {
            "Powered by AK\n");
 }
 
-INPUT_STATUSES getInput(equationCoefs* ptr_coefs) {
-    int inputStatus = scanf("%lf %lf %lf", &(ptr_coefs->a), &(ptr_coefs->b), &(ptr_coefs->c));
-    int is_good_end = processEnd();
+const char* getStringInputStatus(INPUT_STATUSES inputStatus) {
+    switch (inputStatus) {
+        case INPUT_ERROR_FIRST:
+            return "Error: cannot process first coef\n";
+            break;
+
+        case INPUT_ERROR_SECOND:
+            return "Error: cannot process second coef\n";
+            break;
+
+        case INPUT_ERROR_THIRD:
+            return "Error: cannot process third coef\n";
+            break;
+
+        case INPUT_ERROR_AFTER_THIRD:
+            return "Error: bad input after third coef\n";
+            break;
+
+        case UNKNOWN_INPUT_ERROR:
+            return "Error: unknown input error happened\n";
+            break;
+
+        case INPUT_CORRECT:
+            break;
+
+        default:
+            return "Error: unknown error happened while getting input status\n";
+            break;
+    }
+    return "Error: unknown error happened while getting input status\n";
+}
+
+INPUT_STATUSES getInput(equationCoefs* ptrCoefs) {
+    int inputStatus = scanf("%lf %lf %lf", &(ptrCoefs->a), &(ptrCoefs->b), &(ptrCoefs->c));
+    int isGoodEnd = processEnd();
     switch (inputStatus) {
         case 0:
             return INPUT_ERROR_FIRST;
@@ -257,37 +252,49 @@ INPUT_STATUSES getInput(equationCoefs* ptr_coefs) {
             break;
 
         case 3:
-            return is_good_end ? INPUT_CORRECT : INPUT_ERROR_AFTER_THIRD;
+            return isGoodEnd ? INPUT_CORRECT : INPUT_ERROR_AFTER_THIRD;
             break;
 
         default:
             return UNKNOWN_INPUT_ERROR;
             break;
     }
-    return INPUT_CORRECT;
+}
+
+void handleCoefInput(equationCoefs* ptrCoefs) {
+    printf("Enter a, b, c:");
+
+    INPUT_STATUSES inputStatus = getInput(ptrCoefs);
+
+    const char* inputStatusLine = getStringInputStatus(inputStatus);
+
+    printf("%s", inputStatusLine);
 }
 
 bool goodEnd() {
     char c = ' ';
+
     while (scanf("%c", &c) && (c == ' ' || c == '\t')) {
         ;
     }
+
     printf("(goodEnd) last char:%c\n", c);
+
     return c == '\n' || c == EOF;
 }
 
-void printRoots(const int cntRoots, const double eq_root1, const double eq_root2) {
+void printRoots(const int cntRoots, const double eqRoot1, const double eqRoot2) {
     switch (cntRoots) {
         case ZERO_ROOTS:
             printf("No solutions\n");
             break;
 
         case ONE_ROOT:
-            printf("Have one root: %lf\n", eq_root1);
+            printf("Have one root: %lf\n", eqRoot1);
             break;
 
         case TWO_ROOTS:
-            printf("Have two roots: %lf, %lf\n", eq_root1, eq_root2);
+            printf("Have two roots: %lf, %lf\n", eqRoot1, eqRoot2);
             break;
 
         case INF_ROOTS:
@@ -313,55 +320,84 @@ void readToEnd() {
     printf("(readToEnd) c == backslashn:%i\n", res);
 }
 
-int badInput() {
-    char c;
-    while ((c = (char)getchar()) != '\n') {
-        if (!isspace(c)) {
-            return BAD_INPUT;
-        }
-    }
-    return 0;
-}
+void getresumeLine(char * resumeLine) {
+    int cntInputCharsBefore = 0, cntInputCharsAfter = 0;
 
-void getResumeLine() {
-    int cnt_input_chars_before = 0, cnt_input_chars_after = 0;
-    scanf("%n%3s%n", &cnt_input_chars_before, RESUME_LINE, &cnt_input_chars_after);
-    if (cnt_input_chars_after - cnt_input_chars_before != 0) {
-        cnt_input_chars_after = 0;
+    scanf("%n%3s%n", &cntInputCharsBefore, resumeLine, &cntInputCharsAfter);
+
+    printf("(getresumeLine) cntInputCharsBefore: %i, cntInputCharsAfter: %i\n",
+     cntInputCharsBefore, cntInputCharsAfter);
+
+    int diff = cntInputCharsAfter - cntInputCharsBefore;
+
+    if (diff != (int)strlen(RESUME_STATEMENT) && diff != (int)strlen(EXIT_STATEMENT)) {
+        cntInputCharsAfter = 0;
     }
-    RESUME_LINE[cnt_input_chars_after] = '\0';
-    printf("(getResumeLine) RESUME_LINE:%s", RESUME_LINE);
+
+    resumeLine[cntInputCharsAfter] = '\0';
+
+    printf("(getresumeLine) resumeLine:%s\n", resumeLine);
 }
 
 RESUME_RESULTS resume(void) {
     printf("Continue? %s / %s:", RESUME_STATEMENT, EXIT_STATEMENT);
+    char resumeLine[MAX_RESUME_LEN] = {};
+    getresumeLine(resumeLine);
 
-    getResumeLine();
-    if (strcmp(RESUME_LINE, RESUME_STATEMENT) == 0) {
+    // printf("resumeLine: %c%c%c%c\n", resumeLine[0], resumeLine[1], resumeLine[2], resumeLine[3]);
+
+    if (strcmp(resumeLine, RESUME_STATEMENT) == 0) {
         return RESUME_RESULT;
-    } else if (strcmp(RESUME_LINE, EXIT_STATEMENT) == 0) {
+    } else if (strcmp(resumeLine, EXIT_STATEMENT) == 0) {
         return EXIT_RESULT;
     } else {
         return UNKNOWN_ERROR_RESULT;
     }
 }
 
-int checkRoots(const equationCoefs coefs, const int cntRoot, const double eq_root1, const double eq_root2) {
+int shouldResume() {
+    RESUME_RESULTS resumeResult = resume();
+    switch (resumeResult) {
+        case EXIT_RESULT:
+            return false;
+            break;
+
+        case RESUME_RESULT:
+            return true;
+            break;
+
+        case UNKNOWN_ERROR_RESULT:
+            printf("Got an unknown error during resume() function!\n");
+            break;
+
+        default:
+            printf("Got an unknown error in StartUserCycle() function!\n");
+            break;
+    }
+    readToEnd();
+    return true;
+}
+
+CHECK_STATUSES checkRoots(const equationCoefs coefs, const int cntRoot, const double eqRoot1, const double eqRoot2) {
     switch (cntRoot) {
         case ZERO_ROOTS:
             return CHECK_SUCCESS;
             break;
 
         case ONE_ROOT:
-            return (checkRoot(coefs, eq_root1)) ? CHECK_SUCCESS : CHECK_FAIL;
+            if (checkSingleRoot(coefs, eqRoot1)) {
+                return CHECK_SUCCESS;
+            } else {
+                return CHECK_FAIL;
+            }
             break;
 
         case TWO_ROOTS:
-            return (checkRoot(coefs, eq_root1) && checkRoot(coefs, eq_root2)) ? CHECK_SUCCESS : CHECK_FAIL;
+            return (checkSingleRoot(coefs, eqRoot1) && checkSingleRoot(coefs, eqRoot2)) ? CHECK_SUCCESS : CHECK_FAIL;
             break;
 
         case INF_ROOTS:
-            return (checkRoot(coefs, 0.0) && checkRoot(coefs, 1.0) && checkRoot(coefs, 2.0)) ? CHECK_SUCCESS : CHECK_FAIL;
+            return (checkSingleRoot(coefs, 0.0) && checkSingleRoot(coefs, 1.0) && checkSingleRoot(coefs, 2.0)) ? CHECK_SUCCESS : CHECK_FAIL;
             break;
 
         default:
@@ -370,12 +406,164 @@ int checkRoots(const equationCoefs coefs, const int cntRoot, const double eq_roo
     }
 }
 
-int checkRoot(const equationCoefs coefs, const double x) {
-    int cmp_double(const double, const double);
+const char* getStringCheckStatus(CHECK_STATUSES CheckStatus) {
+    switch (CheckStatus) {
+        case CHECK_SUCCESS:
+            return "Both roots are correct\n";
+            break;
+
+        case CHECK_FAIL:
+            return "Roots are incorrect\n";
+            break;
+
+        case CHECK_ERROR:
+            return "Error: error happened when checking coefs\n";
+            break;
+
+        default:
+            return "Error: unknown error happened while getting check status\n";
+            break;
+    }
+}
+
+int checkSingleRoot(const equationCoefs coefs, const double x) {
+    int CmpDouble(const double, const double);
 
     double a = coefs.a, b = coefs.b, c = coefs.c;
 
     double result = a * x * x + b * x + c;
 
-    return cmp_double(result, 0) == 0;
+    return CmpDouble(result, 0) == 0;
+}
+
+RUN_ALL_TESTS_STATUSES runAllTests() {
+    printf("Starting manual testing...\n");
+
+    int testsLeft = getPositiveIntInputSafe();
+
+    equationCoefs coefs;
+
+    equationCoefs* ptrCoefs = &coefs;
+
+    equationCoefsInitPointers(ptrCoefs);
+
+    int refCntRoots = 0;
+
+    double refRoot1 = NAN, refRoot2 = NAN;
+
+    while (testsLeft--) { // for (int i = 0; i < testLeft; i++)
+        printf("%i test left\n", testsLeft);
+
+        if (!shouldResume()) {
+            break;
+        }
+
+        handleCoefInput(ptrCoefs);
+
+        scanf("%i %lf %lf", &refCntRoots, &refRoot1, &refRoot2);
+
+        TEST_CHECK_STATUSES checkTestStatus = runSingleTest(ptrCoefs, refCntRoots, refRoot1, refRoot2);
+
+        const char* CheckTestStatusLine = getStringTestCheckStatus(checkTestStatus);
+        printf("%s", CheckTestStatusLine);
+
+        bool stopTestingCycle = false;
+
+        switch (checkTestStatus) {
+            case TEST_CHECK_SUCCESS:
+                break;
+
+            case TEST_CHECK_FAIL:
+                stopTestingCycle = true;
+                break;
+
+            case TEST_CHECK_ERROR:
+            default:
+                return RUN_ALL_TESTS_ERROR;
+                break;
+        }
+        if (stopTestingCycle) {
+            break;
+        }
+    }
+    return RUN_ALL_TESTS_SUCCESS;
+}
+
+TEST_CHECK_STATUSES runSingleTest(equationCoefs* ptrCoefs, const int refCntRoots, const double refRoot1, const double refRoot2) {
+    int CmpDouble(const double, const double);
+
+    double eqRoot1 = NAN, eqRoot2 = NAN;
+
+    int cntRoots = QuadraticSolver(ptrCoefs, &eqRoot1, &eqRoot2);
+    bool correct_test = true;
+
+    if (refCntRoots != cntRoots) {
+        correct_test = false;
+
+        printf("Number of roots differs!\n"
+               "Expected: %i            \n"
+               "Got:      %i            \n", refCntRoots, cntRoots);
+    }
+    if (CmpDouble(refRoot1, eqRoot1) != 0) {
+        correct_test = false;
+
+        printf("First root differs!\n"
+               "Expected: %lf      \n"
+               "Got:      %lf      \n", refRoot1, eqRoot1);
+    }
+    if (CmpDouble(refRoot2, eqRoot2) != 0) {
+        correct_test = false;
+
+        printf("Second root differs!\n"
+               "Expected: %lf\n"
+               "Got:      %lf\n", refRoot2, eqRoot2);
+    }
+
+    if (correct_test) {
+        return TEST_CHECK_SUCCESS;
+    } else {
+        printf("a: %lf, b: %lf, c: %lf, cntRoots: %i,"
+               "eqRoot1: %lf, eqRoot2: %lf, refCntRoots: %i, refRoot1:"
+               "%lf, refRoot2: %lf\n", ptrCoefs->a, ptrCoefs->b, ptrCoefs->c, cntRoots,
+               eqRoot1, eqRoot2, refCntRoots, refRoot1, refRoot2);
+
+        return TEST_CHECK_FAIL;
+    }
+    return TEST_CHECK_ERROR;
+}
+
+const char* getStringTestCheckStatus(TEST_CHECK_STATUSES TestCheckStatus) {
+    switch (TestCheckStatus) {
+        case TEST_CHECK_SUCCESS:
+            return "Test passed successfully!\n";
+            break;
+
+        case TEST_CHECK_FAIL:
+            return "Test gives incorrect answer!\n";
+            break;
+
+        case TEST_CHECK_ERROR:
+            return "Error: error happened while testing!\n";
+            break;
+
+        default:
+            return "Error: unknown error happened while getting test check status!\n";
+            break;
+    }
+}
+
+const char* getStringRunAllTestsStatus(RUN_ALL_TESTS_STATUSES RunAllTestsStatus) {
+    switch (RunAllTestsStatus) {
+        case RUN_ALL_TESTS_SUCCESS:
+            return "All tests passed successfully!\n";
+            break;
+
+        case RUN_ALL_TESTS_ERROR:
+            return "Error: error happened while running all tests!\n";
+            break;
+
+        default:
+            return "Error: unknown error happened while getting RunAllTests status!\n";
+            break;
+    }
 }
