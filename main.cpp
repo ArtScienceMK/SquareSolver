@@ -28,12 +28,6 @@ enum INPUT_STATUSES {
     INPUT_CORRECT = 5
 };
 
-enum RESUME_RESULTS {
-    EXIT_RESULT = 0,
-    RESUME_RESULT = 1,
-    UNKNOWN_ERROR_RESULT = 2
-};
-
 enum TEST_CHECK_STATUSES {
     TEST_CHECK_SUCCESS = 0,
     TEST_CHECK_FAIL = 1,
@@ -77,13 +71,12 @@ int getPositiveIntInputSafe(void);
 
 int processEnd(void);
 void startUserCycle(int attempts);
-void handleCoefInput(equationCoefs* ptrCoefs);
+INPUT_STATUSES handleCoefInput(equationCoefs* ptrCoefs);
 void greetings(void);
-bool shouldResume(void);
 void printAttempts(int attempts);
 
 const char* getStringInputStatus(INPUT_STATUSES);
-INPUT_STATUSES getInput(equationCoefs* ptrCoefs);
+INPUT_STATUSES getCoefInput(equationCoefs* ptrCoefs);
 
 bool goodEnd(void);
 void readToEnd(void);
@@ -91,8 +84,7 @@ void readToEnd(void);
 void printRoots(const int cntRoots, const double eqRoot1, const double eqRoot2);
 void getresumeLine(char* resumeLine);
 
-const char* getStringResumeResults(RESUME_RESULTS);
-RESUME_RESULTS resume(void);
+bool resume(void);
 
 const char* getStringCheckStatus(CHECK_STATUSES);
 CHECK_STATUSES checkRoots(const equationCoefs coefs, const int cntRoot, const double eqRoot1, const double eqRoot2);
@@ -104,6 +96,10 @@ RUN_ALL_TESTS_STATUSES runAllTests();
 
 const char* getStringTestCheckStatus(TEST_CHECK_STATUSES);
 TEST_CHECK_STATUSES runSingleTest(equationCoefs* ptrCoefs, const int refCntRoots, const double refRoot1, const double refRoot2);
+
+INPUT_STATUSES getRefInput(int* refCntRoots, double* refRoot1, double* refRoot2);
+INPUT_STATUSES handleRefInput(int* refCntRoots, double* refRoot1, double* refRoot2);
+
 
 int main() {
     greetings();
@@ -176,16 +172,17 @@ void startUserCycle(int attempts) {
     while (attempts--) {
         printAttempts(attempts);
 
-        if (!shouldResume()) {
+        if (!resume()) {
             break;
         }
 
-        handleCoefInput(ptrCoefs);
+        INPUT_STATUSES inputStatus = handleCoefInput(ptrCoefs);
 
-        printf("Try another time!\n");
-        continue;
+        if (inputStatus != INPUT_CORRECT) {
+            printf("Try another time!\n");
+            continue;
+        }
         // printf("%lf %lf %lf\n", a, b, c);
-
         int cntRoots = QuadraticSolver(ptrCoefs, &eqRoot1, &eqRoot2);
 
         CHECK_STATUSES equationCheckStatus = checkRoots(coefs, cntRoots, eqRoot1, eqRoot2);
@@ -226,16 +223,17 @@ const char* getStringInputStatus(INPUT_STATUSES inputStatus) {
             break;
 
         case INPUT_CORRECT:
+            return "Input correct\n";
             break;
 
         default:
             return "Error: unknown error happened while getting input status\n";
             break;
     }
-    return "Error: unknown error happened while getting input status\n";
+    return NULL;
 }
 
-INPUT_STATUSES getInput(equationCoefs* ptrCoefs) {
+INPUT_STATUSES getCoefInput(equationCoefs* ptrCoefs) {
     int inputStatus = scanf("%lf %lf %lf", &(ptrCoefs->a), &(ptrCoefs->b), &(ptrCoefs->c));
     int isGoodEnd = processEnd();
     switch (inputStatus) {
@@ -261,14 +259,19 @@ INPUT_STATUSES getInput(equationCoefs* ptrCoefs) {
     }
 }
 
-void handleCoefInput(equationCoefs* ptrCoefs) {
+INPUT_STATUSES handleCoefInput(equationCoefs* ptrCoefs) {
     printf("Enter a, b, c:");
 
-    INPUT_STATUSES inputStatus = getInput(ptrCoefs);
+    INPUT_STATUSES inputStatus = getCoefInput(ptrCoefs);
 
-    const char* inputStatusLine = getStringInputStatus(inputStatus);
+    if (inputStatus != INPUT_CORRECT) {
+        const char* inputStatusLine = getStringInputStatus(inputStatus);
+        assert(inputStatusLine != NULL);
+        printf("%s", inputStatusLine);
+    }
 
-    printf("%s", inputStatusLine);
+    return inputStatus;
+    // TODO
 }
 
 bool goodEnd() {
@@ -339,7 +342,7 @@ void getresumeLine(char * resumeLine) {
     printf("(getresumeLine) resumeLine:%s\n", resumeLine);
 }
 
-RESUME_RESULTS resume(void) {
+bool resume(void) {
     printf("Continue? %s / %s:", RESUME_STATEMENT, EXIT_STATEMENT);
     char resumeLine[MAX_RESUME_LEN] = {};
     getresumeLine(resumeLine);
@@ -347,35 +350,13 @@ RESUME_RESULTS resume(void) {
     // printf("resumeLine: %c%c%c%c\n", resumeLine[0], resumeLine[1], resumeLine[2], resumeLine[3]);
 
     if (strcmp(resumeLine, RESUME_STATEMENT) == 0) {
-        return RESUME_RESULT;
-    } else if (strcmp(resumeLine, EXIT_STATEMENT) == 0) {
-        return EXIT_RESULT;
-    } else {
-        return UNKNOWN_ERROR_RESULT;
+        return true;
     }
-}
-
-int shouldResume() {
-    RESUME_RESULTS resumeResult = resume();
-    switch (resumeResult) {
-        case EXIT_RESULT:
-            return false;
-            break;
-
-        case RESUME_RESULT:
-            return true;
-            break;
-
-        case UNKNOWN_ERROR_RESULT:
-            printf("Got an unknown error during resume() function!\n");
-            break;
-
-        default:
-            printf("Got an unknown error in StartUserCycle() function!\n");
-            break;
+    if (strcmp(resumeLine, EXIT_STATEMENT) == 0) {
+        return false;
     }
-    readToEnd();
-    return true;
+    printf("Error: unknown error while resuming\n");
+    return false;
 }
 
 CHECK_STATUSES checkRoots(const equationCoefs coefs, const int cntRoot, const double eqRoot1, const double eqRoot2) {
@@ -454,13 +435,28 @@ RUN_ALL_TESTS_STATUSES runAllTests() {
     while (testsLeft--) { // for (int i = 0; i < testLeft; i++)
         printf("%i test left\n", testsLeft);
 
-        if (!shouldResume()) {
+        if (!resume()) {
             break;
         }
 
-        handleCoefInput(ptrCoefs);
+        INPUT_STATUSES inputCoefStatus = handleCoefInput(ptrCoefs);
 
-        scanf("%i %lf %lf", &refCntRoots, &refRoot1, &refRoot2);
+        if (inputCoefStatus != INPUT_CORRECT) {
+            printf("Try another time!\n");
+            continue;
+        }
+
+        INPUT_STATUSES inputRefStatus =  handleRefInput(&refCntRoots, &refRoot1, &refRoot2);
+
+        if (inputRefStatus != INPUT_CORRECT) {
+            printf("Try another time!\n");
+            continue;
+        }
+
+        if (!processEnd()) {
+            printf("Try another time!\n");
+            continue;
+        }
 
         TEST_CHECK_STATUSES checkTestStatus = runSingleTest(ptrCoefs, refCntRoots, refRoot1, refRoot2);
 
@@ -489,7 +485,8 @@ RUN_ALL_TESTS_STATUSES runAllTests() {
     return RUN_ALL_TESTS_SUCCESS;
 }
 
-TEST_CHECK_STATUSES runSingleTest(equationCoefs* ptrCoefs, const int refCntRoots, const double refRoot1, const double refRoot2) {
+TEST_CHECK_STATUSES runSingleTest(equationCoefs* ptrCoefs, const int refCntRoots,
+                                  const double refRoot1, const double refRoot2) {
     int CmpDouble(const double, const double);
 
     double eqRoot1 = NAN, eqRoot2 = NAN;
@@ -521,15 +518,13 @@ TEST_CHECK_STATUSES runSingleTest(equationCoefs* ptrCoefs, const int refCntRoots
 
     if (correct_test) {
         return TEST_CHECK_SUCCESS;
-    } else {
-        printf("a: %lf, b: %lf, c: %lf, cntRoots: %i,"
-               "eqRoot1: %lf, eqRoot2: %lf, refCntRoots: %i, refRoot1:"
-               "%lf, refRoot2: %lf\n", ptrCoefs->a, ptrCoefs->b, ptrCoefs->c, cntRoots,
-               eqRoot1, eqRoot2, refCntRoots, refRoot1, refRoot2);
-
-        return TEST_CHECK_FAIL;
     }
-    return TEST_CHECK_ERROR;
+    printf("a: %lf, b: %lf, c: %lf, cntRoots: %i,"
+            "eqRoot1: %lf, eqRoot2: %lf, refCntRoots: %i, refRoot1:"
+            "%lf, refRoot2: %lf\n", ptrCoefs->a, ptrCoefs->b, ptrCoefs->c, cntRoots,
+            eqRoot1, eqRoot2, refCntRoots, refRoot1, refRoot2);
+
+    return TEST_CHECK_FAIL;
 }
 
 const char* getStringTestCheckStatus(TEST_CHECK_STATUSES TestCheckStatus) {
@@ -566,4 +561,44 @@ const char* getStringRunAllTestsStatus(RUN_ALL_TESTS_STATUSES RunAllTestsStatus)
             return "Error: unknown error happened while getting RunAllTests status!\n";
             break;
     }
+}
+
+INPUT_STATUSES getRefInput(int* refCntRoots, double* refRoot1, double* refRoot2) {
+    int inputStatus = scanf("%i %lf %lf", refCntRoots, refRoot1, refRoot2);
+    int isGoodEnd = processEnd();
+    switch (inputStatus) {
+        case 0:
+            return INPUT_ERROR_FIRST;
+            break;
+
+        case 1:
+            return INPUT_ERROR_SECOND;
+            break;
+
+        case 2:
+            return INPUT_ERROR_THIRD;
+            break;
+
+        case 3:
+            return isGoodEnd ? INPUT_CORRECT : INPUT_ERROR_AFTER_THIRD;
+            break;
+
+        default:
+            return UNKNOWN_INPUT_ERROR;
+            break;
+    }
+}
+
+INPUT_STATUSES handleRefInput(int* refCntRoots, double* refRoot1, double* refRoot2) {
+    printf("Enter refCntRoots, refRoot1, refRoot2:");
+
+    INPUT_STATUSES inputStatus = getRefInput(refCntRoots, refRoot1, refRoot2);
+
+    if (inputStatus != INPUT_CORRECT) {
+        const char* inputStatusLine = getStringInputStatus(inputStatus);
+        assert(inputStatusLine != NULL);
+        printf("%s", inputStatusLine);
+    }
+
+    return inputStatus;
 }
