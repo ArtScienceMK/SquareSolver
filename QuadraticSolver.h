@@ -1,7 +1,6 @@
 #ifndef QUADRATIC_SOLVER_H
 #define QUADRATIC_SOLVER_H
 
-const int INF_SOLUTIONS = 3;
 const int QUADRATIC_SOLVER_ERROR = -1;
 
 
@@ -9,7 +8,7 @@ enum CNT_ROOTS {
     ZERO_ROOTS = 0,
     ONE_ROOT = 1,
     TWO_ROOTS = 2,
-    INF_ROOTS = 3
+    INF_ROOTS = 8
 };
 
 struct equationCoefs {

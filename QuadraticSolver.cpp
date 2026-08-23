@@ -14,7 +14,7 @@ int QuadraticSolver(const equationCoefs * const coefs, double* eqRoot1, double* 
         // printf("HAVE ZERO A\n");
         if (CmpDouble(b, 0) == 0) {
             if (CmpDouble(c, 0) == 0) {
-                return INF_SOLUTIONS;
+                return INF_ROOTS;
             }
 
             return ZERO_ROOTS; //  have NO solutions
