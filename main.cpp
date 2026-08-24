@@ -7,15 +7,28 @@
 #include <string.h>
 #include <fstream>
 
-
 #include "QuadraticSolver.h"
 #include "CmpDouble.h"
+
+#define DEBUG
+
+#ifdef DEBUG
+
+#define ON_DEBUG(...) __VA_ARGS__
+
+#else
+
+#define ON_DEBUG(...)
+
+#endif
 
 const int INPUT_ERROR = 1;
 const int MAX_STATEMENT_LEN = 9; // >= 8 to avoid warning
 const int MAX_STATEMENTS = 10;
+
 const int MAX_FORMAT_LINE_LEN = 50;
 const int MAX_NUMBER_LEN = 20;
+const int MAX_FILENAME_LEN = 20;
 
 const char TRASH_CHAR = 'a';
 
@@ -41,6 +54,7 @@ enum INPUT_STATUSES {
     INPUT_ERROR_FIRST = 0,
     INPUT_ERROR_SECOND = 1,
     INPUT_ERROR_THIRD = 2,
+
     INPUT_ERROR_AFTER_THIRD = 3,
     UNKNOWN_INPUT_ERROR = 4,
     INPUT_CORRECT = 5
@@ -106,7 +120,7 @@ void chooseMode(INPUT_MODE_STATUS inputModeStatus);
 
 TESTING_MODE_STATUSES userChoosingTestingMode(void);
 
-void getFormatLine(char* formatLine, int scanfLen);
+void getFormatLine(char* formatLine, size_t scanfLen);
 void getStatementLine(char *statementLine, statementInfo info);
 void getTestingModeLine(char *testingModeLine);
 
@@ -116,14 +130,14 @@ int getPositiveIntInputSafe(void);
 int processEnd(void);
 void startUserCycle(int attempts);
 
-INPUT_STATUSES handleCoefInput(equationCoefs* ptrCoefs);
+INPUT_STATUSES handleCoefInput(equationCoefs* ptrCoefs, FILE* ptrFile);
 // void getModeLine(char* modeLine);
 
 void greetings(void);
 void printAttempts(int attempts);
 
 const char* getStringInputStatus(INPUT_STATUSES);
-INPUT_STATUSES getCoefInput(equationCoefs* ptrCoefs);
+INPUT_STATUSES getCoefInput(equationCoefs* ptrCoefs, FILE* ptrFile);
 
 bool goodEnd(void);
 void readToEnd(void);
@@ -136,7 +150,8 @@ bool resume(void);
 RUN_ALL_TESTS_STATUSES manualTesting(void);
 
 const char* getStringCheckStatus(CHECK_STATUSES);
-CHECK_STATUSES checkRoots(const equationCoefs coefs, const int cntRoot, const double eqRoot1, const double eqRoot2);
+CHECK_STATUSES checkRoots(const equationCoefs coefs,
+ const int cntRoot, const double eqRoot1, const double eqRoot2);
 
 int checkSingleRoot(const equationCoefs coefs, const double x);
 
@@ -146,10 +161,17 @@ RUN_ALL_TESTS_STATUSES runAllTests(TESTING_MODE_STATUSES testingModeStatus);
 const char* getStringTestCheckStatus(TEST_CHECK_STATUSES);
 TEST_CHECK_STATUSES runSingleTest(equationCoefsTest test);
 
-INPUT_STATUSES getRefInput(int* refCntRoots, double* refRoot1, double* refRoot2);
+INPUT_STATUSES getRefInput(equationCoefsTest* ptrTest, FILE* ptrFile);
 INPUT_STATUSES handleRefInput(equationCoefsTest* ptrTest);
 
-int max(int op1, int op2);
+size_t max_size_t(size_t op1, size_t op2);
+
+INPUT_STATUSES fileCoefInput(equationCoefs* ptrCoefs, FILE* ptrFile);
+
+RUN_ALL_TESTS_STATUSES fileTesting();
+
+INPUT_STATUSES fileRefInput(equationCoefsTest* coefsTest, FILE* ptrFile);
+
 
 int main() {
     greetings();
@@ -216,7 +238,7 @@ INPUT_MODE_STATUS userChoosingMode() {
 
     if (strcmp(modeLine, SOLVE_TEST.statements[0]) == 0) {
 
-printf("(userChoosingMode) SOLVING\n");
+ON_DEBUG(printf("(userChoosingMode) SOLVING\n"));
 
         return SOLVING;
     }
@@ -301,23 +323,22 @@ TESTING_MODE_STATUSES userChoosingTestingMode() {
 // }
 
 void getStatementLine(char* statementLine, statementInfo info) {
-    int scanfLen = 0;
+    size_t scanfLen = 0;
 
     char tempStatementLine [MAX_STATEMENT_LEN] = "";
 
     for (int i = 0; i < MAX_STATEMENTS && info.statements[i]; i++) {
-        sprintf(tempStatementLine, "%s", info.statements[i]);
-
+        snprintf(tempStatementLine, MAX_STATEMENT_LEN, "%s", info.statements[i]);
 // printf("%s\n", info.statements[i]);
 printf("(getStatementLine) info.statements[%i] have len%i\n",
         i, (int)strlen(info.statements[i]));
 
-        scanfLen = max(scanfLen, (int)strlen(tempStatementLine));
+        scanfLen = max_size_t(scanfLen, strlen(tempStatementLine));
     }
 
-    printf("(getStatementLine) scanfLen:%i\n", scanfLen);
+    printf("(getStatementLine) scanfLen:%zu\n", scanfLen);
 
-    char formatLine [MAX_FORMAT_LINE_LEN] = " %";
+    char formatLine [MAX_FORMAT_LINE_LEN] = "";
 
     getFormatLine(formatLine, scanfLen);
 
@@ -338,23 +359,10 @@ printf("(getStatementLine) read to end!\n");
     printf("(getStatementLine) statementLine:%s\n", statementLine);
     printf("(getStatementLine) len of statementLine:%i\n",
            (int)strlen(statementLine));
-
-    // TODO scanf without checking specifiers!!!!
 }
 
-void getFormatLine(char* formatLine, int scanfLen) {
-    char scanfLenLine [MAX_NUMBER_LEN] = "";
-
-    sprintf(scanfLenLine, "%i", scanfLen);
-
-    char *ptrFormatLine = formatLine + 2; // because space and % are already in string
-
-    strcpy(ptrFormatLine, scanfLenLine);
-    ptrFormatLine += strlen(scanfLenLine);
-    *ptrFormatLine++ = 's';
-    // *ptrFormatLine++ = ' '; // space added to cut spaces symbols
-    // *ptrFormatLine++ = '\n';
-    *ptrFormatLine = '\0';
+void getFormatLine(char* formatLine, size_t scanfLen) {
+    snprintf(formatLine, MAX_NUMBER_LEN, " %%%zus", scanfLen);
 }
 
 void printEquationCoefsTest(equationCoefsTest test) {
@@ -424,7 +432,7 @@ void startUserCycle(int attempts) {
             break;
         }
 
-        INPUT_STATUSES inputStatus = handleCoefInput(ptrCoefs);
+        INPUT_STATUSES inputStatus = handleCoefInput(ptrCoefs, stdin);
 
         if (inputStatus != INPUT_CORRECT) {
             printf("Try another time!\n");
@@ -483,8 +491,8 @@ const char* getStringInputStatus(INPUT_STATUSES inputStatus) {
     return NULL;
 }
 
-INPUT_STATUSES getCoefInput(equationCoefs* ptrCoefs) {
-    int inputStatus = scanf("%lf %lf %lf", &(ptrCoefs->a), &(ptrCoefs->b), &(ptrCoefs->c));
+INPUT_STATUSES getCoefInput(equationCoefs* ptrCoefs, FILE* ptrFile) {
+    int inputStatus = fscanf(ptrFile, "%lf %lf %lf", &(ptrCoefs->a), &(ptrCoefs->b), &(ptrCoefs->c));
     int isGoodEnd = processEnd();
     switch (inputStatus) {
         case 0:
@@ -509,10 +517,10 @@ INPUT_STATUSES getCoefInput(equationCoefs* ptrCoefs) {
     }
 }
 
-INPUT_STATUSES handleCoefInput(equationCoefs* ptrCoefs) {
+INPUT_STATUSES handleCoefInput(equationCoefs* ptrCoefs, FILE* ptrFile) {
     printf("Enter a, b, c:");
 
-    INPUT_STATUSES inputStatus = getCoefInput(ptrCoefs);
+    INPUT_STATUSES inputStatus = getCoefInput(ptrCoefs, ptrFile);
 
     if (inputStatus != INPUT_CORRECT) {
         const char* inputStatusLine = getStringInputStatus(inputStatus);
@@ -659,8 +667,6 @@ const char* getStringCheckStatus(CHECK_STATUSES CheckStatus) {
 }
 
 int checkSingleRoot(const equationCoefs coefs, const double x) {
-    int CmpDouble(const double, const double);
-
     double a = coefs.a, b = coefs.b, c = coefs.c;
 
     double result = a * x * x + b * x + c;
@@ -673,12 +679,13 @@ RUN_ALL_TESTS_STATUSES runAllTests(TESTING_MODE_STATUSES testingModeStatus) {
 
     switch (testingModeStatus) {
         case MANUAL_TESTING: {
-            manualTesting();
+            return manualTesting();
 
             break;
         }
 
         case FILE_TESTING: {
+            return fileTesting();
             break;
         }
 
@@ -714,13 +721,12 @@ RUN_ALL_TESTS_STATUSES manualTesting() {
     coefsTest.refRoot1 = NAN, coefsTest.refRoot2 = NAN;
 
     while (testsLeft--) { // for (int i = 0; i < testLeft; i++)
-        printf("%i test left\n", testsLeft);
 
         if (!resume()) {
             break;
         }
 
-        INPUT_STATUSES inputCoefStatus = handleCoefInput(ptrCoefs);
+        INPUT_STATUSES inputCoefStatus = handleCoefInput(ptrCoefs, stdin);
 
         if (inputCoefStatus != INPUT_CORRECT) {
             printf("Try another time!\n");
@@ -765,11 +771,94 @@ RUN_ALL_TESTS_STATUSES manualTesting() {
     return RUN_ALL_TESTS_SUCCESS;
 }
 
+RUN_ALL_TESTS_STATUSES fileTesting() {
+    printf("Starting file testing...\n"
+           "Input the filename:");
+
+    char filename [MAX_FILENAME_LEN] = "";
+
+    scanf("%s", filename);
+
+    FILE* ptrFile = fopen(filename, "r");
+
+    if (!ptrFile) {
+        printf("Cannot read file:%s\n", filename);
+        return RUN_ALL_TESTS_ERROR;
+    }
+
+ON_DEBUG(printf("Successfully read file!\n");)
+
+    int testsLeft = 0;
+
+    if (!fscanf(ptrFile, "%i", &testsLeft)) {
+        printf("Cannot read test number!\n");
+        return RUN_ALL_TESTS_ERROR;
+    }
+
+ON_DEBUG(printf("Successfully read the testsLeft:%i!\n", testsLeft));
+
+    equationCoefsTest coefsTest;
+
+    equationCoefs* ptrCoefs = &coefsTest.coefs;
+
+    equationCoefsInitPointers(ptrCoefs);
+
+    coefsTest.refCntRoots = 0;
+
+    coefsTest.refRoot1 = NAN, coefsTest.refRoot2 = NAN;
+
+    while (testsLeft--) { // for (int i = 0; i < testLeft; i++)
+        INPUT_STATUSES inputCoefStatus = fileCoefInput(ptrCoefs, ptrFile);
+
+        if (inputCoefStatus != INPUT_CORRECT) {
+            printf("Skipping testcase: error when reading coef\n");
+            continue;
+        }
+
+ON_DEBUG(printf("Successfully read coef: a:%lf, b:%lf, c:%lf\n",
+ ptrCoefs->a, ptrCoefs->b, ptrCoefs->c);)
+
+        INPUT_STATUSES inputRefStatus =  fileRefInput(&coefsTest, ptrFile);
+
+        if (inputRefStatus != INPUT_CORRECT) {
+            printf("Skipping testcase: error when reading ref values\n");
+            continue;
+        }
+        // TODO можно избавиться от inputRefStatus,сделав handle CoefInput(ptrCoefs, int MODE, ptrTest)
+
+        printf("Starting testing a sample!\n");
+
+        TEST_CHECK_STATUSES checkTestStatus = runSingleTest(coefsTest);
+
+        const char* CheckTestStatusLine = getStringTestCheckStatus(checkTestStatus);
+        printf("%s", CheckTestStatusLine);
+
+        bool stopTestingCycle = false;
+
+        switch (checkTestStatus) {
+            case TEST_CHECK_SUCCESS:
+                break;
+
+            case TEST_CHECK_FAIL:
+                stopTestingCycle = true;
+                break;
+
+            case TEST_CHECK_ERROR:
+            default:
+                return RUN_ALL_TESTS_ERROR;
+                break;
+        }
+        if (stopTestingCycle) {
+            break;
+        }
+    }
+
+    return RUN_ALL_TESTS_SUCCESS;
+}
+
 TEST_CHECK_STATUSES runSingleTest(equationCoefsTest test) {
     printf("(runSingleTest) ");
     printEquationCoefsTest(test);
-
-    int CmpDouble(const double, const double);
 
     double eqRoot1 = NAN, eqRoot2 = NAN;
 
@@ -832,7 +921,7 @@ const char* getStringTestCheckStatus(TEST_CHECK_STATUSES TestCheckStatus) {
 const char* getStringRunAllTestsStatus(RUN_ALL_TESTS_STATUSES RunAllTestsStatus) {
     switch (RunAllTestsStatus) {
         case RUN_ALL_TESTS_SUCCESS:
-            return "All tests passed successfully!\n";
+            return "All tests passed without testing errors!\n";
             break;
 
         case RUN_ALL_TESTS_ERROR:
@@ -845,8 +934,10 @@ const char* getStringRunAllTestsStatus(RUN_ALL_TESTS_STATUSES RunAllTestsStatus)
     }
 }
 
-INPUT_STATUSES getRefInput(int* refCntRoots, double* refRoot1, double* refRoot2) {
-    int inputStatus = scanf("%i %lf %lf", refCntRoots, refRoot1, refRoot2);
+INPUT_STATUSES getRefInput(equationCoefsTest* ptrTest, FILE* ptrFile) {
+    int inputStatus = fscanf(ptrFile, "%i %lf %lf",
+    &(ptrTest->refCntRoots), &(ptrTest->refRoot1), &(ptrTest->refRoot2));
+
     int isGoodEnd = processEnd();
     switch (inputStatus) {
         case 0:
@@ -874,8 +965,7 @@ INPUT_STATUSES getRefInput(int* refCntRoots, double* refRoot1, double* refRoot2)
 INPUT_STATUSES handleRefInput(equationCoefsTest* ptrTest) {
     printf("Enter refCntRoots, refRoot1, refRoot2:");
 
-    INPUT_STATUSES inputStatus = getRefInput(&(ptrTest->refCntRoots),
-     &(ptrTest->refRoot1), &(ptrTest->refRoot2));
+    INPUT_STATUSES inputStatus = getRefInput(ptrTest, stdin);
 
     if (inputStatus != INPUT_CORRECT) {
         const char* inputStatusLine = getStringInputStatus(inputStatus);
@@ -886,6 +976,31 @@ INPUT_STATUSES handleRefInput(equationCoefsTest* ptrTest) {
     return inputStatus;
 }
 
-int max(int op1, int op2) {
+size_t max_size_t(size_t op1, size_t op2) {
     return (op1 > op2) ? op1 : op2;
 }
+
+INPUT_STATUSES fileCoefInput(equationCoefs* ptrCoefs, FILE* ptrFile) {
+    INPUT_STATUSES inputStatus = getCoefInput(ptrCoefs, ptrFile);
+
+    if (inputStatus != INPUT_CORRECT) {
+        const char* inputStatusLine = getStringInputStatus(inputStatus);
+        assert(inputStatusLine != NULL);
+        printf("%s", inputStatusLine);
+    }
+
+    return inputStatus;
+}
+
+INPUT_STATUSES fileRefInput(equationCoefsTest* ptrTest, FILE* ptrFile) {
+    INPUT_STATUSES inputStatus = getRefInput(ptrTest, ptrFile);
+
+    if (inputStatus != INPUT_CORRECT) {
+        const char* inputStatusLine = getStringInputStatus(inputStatus);
+        assert(inputStatusLine != NULL);
+        printf("%s", inputStatusLine);
+    }
+
+    return inputStatus;
+}
+
