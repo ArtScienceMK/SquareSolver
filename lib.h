@@ -49,8 +49,9 @@ enum INPUT_STATUSES {
     INPUT_ERROR_THIRD = 2,
 
     INPUT_ERROR_AFTER_THIRD = 3,
-    UNKNOWN_INPUT_ERROR = 4,
-    INPUT_CORRECT = 5
+    INPUT_ERROR_BAD_NUMBERS = 4,
+    UNKNOWN_INPUT_ERROR = 5,
+    INPUT_CORRECT = 6
 };
 
 enum TEST_CHECK_STATUSES {
@@ -77,7 +78,7 @@ const statementInfo MANUAL_FILE_AUTO = {{"manual", "file", "unit"}};
 struct equationCoefsTest {
     equationCoefs coefs;
 
-    int refCntRoots;
+    QUADRATIC_SOLVER_STATUSES refCntRoots;
     double refRoot1, refRoot2;
 };
 
@@ -133,14 +134,14 @@ INPUT_STATUSES getCoefInput(equationCoefs* ptrCoefs, FILE* ptrFile);
 bool goodEnd(void);
 void readToEnd(void);
 
-void printRoots(const int cntRoots, const double eqRoot1, const double eqRoot2);
+void printRoots(QUADRATIC_SOLVER_STATUSES cntRoots, const double eqRoot1, const double eqRoot2);
 void getResumeLine(char* resumeLine);
 
 bool resume(void);
 
 const char* const getStringCheckStatus(CHECK_STATUSES);
 CHECK_STATUSES checkRoots(const equationCoefs coefs,
- const int cntRoot, const double eqRoot1, const double eqRoot2);
+ QUADRATIC_SOLVER_STATUSES cntRoot, const double eqRoot1, const double eqRoot2);
 
 int checkSingleRoot(const equationCoefs coefs, const double x);
 
@@ -165,5 +166,7 @@ RUN_ALL_TESTS_STATUSES unitTesting(void);
 void buildFunctionGraphic(void);
 
 FILE* acessFile(const char* const greetings, const char* const);
+
+bool isGoodCoefs(equationCoefs* ptrCoefs);
 
 #endif /*LIB_H*/

@@ -1,10 +1,9 @@
 #ifndef QUADRATIC_SOLVER_H
 #define QUADRATIC_SOLVER_H
 
-const int QUADRATIC_SOLVER_ERROR = -1;
 
-
-enum CNT_ROOTS {
+enum QUADRATIC_SOLVER_STATUSES {
+    QUADRATIC_SOLVER_ERROR = -1,
     ZERO_ROOTS = 0,
     ONE_ROOT = 1,
     TWO_ROOTS = 2,
@@ -17,6 +16,6 @@ struct equationCoefs {
     double eqRoot1, eqRoot2;
 };
 
-int QuadraticSolver(const equationCoefs* const coefs, double* eqRoot1, double* eqRoot2);
+QUADRATIC_SOLVER_STATUSES QuadraticSolver(const equationCoefs* const coefs, double* eqRoot1, double* eqRoot2);
 
 #endif /* QUADRATIC_SOLVER_H */

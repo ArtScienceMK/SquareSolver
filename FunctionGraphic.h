@@ -2,6 +2,7 @@
 #define FUNCTION_GRAPH_H
 
 #include "CmpDouble.h"
+#include "QuadraticSolver.h"
 
 const Vector2 ORIGIN = {.x = 1000, .y = 800};
 
@@ -23,16 +24,16 @@ const Vector2 POINTS[] = {{.x = ORIGIN.x - 10, .y = ORIGIN.y - 100}, ORIGIN, {.x
 
 void drawGrid(double offset);
 
-double getFunc(const double a, const double b, const double c, const double x);
-double getY(const double a, const double b, const double c, const double x);
+double getFunc(equationCoefs* ptrCoefs, const double x);
+double getY(equationCoefs* ptrCoefs, const double x);
 
-void drawFunctionGraphic(const double a, const double b, const double c, double lX, double rX, double step, FILE* ptrFile);
+void drawFunctionGraphic(equationCoefs* ptrCoefs, double lX, double rX, double step, FILE* ptrFile);
 void drawAxes(void);
 void drawScale(void);
 
 void drawMouseLines(void);
 
-void printParabolaApex(const double a, const double b, const double c, FILE* ptrFile);
+void printParabolaApex(equationCoefs* ptrCoefs, FILE* ptrFile);
 
 double min(double op1, double op2);
 double max(double op1, double op2);

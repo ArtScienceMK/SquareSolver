@@ -222,6 +222,34 @@ int processEnd() {
     return isGoodEnd;
 }
 
+bool isGoodCoefs(equationCoefs* ptrCoefs) {
+    return isfinite(ptrCoefs->a) && isfinite(ptrCoefs->b) && isfinite(ptrCoefs->c); // nan также учитывает
+}
+
+bool isGoodRef(equationCoefsTest* ptrTest) {
+    QUADRATIC_SOLVER_STATUSES refCntRoots = ptrTest->refCntRoots;
+    
+    switch (refCntRoots) {
+        case ZERO_ROOTS:
+            break;
+
+        case ONE_ROOT:
+            break;
+
+        case TWO_ROOTS:
+            break;
+
+        case INF_ROOTS:
+            break;
+
+        default:
+            return false;
+            break;
+    }
+
+    return !isinf(ptrTest->refRoot1) && !isinf(ptrTest->refRoot2);
+}
+
 void printAttempts(int attempts) {
     assert(attempts >= 0);
 
@@ -265,7 +293,7 @@ void startUserCycle(int attempts) {
 
 ON_DEBUG(printf("%lf %lf %lf\n", ptrCoefs->a, ptrCoefs->b, ptrCoefs->c));
 
-        int cntRoots = QuadraticSolver(ptrCoefs, &eqRoot1, &eqRoot2);
+        QUADRATIC_SOLVER_STATUSES cntRoots = QuadraticSolver(ptrCoefs, &eqRoot1, &eqRoot2);
 
         CHECK_STATUSES equationCheckStatus = checkRoots(coefs, cntRoots, eqRoot1, eqRoot2);
 
@@ -305,6 +333,10 @@ const char* const getStringInputStatus(INPUT_STATUSES inputStatus) {
             return "Error: bad input after third coef\n";
             break;
 
+        case INPUT_ERROR_BAD_NUMBERS:
+            return "Error: bad input coefs\n";
+            break;
+
         case UNKNOWN_INPUT_ERROR:
             return "Error: unknown input error happened\n";
             break;
@@ -340,7 +372,16 @@ INPUT_STATUSES getCoefInput(equationCoefs* ptrCoefs, FILE* ptrFile) {
             break;
 
         case 3:
-            return isGoodEnd ? INPUT_CORRECT : INPUT_ERROR_AFTER_THIRD;
+            if (!isGoodEnd) {
+                return INPUT_ERROR_AFTER_THIRD;
+            }
+
+            if (!isGoodCoefs(ptrCoefs)) {
+                return INPUT_ERROR_BAD_NUMBERS;
+            }
+
+            return  INPUT_CORRECT;
+            
             break;
 
         default:
@@ -362,7 +403,7 @@ ON_DEBUG(printf("(goodEnd) last char:%c\n", c));
     return c == '\n' || c == EOF;
 }
 
-void printRoots(const int cntRoots, const double eqRoot1, const double eqRoot2) {
+void printRoots(QUADRATIC_SOLVER_STATUSES cntRoots, const double eqRoot1, const double eqRoot2) {
     switch (cntRoots) {
         case ZERO_ROOTS:
             printf("No solutions\n");
@@ -442,8 +483,8 @@ ON_DEBUG(printf("(resume) resumeLine: %c%c%c%c\n", resumeLine[0], resumeLine[1],
     return false;
 }
 
-CHECK_STATUSES checkRoots(const equationCoefs coefs, const int cntRoot, const double eqRoot1, const double eqRoot2) {
-    switch (cntRoot) {
+CHECK_STATUSES checkRoots(const equationCoefs coefs, QUADRATIC_SOLVER_STATUSES cntRoots, const double eqRoot1, const double eqRoot2) {
+    switch (cntRoots) {
         case ZERO_ROOTS:
             return CHECK_SUCCESS;
             break;
@@ -549,7 +590,7 @@ RUN_ALL_TESTS_STATUSES userTesting(const char* const mode) {
 
     equationCoefsInitPointers(ptrCoefs);
 
-    coefsTest.refCntRoots = 0;
+    coefsTest.refCntRoots = ZERO_ROOTS;
 
     coefsTest.refRoot1 = NAN, coefsTest.refRoot2 = NAN;
 
@@ -642,7 +683,7 @@ ON_DEBUG(printf("(runSingleTest) "));
 
     double eqRoot1 = NAN, eqRoot2 = NAN;
 
-    int cntRoots = QuadraticSolver(&test.coefs, &eqRoot1, &eqRoot2);
+    QUADRATIC_SOLVER_STATUSES cntRoots = QuadraticSolver(&test.coefs, &eqRoot1, &eqRoot2);
     bool correct_test = true;
 
     if (test.refCntRoots != cntRoots) {
@@ -743,7 +784,15 @@ INPUT_STATUSES getRefInput(equationCoefsTest* ptrTest, FILE* ptrFile) {
             break;
 
         case 3:
-            return isGoodEnd ? INPUT_CORRECT : INPUT_ERROR_AFTER_THIRD;
+            if (!isGoodEnd) {
+                return INPUT_ERROR_AFTER_THIRD;
+            }
+
+            if (!isGoodRef(ptrTest)) {
+                return INPUT_ERROR_BAD_NUMBERS;
+            }
+
+            return INPUT_CORRECT;
             break;
 
         default:
@@ -818,28 +867,33 @@ RUN_ALL_TESTS_STATUSES unitTesting() {
 }
 
 void buildFunctionGraphic() {
-    FILE* ptrFile = acessFile("Enter the filename to store logs:", "w"); // TODO разобраться с filename их много
+    FILE* ptrFile = acessFile("Enter the filename to store logs:", "w");
+    
     if (!ptrFile) {
         ptrFile = stdout;
         fprintf(ptrFile, "Warning: cannot open the debug output file! Redirecting to console...\n");
     }
 
-    double a = NAN, b = NAN, c = NAN;
+    equationCoefs coefs;
+
+    equationCoefs* ptrCoefs = &coefs;
+
+    equationCoefsInitPointers(ptrCoefs);
     
     bool isBadInput = true;
 
     while (isBadInput) {
         printf("Enter a, b, c:");
     
-        fscanf(stdin, "%lf %lf %lf", &a, &b, &c);
+        fscanf(stdin, "%lf %lf %lf", &(ptrCoefs->a), &(ptrCoefs->b), &(ptrCoefs->c));
         
-        if (!(isnan(a) || isnan(b) || isnan(c))) {
+        if (isfinite(ptrCoefs->a) && isfinite(ptrCoefs->b) && isfinite(ptrCoefs->c)) {
             isBadInput = false;
         } else {
             printf("Cannot process input! Try again!\n");
         }
 
-        fprintf(ptrFile, "a:%lf, b:%lf, c:%lf\n", a, b, c);
+        fprintf(ptrFile, "a:%lf, b:%lf, c:%lf\n", ptrCoefs->a, ptrCoefs->b, ptrCoefs->c);
     }
 
     SetTargetFPS(60);
@@ -852,10 +906,10 @@ void buildFunctionGraphic() {
         double gridOffset = 20;
 
         drawGrid(20);
-        drawFunctionGraphic(a, b, c, -100, 100, 1, ptrFile);
+        drawFunctionGraphic(ptrCoefs, -100, 100, 1, ptrFile);
         drawAxes();
         drawScale();
-        printParabolaApex(a, b, c, ptrFile);
+        printParabolaApex(ptrCoefs, ptrFile);
 
 
         if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) || IsMouseButtonDown(MOUSE_BUTTON_LEFT)) {
@@ -874,39 +928,38 @@ void buildFunctionGraphic() {
 
 void drawGrid(double offset) {
     for (double x = 0; x < XMAX; x += offset) {
-        DrawLine(x, YMIN, x, YMAX, LIGHTGRAY); // TODO поменять цвет на светло-серый
+        DrawLine(x, YMIN, x, YMAX, LIGHTGRAY);
     }
     for (double y = 0; y < YMAX; y += offset) {
         DrawLine(XMIN, y, XMAX, y, LIGHTGRAY);
     }
 }
 
-double getFunc(const double a, const double b, const double c, const double x) {
-    return a * x * x + b * x + c; // TODO check overflow
+double getFunc(equationCoefs* ptrCoefs, const double x) {
+    double a = ptrCoefs->a, b = ptrCoefs->b, c = ptrCoefs->c;
+
+    return a * x * x + b * x + c;
 }
 
-void drawFunctionGraphic(const double a, const double b, const double c, double lX, double rX, double step, FILE* ptrFile) {
-    // double x1 = ORIGIN.x + lX, x2 = ORIGIN.x + lX + step;
-    // double y1 = ORIGIN.y - getFunc(x1 - ORIGIN.x), y2 = ORIGIN.y - getFunc(x2 - ORIGIN.x);    
-    for (double x3 = ORIGIN.x + lX + 2 * step; x3 <= ORIGIN.x + rX; x3 += step) {
-        double y3 = getY(a, b, c, x3); // TODO вынести в отдельную функцию
-        double x2 = x3 - step;
-        double y2 = getY(a, b, c, x2);
-        // double invDifDifY = (double)1 / (y3 - 2 * y2 + y1);
-        double invDifY = (double)1 / (y3 - y2);
-        // printf("x1:%i, y1:%i, x2:%i, y2:%i, x3:%i, y3:%i\n", x1, y1, x2, y2, x3, y3);
-        // printf("x:%i, y:%i, chisl:%i, znam:%i, res:%lf\n", x3, y3, 1, (y3 - 2 * y2 + y1),  invDifDifY);
-        // printf("x:%i, y:%i, chisl:%i, znam:%i, res:%lf\n", x3, y3, 1, (y3 - y2),  invDifDifY);
-        fprintf(ptrFile, "x:%i, y:%i, step:%lf, invDifY:%lf\n", x3, y3, step, invDifY);
-        DrawCircle(x3, y3, 2.0f, GREEN);
-        step *= (double)1 / (y3 - y2);
+void drawFunctionGraphic(equationCoefs* ptrCoefs, double lX, double rX, double step, FILE* ptrFile) {
+    double a = ptrCoefs->a, b = ptrCoefs->b, c = ptrCoefs->c;   
+
+    double x1 = ORIGIN.x, y1 = ORIGIN.y;
+    for (double x2 = ORIGIN.x + lX + step; x2 <= ORIGIN.x + rX; x2 += step) {
+        double y2 = getY(ptrCoefs, x2); // TODO вынести в отдельную функцию
+
+        double invDifY = (double)1 / (y2 - y1);
+
+        fprintf(ptrFile, "x:%i, y:%i, step:%lf, invDifY:%lf\n", x2, y2, step, invDifY);
+
+        DrawCircle(x2, y2, 2.0f, GREEN);
+
+        step *= invDifY;
         step = max(step, 100);
         step = min(step, 0.01);
-        // DrawLine(x, y, nextX, nextY, GREEN);
-        // x1 = x2, x2 = x3;
-        // y1 = y2, y2 = y3;
+
+        x1 = x2, y1 = y2;
     }
-    // DrawSplineBezierQuadratic(POINTS, 3, 5.0f, GREEN);
 }
 
 FILE* acessFile(const char* const greetings, const char* const mode) {
@@ -939,21 +992,23 @@ void drawScale() {
     DrawText("10", ORIGIN.x - 10, ORIGIN.y - 10, 20, BLACK);
 }
 
-void printParabolaApex(const double a, const double b, const double c, FILE* ptrFile) {    
+void printParabolaApex(equationCoefs* ptrCoefs, FILE* ptrFile) { 
+    double a = ptrCoefs->a, b = ptrCoefs->b, c = ptrCoefs->c;
+
     if (CmpDouble(a, 0) == 0) {
         fprintf(ptrFile, "(printParabolaApex) a is zero!\n");
         return;
     }
     
     double apexX = ORIGIN.x -b / (2 * a);
-    double apexY = ORIGIN.y - getFunc(a, b, c, apexX);
+    double apexY = ORIGIN.y - getFunc(ptrCoefs, apexX);
 
     DrawCircle(apexX, apexY, 5.0f, YELLOW);
     DrawText("Apex", apexX - 20, apexY + 20, 20, BLACK);
 }
 
-double getY(const double a, const double b, const double c, const double x) {
-    return ORIGIN.y - getFunc(a, b, c, x - ORIGIN.x);
+double getY(equationCoefs* ptrCoefs, const double x) {
+    return ORIGIN.y - getFunc(ptrCoefs, x - ORIGIN.x);
 }
 
 double min(double op1, double op2) {

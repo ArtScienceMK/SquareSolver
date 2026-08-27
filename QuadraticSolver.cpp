@@ -5,8 +5,9 @@
 #include "QuadraticSolver.h"
 #include "CmpDouble.h"
 
-int QuadraticSolver(const equationCoefs * const coefs, double* eqRoot1, double* eqRoot2) {
+QUADRATIC_SOLVER_STATUSES QuadraticSolver(const equationCoefs * const coefs, double* eqRoot1, double* eqRoot2) {
     double a = coefs->a, b = coefs->b, c = coefs->c;
+
     assert(isfinite(a) && isfinite(b) && isfinite(c));
     assert(eqRoot1 != NULL && eqRoot2 != NULL);
 
@@ -44,5 +45,5 @@ int QuadraticSolver(const equationCoefs * const coefs, double* eqRoot1, double* 
 
         return TWO_ROOTS;
     }
-    return QUADRATIC_SOLVER_ERROR ;
+    return QUADRATIC_SOLVER_ERROR;
 }
