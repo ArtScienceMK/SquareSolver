@@ -46,4 +46,3 @@ int QuadraticSolver(const equationCoefs * const coefs, double* eqRoot1, double* 
     }
     return QUADRATIC_SOLVER_ERROR ;
 }
-
