@@ -27,7 +27,7 @@ void drawFunctionGraphic(equationCoefs* ptrCoefs, double lX, double rX, double s
         
         double invDifY = (double)1 / (y2 - y1);
 
-        fprintf(ptrFile, "x:%i, y:%i, step:%lf, invDifY:%lf\n", x2, y2, step, invDifY);
+        // fprintf(ptrFile, "x:%i, y:%i, step:%lf, invDifY:%lf\n", x2, y2, step, invDifY);
         
         DrawCircle(zoom(x2, X, zoomCoef), zoom(y2, Y, zoomCoef), FUNCTION_GRAPHIC_THICKNESS, GREEN);
 
