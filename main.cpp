@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <math.h>
 #include <assert.h>
@@ -8,11 +7,19 @@
 #include <fstream>
 #include "raylib.h"
 
-#include "FunctionGraphic.h"
-#include "QuadraticSolver.h"
 #include "CmpDouble.h"
+#include "CmpDouble.cpp"
+
+#include "QuadraticSolver.h"
+#include "QuadraticSolver.cpp"
 
 #include "lib.h"
+
+#include "Sound.h"
+
+#include "FunctionGraphic.h"
+#include "FunctionGraphic.cpp"
+
 #include "test.h"
 
 int main() {
@@ -60,6 +67,8 @@ void greetings() {
            "Equation solver\n"
            "Powered by AK\n"
            "-------------\n");
+
+    myPlaySound(GREETINGS_SOUND);
 }
 
 INPUT_MODE_STATUS userChoosingMode() {
@@ -124,12 +133,15 @@ void chooseMode(INPUT_MODE_STATUS inputModeStatus) {
                 
                 if (runAllTestsStatus != RUN_ALL_TESTS_SUCCESS) {
                     printf("%s%s%s", MY_RED, LineRunAllTestsStatus, MY_RESET);
+                    myPlaySound(INCORRECT_SOUND);
                 } else {
                     printf("%s%s%s", MY_GREEN, LineRunAllTestsStatus, MY_RESET);
+                    myPlaySound(CORRECT_SOUND);
                 }
 
             } else {
                 printf("%sError: cannot process testing mode input\n%s", MY_RED, MY_RESET);
+                myPlaySound(INCORRECT_SOUND);
             }
 
             break;
@@ -143,6 +155,8 @@ void chooseMode(INPUT_MODE_STATUS inputModeStatus) {
 
         case USER_INPUT_MODE_ERROR: {
             printf("%sError: cannot process input mode! Bye...\n%s", MY_RED, MY_RESET);
+        
+            myPlaySound(INCORRECT_SOUND);
 
             break;
         }
@@ -150,6 +164,9 @@ void chooseMode(INPUT_MODE_STATUS inputModeStatus) {
 
         default: {
             printf("%sError: unknown input mode error happened\n%s", MY_RED, MY_RESET);
+
+            myPlaySound(INCORRECT_SOUND);
+
 
             break;
         }
@@ -363,9 +380,6 @@ void solveRealTime(int attempts) {
             continue;
         }
 
-ON_DEBUG(printf("%s%lf %lf %lf\n%s", MY_YELLOW, 
-        ptrCoefs->a, ptrCoefs->b, ptrCoefs->c, MY_RESET));
-
         QUADRATIC_SOLVER_STATUSES cntRoots = QuadraticSolver(ptrCoefs, &eqRoot1, &eqRoot2);
 
         CHECK_STATUSES equationCheckStatus = checkRoots(coefs, cntRoots, eqRoot1, eqRoot2);
@@ -374,9 +388,13 @@ ON_DEBUG(printf("%s%lf %lf %lf\n%s", MY_YELLOW,
         const char* const equationCheckStatusLine = getStringCheckStatus(equationCheckStatus);
         
         if (equationCheckStatus != CHECK_SUCCESS) {
-            printf("%s%s%s", MY_RED, equationCheckStatusLine, MY_RESET);
+            printf("%s%s\n%s", MY_RED, equationCheckStatusLine, MY_RESET);
+            
+            myPlaySound(INCORRECT_SOUND);
         } else {
-            printf("%s%s%s", MY_GREEN, equationCheckStatusLine, MY_RESET);
+            printf("%s%s\n%s", MY_GREEN, equationCheckStatusLine, MY_RESET);
+            
+            myPlaySound(CORRECT_SOUND);
         }
 
         printRoots(cntRoots, eqRoot1, eqRoot2);
@@ -396,10 +414,13 @@ ON_DEBUG(printf("%s(resume) resumeLine: %c%c%c%c\n%s",
     if (strcmp(resumeLine, YES_NO.statements[0]) == 0) {
         return true;
     }
+    
     if (strcmp(resumeLine, YES_NO.statements[1]) == 0) {
         return false;
     }
+    
     printf("%sError: unknown error while resuming\n%s", MY_RED, MY_RESET);
+    myPlaySound(INCORRECT_SOUND);
     return false;
 }
 
@@ -478,10 +499,14 @@ void printRoots(QUADRATIC_SOLVER_STATUSES cntRoots, const double eqRoot1, const 
 
         case QUADRATIC_SOLVER_ERROR :
             printf("%sHave error in quadratic solver\n%s", MY_RED, MY_RESET);
+            myPlaySound(INCORRECT_SOUND);
+
             break;
 
         default:
             printf("%sError: have %i roots\n%s", MY_RED, cntRoots, MY_RESET);
+            myPlaySound(INCORRECT_SOUND);
+
             break;
     }
 }
@@ -609,6 +634,7 @@ RUN_ALL_TESTS_STATUSES runAllTests(TESTING_MODE_STATUSES testingModeStatus) {
 
         case TESTING_MODE_INPUT_ERROR: {
             printf("%sError: cannot process testing mode input\n%s", MY_RED, MY_RESET);
+            myPlaySound(INCORRECT_SOUND);
             
             return RUN_ALL_TESTS_ERROR;
 
@@ -741,6 +767,7 @@ RUN_ALL_TESTS_STATUSES userTesting(const char* const mode) {
             printf("Try another time!\n");
             if (ptrFile != stdin) {
                 printf("%sError: cannot process coefs in test number %i . Skipping...%s", MY_RED, i, MY_RESET);
+                myPlaySound(INCORRECT_SOUND);
             }
             continue;
         }
@@ -755,6 +782,7 @@ RUN_ALL_TESTS_STATUSES userTesting(const char* const mode) {
             printf("Try another time!\n");
             if (ptrFile != stdin) {
                 printf("%sError: cannot process reference values in test number %i . Skipping...%s", MY_RED, i, MY_RESET);
+                myPlaySound(INCORRECT_SOUND);
             }
             continue;
         }
@@ -837,10 +865,16 @@ void buildFunctionGraphic() {
     bool isBadInput = true;
 
     while (isBadInput) {
-        printf("Enter a, b, c:");
-    
-        fscanf(stdin, "%lf %lf %lf", &(ptrCoefs->a), &(ptrCoefs->b), &(ptrCoefs->c));
-        
+        INPUT_STATUSES inputStatus = fileCoefInput(ptrCoefs, stdin);
+
+        if (inputStatus != INPUT_CORRECT) {
+            printf("Try another time!\n");
+            continue;
+        }
+
+        ON_DEBUG(printf("%s%lf %lf %lf\n%s", MY_YELLOW, 
+                ptrCoefs->a, ptrCoefs->b, ptrCoefs->c, MY_RESET));
+            
         if (isfinite(ptrCoefs->a) && isfinite(ptrCoefs->b) && isfinite(ptrCoefs->c)) {
             isBadInput = false;
         } else {
@@ -850,18 +884,20 @@ void buildFunctionGraphic() {
         fprintf(ptrFile, "a:%lf, b:%lf, c:%lf\n", ptrCoefs->a, ptrCoefs->b, ptrCoefs->c);
     }
 
-    SetTargetFPS(60);
-    InitWindow(2000, 2000, "Sample");
+    SetTargetFPS(TARGET_FPS);
+    InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Sample");
 
     double zoomCoef = 1.0;
     double gridOffset = 20;
     
+    double drawFrom = -100, drawTo = 100, step = 1;
+
     while (!WindowShouldClose()) {
         BeginDrawing();
         ClearBackground(RAYWHITE);
 
         drawGrid(gridOffset, zoomCoef);
-        drawFunctionGraphic(ptrCoefs, -100, 100, 1, zoomCoef, ptrFile);
+        drawFunctionGraphic(ptrCoefs, drawFrom, drawTo, step, zoomCoef, ptrFile);
         drawAxes(zoomCoef);
         drawScale(zoomCoef);
         printParabolaApex(ptrCoefs, zoomCoef, ptrFile);
@@ -890,8 +926,10 @@ FILE* acessFile(const char* const greetings, const char* const mode) {
 
     if (ptrFile == NULL) {
         printf("%sError: cannot open file %s\n%s", MY_RED, filename, MY_RESET);
+        myPlaySound(INCORRECT_SOUND);
     } else {
         printf("%sFile opened sucessfully!\n%s", MY_GREEN, MY_RESET);
+        myPlaySound(CORRECT_SOUND);
     }
 
     return ptrFile;
@@ -905,12 +943,15 @@ INPUT_STATUSES fileCoefInput(equationCoefs* ptrCoefs, FILE* ptrFile) {
 
     INPUT_STATUSES inputStatus = getCoefInput(ptrCoefs, ptrFile);
 
-ON_DEBUG(printf("%s%sa:%lf, b:%lf, c:%lf%s",
+ON_DEBUG(printf("%sa:%lf, b:%lf, c:%lf\n%s",
         MY_YELLOW, ptrCoefs->a, ptrCoefs->b, ptrCoefs->c, MY_RESET));
     if (inputStatus != INPUT_CORRECT) {
         const char* const inputStatusLine = getStringInputStatus(inputStatus);
+        
         assert(inputStatusLine != NULL);
+
         printf("%s%s%s", MY_RED, inputStatusLine, MY_RESET);
+        myPlaySound(INCORRECT_SOUND);
     }
     return inputStatus;
 }
@@ -1002,109 +1043,12 @@ size_t max_size_t(size_t op1, size_t op2) {
 
 //  Start of functions, declared in FunctionGraphic.h
 //  Drawing functions
-void drawGrid(double offset, double zoomCoef) {
-    offset *= zoomCoef; //  note, offset is passed by copying!
 
-    for (double x = XMIN; x < XMAX; x += offset) {
-        DrawLine(x, YMIN, x, YMAX, LIGHTGRAY);
-    }
-    for (double y = YMIN; y < YMAX; y += offset) {
-        DrawLine(XMIN, y, XMAX, y, LIGHTGRAY);
-    }
-}
-
-void drawFunctionGraphic(equationCoefs* ptrCoefs, double lX, double rX, double step, double zoomCoef, FILE* ptrFile) {
-    double a = ptrCoefs->a, b = ptrCoefs->b, c = ptrCoefs->c;   
-
-    double x1 = ORIGIN.x, y1 = ORIGIN.y;
-    for (double x2 = ORIGIN.x + lX + step; x2 <= ORIGIN.x + rX; x2 += step) {
-        double y2 = getY(ptrCoefs, x2); // TODO вынести в отдельную функцию
-        
-        double invDifY = (double)1 / (y2 - y1);
-
-        fprintf(ptrFile, "x:%i, y:%i, step:%lf, invDifY:%lf\n", x2, y2, step, invDifY);
-        
-        DrawCircle(zoom(x2, X, zoomCoef), zoom(y2, Y, zoomCoef), FUNCTION_GRAPHIC_THICKNESS, GREEN);
-
-        step *= invDifY;
-        step = max(step, MAX_STEP);
-        step = min(step, MIN_STEP);
-
-        x1 = x2, y1 = y2;
-    }
-}
-
-void drawAxes(double zoomCoef) {
-    DrawLine(ORIGIN.x, ORIGIN.y, XMAX, ORIGIN.y, BLUE);
-    DrawText("X", XMAX - TEXT_X_RIGHT_OFFSET, ORIGIN.y - DRAW_AXES_Y_OX_OFFSET, FONT_SIZE, BLACK);
-
-    DrawLine(ORIGIN.x, ORIGIN.y, ORIGIN.x, 0, RED);
-    DrawText("Y", ORIGIN.x + TEXT_X_LEFT_OFFSET, DRAW_AXES_Y_OY_OFFSET, FONT_SIZE, BLACK);
-}
-
-void drawScale(double zoomCoef) {
-    DrawText(AXES_SCALE_TEXT, ORIGIN.x + AXES_SCALE_X_OFFSET * zoomCoef, ORIGIN.y, FONT_SIZE, BLACK);
-    DrawText(AXES_SCALE_TEXT, ORIGIN.x, ORIGIN.y - AXES_SCALE_Y_OFFSET * zoomCoef, FONT_SIZE, BLACK);
-}
-
-void drawMouseLines() {
-    Vector2 mouseCoords = GetMousePosition();
-    DrawLine(XMIN, mouseCoords.y, mouseCoords.x, mouseCoords.y, ORANGE);
-    DrawLine(mouseCoords.x, YMAX, mouseCoords.x, mouseCoords.y, ORANGE);
-}
-
-void printParabolaApex(equationCoefs* ptrCoefs, double zoomCoef, FILE* ptrFile) { // TODO улучшить отображение
-    double a = ptrCoefs->a, b = ptrCoefs->b, c = ptrCoefs->c;
-
-    if (CmpDouble(a, 0) == 0) {
-        fprintf(ptrFile, "(printParabolaApex) a is zero!\n");
-        return;
-    }
-    
-    double apexX = ORIGIN.x -b / (2 * a);
-    double apexY = ORIGIN.y - getFunc(ptrCoefs, apexX);
-
-    DrawCircle(zoom(apexX, X, zoomCoef), zoom(apexY, Y, zoomCoef), 5.0f, YELLOW);
-    DrawText("Apex", apexX - 20, apexY + 20, 20, BLACK);
-}
-
-double zoom(double coord, COORD_TYPES coordType, double zoomCoef) {
-    switch (coordType) {
-        case X: {
-            return 2 * (coord - ORIGIN.x) + ORIGIN.x;
-            break;
-        }
-        
-        case Y: {
-            return 2 * (coord - ORIGIN.y) + ORIGIN.y;
-            break;
-        }
-
-        default: {
-            printf("%sError: error while zooming happened!%s", MY_RED, MY_RESET);
-            return NAN;
-            break;
-        }
-    }
-}
-
-//  Math functions
-double getFunc(equationCoefs* ptrCoefs, const double x) {
-    double a = ptrCoefs->a, b = ptrCoefs->b, c = ptrCoefs->c;
-
-    return a * x * x + b * x + c;
-}
-
-double getY(equationCoefs* ptrCoefs, const double x) {
-    return ORIGIN.y - getFunc(ptrCoefs, x - ORIGIN.x);
-}
-
-double min(double op1, double op2) {
-    return (op1 < op2) ? op1 : op2;
-}
-
-double max(double op1, double op2) {
-    return (op1 > op2) ? op1 : op2;
-}
 
 //  End of functions, declared in FunctionGraphic.h 
+// Start of sound function
+void myPlaySound(const char* const sound) {
+    char commandLine[MAX_LEN_COMMAND_LINE];
+    sprintf(commandLine, "mpv %s", sound);
+    system(commandLine);
+}

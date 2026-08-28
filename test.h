@@ -1,7 +1,8 @@
 #ifndef TEST_H
 #define TEST_H
 
- equationCoefsTest TESTS [] = {
+//  Array for unit testing  
+equationCoefsTest TESTS [] = {
 {.coefs{.a = 0, .b = 0, .c = 0}, .refCntRoots = INF_ROOTS, .refRoot1 = NAN, .refRoot2 = NAN}, // INF ROOTS
 {.coefs{.a = 1, .b = 0, .c = -1}, .refCntRoots = TWO_ROOTS, .refRoot1 = -1, .refRoot2 = 1},
 {.coefs{.a = 1, .b = 0, .c = -4}, .refCntRoots = TWO_ROOTS, .refRoot1 = -2, .refRoot2 = 2},

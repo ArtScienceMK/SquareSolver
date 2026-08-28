@@ -28,6 +28,14 @@ const double DRAW_AXES_Y_OY_OFFSET = 20;
 
 const double FUNCTION_GRAPHIC_THICKNESS = 3.0;
 
+const double TARGET_FPS = 60;
+
+const double WINDOW_WIDTH = 2000;
+const double WINDOW_HEIGHT = 2000;
+
+const double DRAW_APEX_RADIUS = 5.0; 
+const double DRAW_APEX_X_OFFSET = 20;
+const double DRAW_APEX_Y_OFFSET = 20;
 
 enum COORD_TYPES {
     X = 0,
