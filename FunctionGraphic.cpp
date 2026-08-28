@@ -1,3 +1,6 @@
+/// @brief Iteratively drawing vertical and horiznotal lines from the origin
+/// @param offset Space between two adjacent lines
+/// @param zoomCoef Ofsset multiplier, to show scaling
 void drawGrid(double offset, double zoomCoef) {
     offset *= zoomCoef; //  note, offset is passed by copying!
 
