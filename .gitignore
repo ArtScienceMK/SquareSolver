@@ -1,4 +1,5 @@
 test.c
+example.cpp
 *.out
 *.o
 TODO
