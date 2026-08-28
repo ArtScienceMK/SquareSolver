@@ -2,7 +2,7 @@
 
 # Square Solver
 
-[![getting started](https://img.shields.io/badge/getting_started-guide-1D76DB)](https://docs.abblix.com/docs/getting-started-guide)
+[![getting started](https://img.shields.io/badge/getting_started-guide-1D76DB)](#-quickstart)
 
 ## Table of contents
 - [About](#-about)
