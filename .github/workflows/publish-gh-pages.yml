@@ -1,0 +1,22 @@
+name: CI for publishing documentation
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      
+    - name: publish directory
+      uses: kontrolplane/publish-directory@v0.0.2
+      with:
+        branch: release/main
+        folder: docs/html/
+        commit_username: "github-actions[bot]"
+        commit_email: "github-actions[bot]@users.noreply.github.com"
+        commit_message: "chore: update branch from directory"
