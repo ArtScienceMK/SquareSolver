@@ -15,7 +15,7 @@ jobs:
     - name: publish directory
       uses: kontrolplane/publish-directory@v0.0.2
       with:
-        branch: release/main
+        branch: main
         folder: docs/html
         commit_username: "github-actions[bot]"
         commit_email: "github-actions[bot]@users.noreply.github.com"
