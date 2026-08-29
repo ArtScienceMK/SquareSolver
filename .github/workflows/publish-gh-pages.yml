@@ -16,7 +16,7 @@ jobs:
       uses: kontrolplane/publish-directory@v0.0.2
       with:
         branch: release/main
-        folder: /docs/html
+        folder: docs/html
         commit_username: "github-actions[bot]"
         commit_email: "github-actions[bot]@users.noreply.github.com"
         commit_message: "chore: update branch from directory"
