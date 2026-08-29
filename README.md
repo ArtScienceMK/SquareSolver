@@ -8,6 +8,7 @@
 - [About](#-about)
 - [Quickstart](#-quickstart)
 - [What's New](#-whats-new)
+- [Documentation] (#-documentation)
 - [Contacts](#%EF%B8%8F-contacts)
 
 ## About
@@ -25,8 +26,11 @@ Download latest version from releases :) That's it!
 
 ## What's New
 
-AI sound design for greetings, errors and success statuses. Enjoy)
+AI sound design for greetings, errors and success statuses. To enable this feature, you should install [mpv player](#https://mpv.io/). Enjoy)
 
+## Documentation
+
+Go to [this page](html/globals.html), then find the needed member. That's it!
 
 ## Contacts
 
