@@ -247,32 +247,9 @@ ON_DEBUG(printf("%s(getStatementLine) read to end!\n%s",
 
 ON_DEBUG(printf("%s(getStatementLine) statementLine:%s\n%s",
         MY_YELLOW, statementLine, MY_RESET));
-ON_DEBUG(printf("%s(getStatementLine) len of statementLine:%i\n%s",
+ON_DEBUG(printf("%s(getStatementLine) len of statementLine:%i\n%s", 
         MY_YELLOW, (int)strlen(statementLine), MY_RESET));
 }
-
-void getResumeLine(char * resumeLine) {
-    int cntInputCharsBefore = 0, cntInputCharsAfter = 0;
-
-    scanf("%n%3s%n", &cntInputCharsBefore, resumeLine, &cntInputCharsAfter); //TODO edit format line, delete %n
-
-ON_DEBUG(printf("%s(getResumeLine) cntInputCharsBefore: %i, cntInputCharsAfter: %i\n%s",
-        MY_YELLOW, cntInputCharsBefore, cntInputCharsAfter, MY_RESET);)
-
-    int diff = cntInputCharsAfter - cntInputCharsBefore;
-
-    if (diff != (int)strlen(YES_NO.statements[0]) &&
-     diff != (int)strlen(YES_NO.statements[1])) {
-        cntInputCharsAfter = 0;
-    }
-
-    resumeLine[cntInputCharsAfter] = '\0';
-
-ON_DEBUG(printf("%s(getResumeLine) resumeLine:%s\n%s",
-        MY_YELLOW, resumeLine, MY_RESET);)
-
-}
-
 
 #pragma GCC diagnostic ignored "-Wignored-qualifiers"
 
@@ -299,7 +276,7 @@ const char* const getStringCheckStatus(CHECK_STATUSES CheckStatus) {
 #pragma GCC diagnostic warning "-Wignored-qualifiers"
 
 //  Functions to process User input lines
-int processEnd() {
+bool processEnd() {
     int isGoodEnd = goodEnd();
     if (!isGoodEnd) {
         readToEnd();
@@ -406,7 +383,7 @@ bool resume(void) {
 
     char resumeLine[MAX_STATEMENT_LEN] = "";
 
-    getResumeLine(resumeLine);
+    getStatementLine(resumeLine, YES_NO);
 
 ON_DEBUG(printf("%s(resume) resumeLine: %c%c%c%c\n%s",
         MY_YELLOW, resumeLine[0], resumeLine[1], resumeLine[2], resumeLine[3], MY_RESET));
@@ -557,7 +534,7 @@ const char* const getStringInputStatus(INPUT_STATUSES inputStatus) {
 
 INPUT_STATUSES getCoefInput(equationCoefs* ptrCoefs, FILE* ptrFile) {
     int inputStatus = fscanf(ptrFile, "%lf %lf %lf", &(ptrCoefs->a), &(ptrCoefs->b), &(ptrCoefs->c));
-    int isGoodEnd = processEnd();
+    bool isGoodEnd = processEnd();
 
     switch (inputStatus) {
         case 0:
@@ -653,7 +630,7 @@ RUN_ALL_TESTS_STATUSES runAllTests(TESTING_MODE_STATUSES testingModeStatus) {
 
 #pragma GCC diagnostic ignored "-Wignored-qualifiers"
 
-const char* const getStringTestCheckStatus(TEST_CHECK_STATUSES TestCheckStatus) {
+const char* const getStringTestCheckStatus(RUN_SINGLE_TEST_STATUSES TestCheckStatus) {
     switch (TestCheckStatus) {
         case TEST_CHECK_SUCCESS:
             return "Test passed successfully!\n";
@@ -675,7 +652,7 @@ const char* const getStringTestCheckStatus(TEST_CHECK_STATUSES TestCheckStatus) 
 
 #pragma GCC diagnostic warning "-Wignored-qualifiers"
 
-TEST_CHECK_STATUSES runSingleTest(equationCoefsTest test) {
+RUN_SINGLE_TEST_STATUSES runSingleTest(equationCoefsTest test) {
 ON_DEBUG(printf("%s(runSingleTest)%s", 
         MY_YELLOW, MY_RESET));
 
@@ -787,7 +764,7 @@ RUN_ALL_TESTS_STATUSES userTesting(const char* const mode) {
             continue;
         }
 
-        TEST_CHECK_STATUSES checkTestStatus = runSingleTest(coefsTest);
+        RUN_SINGLE_TEST_STATUSES checkTestStatus = runSingleTest(coefsTest);
 
         const char* const CheckTestStatusLine = getStringTestCheckStatus(checkTestStatus);
         printf("%s", CheckTestStatusLine);
@@ -821,7 +798,7 @@ RUN_ALL_TESTS_STATUSES unitTesting() {
     int TESTSize = sizeof(TESTS) / sizeof(TESTS[0]);
 
     for (int i = 0; i < TESTSize; i++) {
-        TEST_CHECK_STATUSES checkTestStatus = runSingleTest(TESTS[i]);
+        RUN_SINGLE_TEST_STATUSES checkTestStatus = runSingleTest(TESTS[i]);
 
         const char* const CheckTestStatusLine = getStringTestCheckStatus(checkTestStatus);
         printf("%s", CheckTestStatusLine);
@@ -972,7 +949,7 @@ INPUT_STATUSES getRefInput(equationCoefsTest* ptrTest, FILE* ptrFile) {
     int inputStatus = fscanf(ptrFile, "%i %lf %lf",
     &(ptrTest->refCntRoots), &(ptrTest->refRoot1), &(ptrTest->refRoot2));
 
-    int isGoodEnd = processEnd();
+    bool isGoodEnd = processEnd();
     
     switch (inputStatus) {
         case 0:
@@ -1047,8 +1024,8 @@ size_t max_size_t(size_t op1, size_t op2) {
 
 //  End of functions, declared in FunctionGraphic.h 
 // Start of sound function
-void myPlaySound(const char* const sound) {
+void myPlaySound(const char* const soundLine) {
     char commandLine[MAX_LEN_COMMAND_LINE];
-    sprintf(commandLine, "mpv %s", sound);
+    sprintf(commandLine, "mpv %s", soundLine);
     system(commandLine);
 }

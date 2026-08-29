@@ -1,5 +1,5 @@
-QUADRATIC_SOLVER_STATUSES QuadraticSolver(const equationCoefs * const coefs, double* eqRoot1, double* eqRoot2) {
-    double a = coefs->a, b = coefs->b, c = coefs->c;
+QUADRATIC_SOLVER_STATUSES QuadraticSolver(const equationCoefs * const ptrCoefs, double* eqRoot1, double* eqRoot2) {
+    double a = ptrCoefs->a, b = ptrCoefs->b, c = ptrCoefs->c;
 
     assert(isfinite(a) && isfinite(b) && isfinite(c));
     assert(eqRoot1 != NULL && eqRoot2 != NULL);

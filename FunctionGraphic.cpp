@@ -1,6 +1,3 @@
-/// @brief Iteratively drawing vertical and horiznotal lines from the origin
-/// @param offset Space between two adjacent lines
-/// @param zoomCoef Ofsset multiplier, to show scaling
 void drawGrid(double offset, double zoomCoef) {
     offset *= zoomCoef; //  note, offset is passed by copying!
 
@@ -20,7 +17,7 @@ void drawGrid(double offset, double zoomCoef) {
         DrawLine(XMIN, y, XMAX, y, LIGHTGRAY);
     }
 }
-
+ 
 void drawFunctionGraphic(equationCoefs* ptrCoefs, double lX, double rX, double step, double zoomCoef, FILE* ptrFile) {
     double a = ptrCoefs->a, b = ptrCoefs->b, c = ptrCoefs->c;   
 
@@ -41,18 +38,18 @@ void drawFunctionGraphic(equationCoefs* ptrCoefs, double lX, double rX, double s
         x1 = x2, y1 = y2;
     }
 }
-
+ 
 void drawAxes(double zoomCoef) {
     DrawLine(ORIGIN.x, ORIGIN.y, XMAX, ORIGIN.y, BLUE);
-    DrawText("X", XMAX - TEXT_X_RIGHT_OFFSET, ORIGIN.y - DRAW_AXES_Y_OX_OFFSET, FONT_SIZE, BLACK);
+    DrawText("X", XMAX - DRAW_AXES_X_RIGHT_OFFSET, ORIGIN.y - DRAW_AXES_Y_ORIGIN_OFFSET, FONT_SIZE, BLACK);
 
     DrawLine(ORIGIN.x, ORIGIN.y, ORIGIN.x, YMIN, RED);
-    DrawText("Y", ORIGIN.x + TEXT_X_LEFT_OFFSET, DRAW_AXES_Y_OY_OFFSET, FONT_SIZE, BLACK);
+    DrawText("Y", ORIGIN.x + DRAW_AXES_X_ORIGIN_OFFSET, DRAW_AXES_Y_UP_OFFSET, FONT_SIZE, BLACK);
 }
 
 void drawScale(double zoomCoef) {
-    DrawText(AXES_SCALE_TEXT, ORIGIN.x + AXES_SCALE_X_OFFSET * zoomCoef, ORIGIN.y, FONT_SIZE, BLACK);
-    DrawText(AXES_SCALE_TEXT, ORIGIN.x, ORIGIN.y - AXES_SCALE_Y_OFFSET * zoomCoef, FONT_SIZE, BLACK);
+    DrawText(AXES_SCALE_TEXT, ORIGIN.x + AXES_SCALE_X_ORIGIN_OFFSET * zoomCoef, ORIGIN.y, FONT_SIZE, BLACK);
+    DrawText(AXES_SCALE_TEXT, ORIGIN.x, ORIGIN.y - AXES_SCALE_Y_ORIGIN_OFFSET * zoomCoef, FONT_SIZE, BLACK);
 }
 
 void drawMouseLines() {
@@ -99,7 +96,7 @@ double zoom(double coord, COORD_TYPES coordType, double zoomCoef) {
     }
 }
 
-//  Math functions
+// Math functions
 double getFunc(equationCoefs* ptrCoefs, const double x) {
     double a = ptrCoefs->a, b = ptrCoefs->b, c = ptrCoefs->c;
 

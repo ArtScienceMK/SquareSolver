@@ -3,3 +3,4 @@ test.c
 *.o
 TODO
 *.txt
+example.cpp
