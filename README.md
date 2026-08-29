@@ -10,6 +10,7 @@
 - [What's New](#-whats-new)
 - [Documentation](#-documentation)
 - [Contacts](#%EF%B8%8F-contacts)
+- [Just meme] (#-just-memes)
 
 ## About
 
@@ -37,3 +38,7 @@ Go to [this page](https://artsciencemk.github.io/SquareSolver/md_README.html), t
 If you will have any questions, suggestions and so on, just text me)
 
 Mail: 55555artem.kulakov@gmail.com
+
+## Just meme
+
+![Parabola joke](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTV_L0KB1dCMfeGE6UDYfP-JKlaeZZL94CgI82yMdODxF5LVNlLMXrdh2J&s=10)
