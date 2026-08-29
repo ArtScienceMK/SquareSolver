@@ -2,7 +2,7 @@
 
 # Square Solver
 
-[![getting started](https://img.shields.io/badge/getting_started-guide-1D76DB)](#-quickstart)
+[![getting started](logo.png)](#-quickstart)
 
 ## Table of contents
 - [About](#-about)
@@ -30,7 +30,7 @@ AI sound design for greetings, errors and success statuses. To enable this featu
 
 ## Documentation
 
-Go to [this page](html/globals.html), then find the needed member. That's it!
+Go to [this page](globals.html), then find the needed member. That's it!
 
 ## Contacts
 
