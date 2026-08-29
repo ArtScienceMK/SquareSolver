@@ -10,7 +10,7 @@
 - [What's New](#-whats-new)
 - [Documentation](#-documentation)
 - [Contacts](#%EF%B8%8F-contacts)
-- [Just meme] (#-just-memes)
+- [Just meme](#-just-memes)
 
 ## About
 
