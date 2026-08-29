@@ -8,7 +8,7 @@
 - [About](#-about)
 - [Quickstart](#-quickstart)
 - [What's New](#-whats-new)
-- [Documentation] (#-documentation)
+- [Documentation](#-documentation)
 - [Contacts](#%EF%B8%8F-contacts)
 
 ## About
