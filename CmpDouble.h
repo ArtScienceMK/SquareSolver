@@ -4,6 +4,8 @@
 const double EPSILON = 1e-9;
 
 //  Function to compare double
+
+/// @brief This function compares two values with type double
 int CmpDouble(const double op1, const double op2);
 
 #endif /*DOUBLE_CMP_H*/
