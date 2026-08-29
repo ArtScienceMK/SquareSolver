@@ -862,7 +862,7 @@ void buildFunctionGraphic() {
     }
 
     SetTargetFPS(TARGET_FPS);
-    InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Sample");
+    InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "SquareSolver");
 
     double zoomCoef = 1.0;
     double gridOffset = 20;
@@ -878,7 +878,7 @@ void buildFunctionGraphic() {
         drawAxes(zoomCoef);
         drawScale(zoomCoef);
         printParabolaApex(ptrCoefs, zoomCoef, ptrFile);
-        
+
         zoomCoef += GetMouseWheelMoveV().y;
         if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) || IsMouseButtonDown(MOUSE_BUTTON_LEFT)) {
             drawMouseLines();
@@ -887,6 +887,13 @@ void buildFunctionGraphic() {
             // Vector2 mouseCoords = GetMousePosition();
             // DrawLine(XMIN, mouseCoords.y, XMAX, mouseCoords.y, RED);
         }
+
+        if (IsKeyPressed(SCREENSHOT_KEY)) {
+            // TakeScreenshot(SCREENSHOT_FILE);
+            Image screenshotImage = LoadImageFromScreen();
+            ExportImage(screenshotImage, SCREENSHOT_FILE);
+        }
+
         EndDrawing();
     }
     CloseWindow();

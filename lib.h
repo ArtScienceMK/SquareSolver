@@ -1,8 +1,6 @@
 #ifndef LIB_H
 #define LIB_H
 
-#define DEBUG
-
 #ifdef DEBUG
 
 #define ON_DEBUG(...) __VA_ARGS__

@@ -4,6 +4,9 @@
 #include "CmpDouble.h"
 #include "QuadraticSolver.h"
 
+const char SCREENSHOT_KEY = 'S';
+const char* const SCREENSHOT_FILE = "Sketch.bmp";
+
 const Vector2 ORIGIN = {.x = 1000, .y = 800};
 
 const double XMIN = 0; 
