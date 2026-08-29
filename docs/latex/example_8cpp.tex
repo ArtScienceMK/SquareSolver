@@ -1,0 +1,67 @@
+\doxysection{example.\+cpp File Reference}
+\hypertarget{example_8cpp}{}\label{example_8cpp}\index{example.cpp@{example.cpp}}
+{\ttfamily \+\#include "{}miniaudio.\+h"{}}\newline
+{\ttfamily \+\#include $<$stdio.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{example_8cpp_abf77f70dc931f91a9f09e7b54d8278f5}{MINIAUDIO\+\_\+\+IMPLEMENTATION}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \doxymbox{\hyperlink{example_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+
+
+\label{example_8cpp_doc-define-members}
+\Hypertarget{example_8cpp_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{example_8cpp_abf77f70dc931f91a9f09e7b54d8278f5}\index{example.cpp@{example.cpp}!MINIAUDIO\_IMPLEMENTATION@{MINIAUDIO\_IMPLEMENTATION}}
+\index{MINIAUDIO\_IMPLEMENTATION@{MINIAUDIO\_IMPLEMENTATION}!example.cpp@{example.cpp}}
+\doxysubsubsection{\texorpdfstring{MINIAUDIO\_IMPLEMENTATION}{MINIAUDIO\_IMPLEMENTATION}}
+{\footnotesize\ttfamily \label{example_8cpp_abf77f70dc931f91a9f09e7b54d8278f5} 
+\+\#define MINIAUDIO\+\_\+\+IMPLEMENTATION}
+
+
+
+Definition at line \doxymbox{\hyperlink{example_8cpp_source_l00001}{1}} of file \doxymbox{\hyperlink{example_8cpp_source}{example.\+cpp}}.
+
+
+
+\label{example_8cpp_doc-func-members}
+\Hypertarget{example_8cpp_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{example_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\index{example.cpp@{example.cpp}!main@{main}}
+\index{main@{main}!example.cpp@{example.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{example_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+int main (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{example_8cpp_source_l00006}{6}} of file \doxymbox{\hyperlink{example_8cpp_source}{example.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00006\ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00007\ \ \ \ \ ma\_engine\ engine;}
+\DoxyCodeLine{00008\ \ \ \ \ ma\_result\ result\ =\ ma\_engine\_init(NULL,\ \&engine);}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keywordflow}{if}\ (result\ !=\ MA\_SUCCESS)\ \{}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{00011\ \ \ \ \ \}}
+\DoxyCodeLine{00012\ \ \ \ \ ma\_engine\_play\_sound(\&engine,\ \textcolor{stringliteral}{"{}sounds/correctSound.wav"{}},\ NULL);\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00013\ \ \ \ \ sleep(3);}
+\DoxyCodeLine{00014\ \ \ \ \ ma\_engine\_uninit(\&engine);}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00016\ \}}
+
+\end{DoxyCode}
+
+
+References \doxymbox{\hyperlink{example_8cpp_source_l00006}{main()}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{example_8cpp_source_l00006}{main()}}.
+

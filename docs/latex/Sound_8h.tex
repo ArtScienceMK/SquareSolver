@@ -1,0 +1,119 @@
+\doxysection{Sound.\+h File Reference}
+\hypertarget{Sound_8h}{}\label{Sound_8h}\index{Sound.h@{Sound.h}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{Sound_8h_ad2cca253e601712b5df1562061a50898}{my\+Play\+Sound}} (const char \texorpdfstring{$\ast$}{*}const sound\+Line)
+\begin{DoxyCompactList}\small\item\em Calls for mpv to playback sound. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const int \doxymbox{\hyperlink{Sound_8h_a3444b5f90f19b5a5191ea331a519d423}{MAX\+\_\+\+LEN\+\_\+\+COMMAND\+\_\+\+LINE}} = 30
+\begin{DoxyCompactList}\small\item\em If filenames are too long, you may increase this value. \end{DoxyCompactList}\item 
+const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{Sound_8h_a3f76dc09973abaf61e915d81375318de}{CORRECT\+\_\+\+SOUND}} = "{}sounds/correct\+Sound.\+wav"{}
+\item 
+const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{Sound_8h_aede0902e3afd72bbb4db993004370bd9}{INCORRECT\+\_\+\+SOUND}} = "{}sounds/incorrect\+Sound.\+wav"{}
+\item 
+const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{Sound_8h_a0ace12fab11d37785803373f0d20bad7}{GREETINGS\+\_\+\+SOUND}} = "{}sounds/greetings\+Sound.\+wav"{}
+\end{DoxyCompactItemize}
+
+
+\label{Sound_8h_doc-func-members}
+\Hypertarget{Sound_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{Sound_8h_ad2cca253e601712b5df1562061a50898}\index{Sound.h@{Sound.h}!myPlaySound@{myPlaySound}}
+\index{myPlaySound@{myPlaySound}!Sound.h@{Sound.h}}
+\doxysubsubsection{\texorpdfstring{myPlaySound()}{myPlaySound()}}
+{\footnotesize\ttfamily \label{Sound_8h_ad2cca253e601712b5df1562061a50898} 
+void my\+Play\+Sound (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}const}]{sound\+Line}{}\end{DoxyParamCaption})}
+
+
+
+Calls for mpv to playback sound. 
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l01034}{1034}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{01035\ \ \ \ \ \textcolor{keywordtype}{char}\ commandLine[\doxymbox{\hyperlink{Sound_8h_a3444b5f90f19b5a5191ea331a519d423}{MAX\_LEN\_COMMAND\_LINE}}];}
+\DoxyCodeLine{01036\ \ \ \ \ sprintf(commandLine,\ \textcolor{stringliteral}{"{}mpv\ \%s"{}},\ soundLine);}
+\DoxyCodeLine{01037\ \ \ \ \ system(commandLine);}
+\DoxyCodeLine{01038\ \}}
+
+\end{DoxyCode}
+
+
+References \doxymbox{\hyperlink{Sound_8h_source_l00005}{MAX\+\_\+\+LEN\+\_\+\+COMMAND\+\_\+\+LINE}}, and \doxymbox{\hyperlink{main_8cpp_source_l01034}{my\+Play\+Sound()}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00903}{acess\+File()}}, \doxymbox{\hyperlink{main_8cpp_source_l00113}{choose\+Mode()}}, \doxymbox{\hyperlink{main_8cpp_source_l00922}{file\+Coef\+Input()}}, \doxymbox{\hyperlink{main_8cpp_source_l00065}{greetings()}}, \doxymbox{\hyperlink{main_8cpp_source_l01034}{my\+Play\+Sound()}}, \doxymbox{\hyperlink{main_8cpp_source_l00459}{print\+Roots()}}, \doxymbox{\hyperlink{main_8cpp_source_l00381}{resume()}}, \doxymbox{\hyperlink{main_8cpp_source_l00592}{run\+All\+Tests()}}, \doxymbox{\hyperlink{main_8cpp_source_l00337}{solve\+Real\+Time()}}, \doxymbox{\hyperlink{main_8cpp_source_l00700}{user\+Testing()}}, and \doxymbox{\hyperlink{FunctionGraphic_8cpp_source_l00077}{zoom()}}.
+
+
+
+\label{Sound_8h_doc-var-members}
+\Hypertarget{Sound_8h_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{Sound_8h_a3f76dc09973abaf61e915d81375318de}\index{Sound.h@{Sound.h}!CORRECT\_SOUND@{CORRECT\_SOUND}}
+\index{CORRECT\_SOUND@{CORRECT\_SOUND}!Sound.h@{Sound.h}}
+\doxysubsubsection{\texorpdfstring{CORRECT\_SOUND}{CORRECT\_SOUND}}
+{\footnotesize\ttfamily \label{Sound_8h_a3f76dc09973abaf61e915d81375318de} 
+const char\texorpdfstring{$\ast$}{*} const CORRECT\+\_\+\+SOUND = "{}sounds/correct\+Sound.\+wav"{}}
+
+
+
+Definition at line \doxymbox{\hyperlink{Sound_8h_source_l00007}{7}} of file \doxymbox{\hyperlink{Sound_8h_source}{Sound.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00903}{acess\+File()}}, \doxymbox{\hyperlink{main_8cpp_source_l00113}{choose\+Mode()}}, and \doxymbox{\hyperlink{main_8cpp_source_l00337}{solve\+Real\+Time()}}.
+
+\Hypertarget{Sound_8h_a0ace12fab11d37785803373f0d20bad7}\index{Sound.h@{Sound.h}!GREETINGS\_SOUND@{GREETINGS\_SOUND}}
+\index{GREETINGS\_SOUND@{GREETINGS\_SOUND}!Sound.h@{Sound.h}}
+\doxysubsubsection{\texorpdfstring{GREETINGS\_SOUND}{GREETINGS\_SOUND}}
+{\footnotesize\ttfamily \label{Sound_8h_a0ace12fab11d37785803373f0d20bad7} 
+const char\texorpdfstring{$\ast$}{*} const GREETINGS\+\_\+\+SOUND = "{}sounds/greetings\+Sound.\+wav"{}}
+
+
+
+Definition at line \doxymbox{\hyperlink{Sound_8h_source_l00009}{9}} of file \doxymbox{\hyperlink{Sound_8h_source}{Sound.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00065}{greetings()}}.
+
+\Hypertarget{Sound_8h_aede0902e3afd72bbb4db993004370bd9}\index{Sound.h@{Sound.h}!INCORRECT\_SOUND@{INCORRECT\_SOUND}}
+\index{INCORRECT\_SOUND@{INCORRECT\_SOUND}!Sound.h@{Sound.h}}
+\doxysubsubsection{\texorpdfstring{INCORRECT\_SOUND}{INCORRECT\_SOUND}}
+{\footnotesize\ttfamily \label{Sound_8h_aede0902e3afd72bbb4db993004370bd9} 
+const char\texorpdfstring{$\ast$}{*} const INCORRECT\+\_\+\+SOUND = "{}sounds/incorrect\+Sound.\+wav"{}}
+
+
+
+Definition at line \doxymbox{\hyperlink{Sound_8h_source_l00008}{8}} of file \doxymbox{\hyperlink{Sound_8h_source}{Sound.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00903}{acess\+File()}}, \doxymbox{\hyperlink{main_8cpp_source_l00113}{choose\+Mode()}}, \doxymbox{\hyperlink{main_8cpp_source_l00922}{file\+Coef\+Input()}}, \doxymbox{\hyperlink{main_8cpp_source_l00459}{print\+Roots()}}, \doxymbox{\hyperlink{main_8cpp_source_l00381}{resume()}}, \doxymbox{\hyperlink{main_8cpp_source_l00592}{run\+All\+Tests()}}, \doxymbox{\hyperlink{main_8cpp_source_l00337}{solve\+Real\+Time()}}, \doxymbox{\hyperlink{main_8cpp_source_l00700}{user\+Testing()}}, and \doxymbox{\hyperlink{FunctionGraphic_8cpp_source_l00077}{zoom()}}.
+
+\Hypertarget{Sound_8h_a3444b5f90f19b5a5191ea331a519d423}\index{Sound.h@{Sound.h}!MAX\_LEN\_COMMAND\_LINE@{MAX\_LEN\_COMMAND\_LINE}}
+\index{MAX\_LEN\_COMMAND\_LINE@{MAX\_LEN\_COMMAND\_LINE}!Sound.h@{Sound.h}}
+\doxysubsubsection{\texorpdfstring{MAX\_LEN\_COMMAND\_LINE}{MAX\_LEN\_COMMAND\_LINE}}
+{\footnotesize\ttfamily \label{Sound_8h_a3444b5f90f19b5a5191ea331a519d423} 
+const int MAX\+\_\+\+LEN\+\_\+\+COMMAND\+\_\+\+LINE = 30}
+
+
+
+If filenames are too long, you may increase this value. 
+
+
+
+Definition at line \doxymbox{\hyperlink{Sound_8h_source_l00005}{5}} of file \doxymbox{\hyperlink{Sound_8h_source}{Sound.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l01034}{my\+Play\+Sound()}}.
+

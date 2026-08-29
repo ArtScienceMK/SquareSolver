@@ -1,0 +1,2055 @@
+\doxysection{main.\+cpp File Reference}
+\hypertarget{main_8cpp}{}\label{main_8cpp}\index{main.cpp@{main.cpp}}
+{\ttfamily \+\#include $<$stdio.\+h$>$}\newline
+{\ttfamily \+\#include $<$math.\+h$>$}\newline
+{\ttfamily \+\#include $<$assert.\+h$>$}\newline
+{\ttfamily \+\#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \+\#include $<$ctype.\+h$>$}\newline
+{\ttfamily \+\#include $<$string.\+h$>$}\newline
+{\ttfamily \+\#include $<$fstream$>$}\newline
+{\ttfamily \+\#include "{}raylib.\+h"{}}\newline
+{\ttfamily \+\#include "{}Cmp\+Double.\+h"{}}\newline
+{\ttfamily \+\#include "{}Cmp\+Double.\+cpp"{}}\newline
+{\ttfamily \+\#include "{}Quadratic\+Solver.\+h"{}}\newline
+{\ttfamily \+\#include "{}Quadratic\+Solver.\+cpp"{}}\newline
+{\ttfamily \+\#include "{}lib.\+h"{}}\newline
+{\ttfamily \+\#include "{}Sound.\+h"{}}\newline
+{\ttfamily \+\#include "{}Function\+Graphic.\+h"{}}\newline
+{\ttfamily \+\#include "{}Function\+Graphic.\+cpp"{}}\newline
+{\ttfamily \+\#include "{}test.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \doxymbox{\hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\item 
+struct \doxymbox{\hyperlink{structequationCoefs}{equation\+Coefs}} \doxymbox{\hyperlink{main_8cpp_a279261d98ce324d84c227231a1d1e024}{equation\+Coefs\+Init}} ()
+\item 
+void \doxymbox{\hyperlink{main_8cpp_aaef59fc3966d753f08ffa9734cdd387f}{equation\+Coefs\+Init\+Pointers}} (\doxymbox{\hyperlink{structequationCoefs}{equation\+Coefs}} \texorpdfstring{$\ast$}{*}ptr\+Coefs)
+\begin{DoxyCompactList}\small\item\em Initialize structure by pointer on it. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{main_8cpp_af30ce291bf231d6295202c155a59f680}{print\+Equation\+Coefs\+Test}} (\doxymbox{\hyperlink{structequationCoefsTest}{equation\+Coefs\+Test}} test)
+\item 
+void \doxymbox{\hyperlink{main_8cpp_a6a5c27d3b3273f4730caf6231d79ac25}{greetings}} ()
+\begin{DoxyCompactList}\small\item\em Greets User by printing text. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{lib_8h_a780cb1180cc5e51ff4ce71c1fc4e6422}{INPUT\+\_\+\+MODE\+\_\+\+STATUS}} \doxymbox{\hyperlink{main_8cpp_abd1144dc08e9e67c624b186f4f961465}{user\+Choosing\+Mode}} ()
+\item 
+void \doxymbox{\hyperlink{main_8cpp_ab9efef65deae8e82d58379e256b5c478}{choose\+Mode}} (\doxymbox{\hyperlink{lib_8h_a780cb1180cc5e51ff4ce71c1fc4e6422}{INPUT\+\_\+\+MODE\+\_\+\+STATUS}} input\+Mode\+Status)
+\item 
+\doxymbox{\hyperlink{lib_8h_a4bbb217fb2817e448718577f63221d75}{TESTING\+\_\+\+MODE\+\_\+\+STATUSES}} \doxymbox{\hyperlink{main_8cpp_a5ae78c48dfe31c5fb13455c540161484}{user\+Choosing\+Testing\+Mode}} ()
+\item 
+void \doxymbox{\hyperlink{main_8cpp_a5f2d1a509c4f0fc69cf24d99938ba14d}{get\+Format\+Line}} (char \texorpdfstring{$\ast$}{*}format\+Line, size\+\_\+t scanf\+Len)
+\begin{DoxyCompactList}\small\item\em Creating format line for fscanf to read first scanf\+Len symbols. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{main_8cpp_a04893442fe652fb5f387f6ad1aed9ea9}{get\+Statement\+Line}} (char \texorpdfstring{$\ast$}{*}statement\+Line, \doxymbox{\hyperlink{structstatementInfo}{statement\+Info}} info)
+\begin{DoxyCompactList}\small\item\em To read statement\+Line, expecting to get string similar in \doxylink{structstatementInfo}{statement\+Info}. \end{DoxyCompactList}\item 
+const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{main_8cpp_ae0acbc53d095ae2b0889cbc06075e1da}{get\+String\+Check\+Status}} (\doxymbox{\hyperlink{lib_8h_abced6a6f14d20822e71c39f39c75c0ae}{CHECK\+\_\+\+STATUSES}} Check\+Status)
+\begin{DoxyCompactList}\small\item\em Transforms check\+Status to string with explanation, suitable for output to User. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{main_8cpp_a990b9ce07bc44e4c3ba1c22b94e119c6}{process\+End}} ()
+\begin{DoxyCompactList}\small\item\em Skips all \textquotesingle{} \textquotesingle{} and \textquotesingle{}\textbackslash{}t\textquotesingle{} chars and if current char is \textquotesingle{}~\newline
+\textquotesingle{} or EOF, then stop, otherwise read to such symbol. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{main_8cpp_a25b56859a147395d7953d407544992c4}{good\+End}} ()
+\begin{DoxyCompactList}\small\item\em Skips all \textquotesingle{} \textquotesingle{} and \textquotesingle{}\textbackslash{}t\textquotesingle{} chars and if current char is \textquotesingle{}~\newline
+\textquotesingle{} or EOF, then returns true, otherwise -\/ false. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{main_8cpp_a7fdf8b1b0e3493aad0b28103b28039c6}{read\+To\+End}} ()
+\begin{DoxyCompactList}\small\item\em Reads all chars until \textquotesingle{}~\newline
+\textquotesingle{} or EOF. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{main_8cpp_a97f685ea4a9f55e751eaf6d8af9d97bc}{greetings\+Int\+Input}} ()
+\begin{DoxyCompactList}\small\item\em Prints invitation to enter positive numbers. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{main_8cpp_a93f9d0fc1eeb08af2ff364d1099beaa0}{get\+Positive\+Int\+Input\+Safe}} ()
+\begin{DoxyCompactList}\small\item\em Tries to read the the positive integer, otherwise asking again (there is no other stop condition). \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{main_8cpp_aae14dd629f9a45297506b274dee1cd70}{solve\+Real\+Time}} (int attempts)
+\begin{DoxyCompactList}\small\item\em Wrapper function for handling Solving case. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{main_8cpp_acee85cf91ee5e73735fbf8717543844b}{resume}} (void)
+\begin{DoxyCompactList}\small\item\em Function, which asks User to continue solving equations or not? \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{main_8cpp_aaa0833d15df8a8bb183fd0354389d1d1}{print\+Attempts}} (int attempts)
+\item 
+\doxymbox{\hyperlink{lib_8h_abced6a6f14d20822e71c39f39c75c0ae}{CHECK\+\_\+\+STATUSES}} \doxymbox{\hyperlink{main_8cpp_a3739532044c80256a286754add531789}{check\+Roots}} (const \doxymbox{\hyperlink{structequationCoefs}{equation\+Coefs}} coefs, \doxymbox{\hyperlink{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6}{QUADRATIC\+\_\+\+SOLVER\+\_\+\+STATUSES}} cnt\+Roots, const double eq\+Root1, const double eq\+Root2)
+\begin{DoxyCompactList}\small\item\em Function, which is checking generated by program roots (in Solving case). \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{main_8cpp_a1fd441eac7a17e4f237e134b06485752}{check\+Single\+Root}} (const \doxymbox{\hyperlink{structequationCoefs}{equation\+Coefs}} coefs, const double x)
+\begin{DoxyCompactList}\small\item\em a\texorpdfstring{$\ast$}{*}x\texorpdfstring{$\ast$}{*}x + b\texorpdfstring{$\ast$}{*}x + c == 0? \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{main_8cpp_adb3188631463b61350d26c542f757030}{print\+Roots}} (\doxymbox{\hyperlink{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6}{QUADRATIC\+\_\+\+SOLVER\+\_\+\+STATUSES}} cnt\+Roots, const double eq\+Root1, const double eq\+Root2)
+\item 
+const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{main_8cpp_ad9ce0de5a3cffb3e56d4c3aa63d5f0e5}{get\+String\+Input\+Status}} (\doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3}{INPUT\+\_\+\+STATUSES}} input\+Status)
+\begin{DoxyCompactList}\small\item\em Tranforms input status to string suitable for User. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3}{INPUT\+\_\+\+STATUSES}} \doxymbox{\hyperlink{main_8cpp_a185bfd0ed530066ecb37a8feda899c5b}{get\+Coef\+Input}} (\doxymbox{\hyperlink{structequationCoefs}{equation\+Coefs}} \texorpdfstring{$\ast$}{*}ptr\+Coefs, FILE \texorpdfstring{$\ast$}{*}ptr\+File)
+\begin{DoxyCompactList}\small\item\em Gets coeficients of equation from file or stdin. \end{DoxyCompactList}\item 
+const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{main_8cpp_a6b9d0aa048cc00127b69a11b1652504e}{get\+String\+Run\+All\+Tests\+Status}} (\doxymbox{\hyperlink{lib_8h_a5ab881fdb3a704bf01f559b8f29e97ee}{RUN\+\_\+\+ALL\+\_\+\+TESTS\+\_\+\+STATUSES}} Run\+All\+Tests\+Status)
+\begin{DoxyCompactList}\small\item\em Transforms status of running all tests to string suitable for User. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{lib_8h_a5ab881fdb3a704bf01f559b8f29e97ee}{RUN\+\_\+\+ALL\+\_\+\+TESTS\+\_\+\+STATUSES}} \doxymbox{\hyperlink{main_8cpp_a851414ac610f62aa5d48d3be9d41594a}{run\+All\+Tests}} (\doxymbox{\hyperlink{lib_8h_a4bbb217fb2817e448718577f63221d75}{TESTING\+\_\+\+MODE\+\_\+\+STATUSES}} testing\+Mode\+Status)
+\item 
+const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{main_8cpp_a6f9fd14ec6cfc73c7ac7c6e6aeaf7b90}{get\+String\+Test\+Check\+Status}} (\doxymbox{\hyperlink{lib_8h_a615beba20980376980ffc687b9201ca3}{RUN\+\_\+\+SINGLE\+\_\+\+TEST\+\_\+\+STATUSES}} Test\+Check\+Status)
+\begin{DoxyCompactList}\small\item\em Transforms status of running single test to string suitable for User. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{lib_8h_a615beba20980376980ffc687b9201ca3}{RUN\+\_\+\+SINGLE\+\_\+\+TEST\+\_\+\+STATUSES}} \doxymbox{\hyperlink{main_8cpp_ac9854a7e8e2a9f22ea0466b5fcdae323}{run\+Single\+Test}} (\doxymbox{\hyperlink{structequationCoefsTest}{equation\+Coefs\+Test}} test)
+\item 
+\doxymbox{\hyperlink{lib_8h_a5ab881fdb3a704bf01f559b8f29e97ee}{RUN\+\_\+\+ALL\+\_\+\+TESTS\+\_\+\+STATUSES}} \doxymbox{\hyperlink{main_8cpp_a40c366bec25315b1a72e9246b71d333d}{user\+Testing}} (const char \texorpdfstring{$\ast$}{*}const mode)
+\begin{DoxyCompactList}\small\item\em Function wraper for handling all testing modes (manual, file, unit). \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{lib_8h_a5ab881fdb3a704bf01f559b8f29e97ee}{RUN\+\_\+\+ALL\+\_\+\+TESTS\+\_\+\+STATUSES}} \doxymbox{\hyperlink{main_8cpp_a73ff21ea7641bd1cc87e7450c37bda3a}{unit\+Testing}} ()
+\item 
+void \doxymbox{\hyperlink{main_8cpp_aa667d9a0ac41e42179d116e22b365891}{build\+Function\+Graphic}} ()
+\begin{DoxyCompactList}\small\item\em Function, handling graphical mode. \end{DoxyCompactList}\item 
+FILE \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{main_8cpp_a35ac3e7cca9058a55ebd730f898e6b24}{acess\+File}} (const char \texorpdfstring{$\ast$}{*}const greetings, const char \texorpdfstring{$\ast$}{*}const mode)
+\begin{DoxyCompactList}\small\item\em This function prints greetings, user expected to enter filename, function tries to open file with param mode access mode. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3}{INPUT\+\_\+\+STATUSES}} \doxymbox{\hyperlink{main_8cpp_adcdc3cdf2fd6ea693d54d533647af4f2}{file\+Coef\+Input}} (\doxymbox{\hyperlink{structequationCoefs}{equation\+Coefs}} \texorpdfstring{$\ast$}{*}ptr\+Coefs, FILE \texorpdfstring{$\ast$}{*}ptr\+File)
+\begin{DoxyCompactList}\small\item\em This function handles exceptions while reading equation coefficients from User input. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3}{INPUT\+\_\+\+STATUSES}} \doxymbox{\hyperlink{main_8cpp_a5200bb9b08a97c53e741e23cb0639298}{file\+Ref\+Input}} (\doxymbox{\hyperlink{structequationCoefsTest}{equation\+Coefs\+Test}} \texorpdfstring{$\ast$}{*}ptr\+Test, FILE \texorpdfstring{$\ast$}{*}ptr\+File)
+\begin{DoxyCompactList}\small\item\em This function handles exceptions while reading reference values, if something is wrong, string with explanation of error is printed. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3}{INPUT\+\_\+\+STATUSES}} \doxymbox{\hyperlink{main_8cpp_a356a3ac4667279f39128e868f90b1753}{get\+Ref\+Input}} (\doxymbox{\hyperlink{structequationCoefsTest}{equation\+Coefs\+Test}} \texorpdfstring{$\ast$}{*}ptr\+Test, FILE \texorpdfstring{$\ast$}{*}ptr\+File)
+\begin{DoxyCompactList}\small\item\em This function reads reference values from User input. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{main_8cpp_af832b6db4c503316d88806c7b5b7a142}{is\+Good\+Coefs}} (\doxymbox{\hyperlink{structequationCoefs}{equation\+Coefs}} \texorpdfstring{$\ast$}{*}ptr\+Coefs)
+\begin{DoxyCompactList}\small\item\em Checks are equation coefs finite? \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{main_8cpp_a375d049e58ab0c6e75ac8ed27a5ebca2}{is\+Good\+Ref}} (\doxymbox{\hyperlink{structequationCoefsTest}{equation\+Coefs\+Test}} \texorpdfstring{$\ast$}{*}ptr\+Test)
+\begin{DoxyCompactList}\small\item\em Checks do reference values have valid format? Number of roots should be 0, 1, 2 or 8 (INF), both roots should be finite. \end{DoxyCompactList}\item 
+size\+\_\+t \doxymbox{\hyperlink{main_8cpp_a79a14b1a43f36a7de4094322bf83873b}{max\+\_\+size\+\_\+t}} (size\+\_\+t op1, size\+\_\+t op2)
+\item 
+void \doxymbox{\hyperlink{main_8cpp_ad2cca253e601712b5df1562061a50898}{my\+Play\+Sound}} (const char \texorpdfstring{$\ast$}{*}const sound\+Line)
+\begin{DoxyCompactList}\small\item\em Calls for mpv to playback sound. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{main_8cpp_doc-func-members}
+\Hypertarget{main_8cpp_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{main_8cpp_a35ac3e7cca9058a55ebd730f898e6b24}\index{main.cpp@{main.cpp}!acessFile@{acessFile}}
+\index{acessFile@{acessFile}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{acessFile()}{acessFile()}}
+{\footnotesize\ttfamily \label{main_8cpp_a35ac3e7cca9058a55ebd730f898e6b24} 
+FILE \texorpdfstring{$\ast$}{*} acess\+File (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}const}]{greetings}{, }\item[{const char \texorpdfstring{$\ast$}{*}const}]{mode}{}\end{DoxyParamCaption})}
+
+
+
+This function prints greetings, user expected to enter filename, function tries to open file with param mode access mode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em String} & to print to User \\
+\hline
+{\em Mode} & to open file with \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+If file cannot be opened, then NULL returns, otherwise FILE pointer returns 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00903}{903}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00903\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00904\ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%s"{}},\ \doxymbox{\hyperlink{lib_8h_afe95cbf25cb718882af3b270d8444891}{greetings}});}
+\DoxyCodeLine{00905\ \ \ \ \ \textcolor{keywordtype}{char}\ filename\ [\doxymbox{\hyperlink{lib_8h_a47c98bc90c67ed82124bf45f5d260e3f}{MAX\_FILENAME\_LEN}}]\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00906\ }
+\DoxyCodeLine{00907\ \ \ \ \ scanf(\textcolor{stringliteral}{"{}\%s"{}},\ filename);}
+\DoxyCodeLine{00908\ }
+\DoxyCodeLine{00909\ \ \ \ \ FILE*\ ptrFile\ =\ fopen(filename,\ mode);}
+\DoxyCodeLine{00910\ }
+\DoxyCodeLine{00911\ \ \ \ \ \textcolor{keywordflow}{if}\ (ptrFile\ ==\ NULL)\ \{}
+\DoxyCodeLine{00912\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%sError:\ cannot\ open\ file\ \%s\(\backslash\)n\%s"{}},\ \doxymbox{\hyperlink{lib_8h_aabc8a60b2b78eecc6da447f98beacb95}{MY\_RED}},\ filename,\ \doxymbox{\hyperlink{lib_8h_a245f38fcd075b74c3f6ee738db944280}{MY\_RESET}});}
+\DoxyCodeLine{00913\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{main_8cpp_ad2cca253e601712b5df1562061a50898}{myPlaySound}}(\doxymbox{\hyperlink{Sound_8h_aede0902e3afd72bbb4db993004370bd9}{INCORRECT\_SOUND}});}
+\DoxyCodeLine{00914\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00915\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%sFile\ opened\ sucessfully!\(\backslash\)n\%s"{}},\ \doxymbox{\hyperlink{lib_8h_a1c5e36af22d578c2458e0d5f18e3700a}{MY\_GREEN}},\ \doxymbox{\hyperlink{lib_8h_a245f38fcd075b74c3f6ee738db944280}{MY\_RESET}});}
+\DoxyCodeLine{00916\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{main_8cpp_ad2cca253e601712b5df1562061a50898}{myPlaySound}}(\doxymbox{\hyperlink{Sound_8h_a3f76dc09973abaf61e915d81375318de}{CORRECT\_SOUND}});}
+\DoxyCodeLine{00917\ \ \ \ \ \}}
+\DoxyCodeLine{00918\ }
+\DoxyCodeLine{00919\ \ \ \ \ \textcolor{keywordflow}{return}\ ptrFile;}
+\DoxyCodeLine{00920\ \}}
+
+\end{DoxyCode}
+
+
+References \doxymbox{\hyperlink{main_8cpp_source_l00903}{acess\+File()}}, \doxymbox{\hyperlink{Sound_8h_source_l00007}{CORRECT\+\_\+\+SOUND}}, \doxymbox{\hyperlink{main_8cpp_source_l00065}{greetings()}}, \doxymbox{\hyperlink{Sound_8h_source_l00008}{INCORRECT\+\_\+\+SOUND}}, \doxymbox{\hyperlink{lib_8h_source_l00028}{MAX\+\_\+\+FILENAME\+\_\+\+LEN}}, \doxymbox{\hyperlink{lib_8h_source_l00018}{MY\+\_\+\+GREEN}}, \doxymbox{\hyperlink{lib_8h_source_l00016}{MY\+\_\+\+RED}}, \doxymbox{\hyperlink{lib_8h_source_l00019}{MY\+\_\+\+RESET}}, and \doxymbox{\hyperlink{main_8cpp_source_l01034}{my\+Play\+Sound()}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00903}{acess\+File()}}, \doxymbox{\hyperlink{main_8cpp_source_l00828}{build\+Function\+Graphic()}}, and \doxymbox{\hyperlink{main_8cpp_source_l00700}{user\+Testing()}}.
+
+\Hypertarget{main_8cpp_aa667d9a0ac41e42179d116e22b365891}\index{main.cpp@{main.cpp}!buildFunctionGraphic@{buildFunctionGraphic}}
+\index{buildFunctionGraphic@{buildFunctionGraphic}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{buildFunctionGraphic()}{buildFunctionGraphic()}}
+{\footnotesize\ttfamily \label{main_8cpp_aa667d9a0ac41e42179d116e22b365891} 
+void build\+Function\+Graphic (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Function, handling graphical mode. 
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00828}{828}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00828\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00829\ \ \ \ \ FILE*\ ptrFile\ =\ \doxymbox{\hyperlink{lib_8h_a35ac3e7cca9058a55ebd730f898e6b24}{acessFile}}(\textcolor{stringliteral}{"{}Enter\ the\ filename\ to\ store\ logs:"{}},\ \textcolor{stringliteral}{"{}w"{}});}
+\DoxyCodeLine{00830\ }
+\DoxyCodeLine{00831\ \ \ \ \ \textcolor{keywordflow}{if}\ (!ptrFile)\ \{}
+\DoxyCodeLine{00832\ \ \ \ \ \ \ \ \ ptrFile\ =\ stdout;}
+\DoxyCodeLine{00833\ \ \ \ \ \ \ \ \ fprintf(ptrFile,\ \textcolor{stringliteral}{"{}Warning:\ cannot\ open\ the\ debug\ output\ file!\ Redirecting\ to\ console...\(\backslash\)n"{}});}
+\DoxyCodeLine{00834\ \ \ \ \ \}}
+\DoxyCodeLine{00835\ }
+\DoxyCodeLine{00836\ \ \ \ \ \doxymbox{\hyperlink{structequationCoefs}{equationCoefs}}\ coefs;}
+\DoxyCodeLine{00837\ }
+\DoxyCodeLine{00838\ \ \ \ \ \doxymbox{\hyperlink{structequationCoefs}{equationCoefs}}*\ ptrCoefs\ =\ \&coefs;}
+\DoxyCodeLine{00839\ }
+\DoxyCodeLine{00840\ \ \ \ \ \doxymbox{\hyperlink{lib_8h_aaef59fc3966d753f08ffa9734cdd387f}{equationCoefsInitPointers}}(ptrCoefs);}
+\DoxyCodeLine{00841\ \ \ \ \ }
+\DoxyCodeLine{00842\ \ \ \ \ \textcolor{keywordtype}{bool}\ isBadInput\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00843\ }
+\DoxyCodeLine{00844\ \ \ \ \ \textcolor{keywordflow}{while}\ (isBadInput)\ \{}
+\DoxyCodeLine{00845\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3}{INPUT\_STATUSES}}\ inputStatus\ =\ \doxymbox{\hyperlink{lib_8h_adcdc3cdf2fd6ea693d54d533647af4f2}{fileCoefInput}}(ptrCoefs,\ stdin);}
+\DoxyCodeLine{00846\ }
+\DoxyCodeLine{00847\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (inputStatus\ !=\ \doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3a85532f7f4c9ad5482709c4233650db27}{INPUT\_CORRECT}})\ \{}
+\DoxyCodeLine{00848\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Try\ another\ time!\(\backslash\)n"{}});}
+\DoxyCodeLine{00849\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00850\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00851\ }
+\DoxyCodeLine{00852\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{lib_8h_a1bdd7c1369b250215a080e8421d4ecf3}{ON\_DEBUG}}(printf(\textcolor{stringliteral}{"{}\%s\%lf\ \%lf\ \%lf\(\backslash\)n\%s"{}},\ \doxymbox{\hyperlink{lib_8h_af733a2e19265664c7fb7fab3ff7910f3}{MY\_YELLOW}},\ }
+\DoxyCodeLine{00853\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ptrCoefs-\/>\doxymbox{\hyperlink{structequationCoefs_a2b6a27c420a402738f62897dffb8c289}{a}},\ ptrCoefs-\/>\doxymbox{\hyperlink{structequationCoefs_aac91acb14d7dbbf9ffc0e38eb58a71e0}{b}},\ ptrCoefs-\/>\doxymbox{\hyperlink{structequationCoefs_a5d2166bc753ec5ed1a3e4c73418db81f}{c}},\ \doxymbox{\hyperlink{lib_8h_a245f38fcd075b74c3f6ee738db944280}{MY\_RESET}}));}
+\DoxyCodeLine{00854\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00855\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (isfinite(ptrCoefs-\/>\doxymbox{\hyperlink{structequationCoefs_a2b6a27c420a402738f62897dffb8c289}{a}})\ \&\&\ isfinite(ptrCoefs-\/>\doxymbox{\hyperlink{structequationCoefs_aac91acb14d7dbbf9ffc0e38eb58a71e0}{b}})\ \&\&\ isfinite(ptrCoefs-\/>\doxymbox{\hyperlink{structequationCoefs_a5d2166bc753ec5ed1a3e4c73418db81f}{c}}))\ \{}
+\DoxyCodeLine{00856\ \ \ \ \ \ \ \ \ \ \ \ \ isBadInput\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00857\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00858\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Cannot\ process\ input!\ Try\ again!\(\backslash\)n"{}});}
+\DoxyCodeLine{00859\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00860\ }
+\DoxyCodeLine{00861\ \ \ \ \ \ \ \ \ fprintf(ptrFile,\ \textcolor{stringliteral}{"{}a:\%lf,\ b:\%lf,\ c:\%lf\(\backslash\)n"{}},\ ptrCoefs-\/>\doxymbox{\hyperlink{structequationCoefs_a2b6a27c420a402738f62897dffb8c289}{a}},\ ptrCoefs-\/>\doxymbox{\hyperlink{structequationCoefs_aac91acb14d7dbbf9ffc0e38eb58a71e0}{b}},\ ptrCoefs-\/>\doxymbox{\hyperlink{structequationCoefs_a5d2166bc753ec5ed1a3e4c73418db81f}{c}});}
+\DoxyCodeLine{00862\ \ \ \ \ \}}
+\DoxyCodeLine{00863\ }
+\DoxyCodeLine{00864\ \ \ \ \ SetTargetFPS(\doxymbox{\hyperlink{FunctionGraphic_8h_ac861499c2a13f0fcd0c8899a944fb44d}{TARGET\_FPS}});}
+\DoxyCodeLine{00865\ \ \ \ \ InitWindow(\doxymbox{\hyperlink{FunctionGraphic_8h_a8b05ef6891d056f46cf058ee6aae96f1}{WINDOW\_WIDTH}},\ \doxymbox{\hyperlink{FunctionGraphic_8h_a1eb958e9909fd7e79a8fb4e8f1e8bdc2}{WINDOW\_HEIGHT}},\ \textcolor{stringliteral}{"{}SquareSolver"{}});}
+\DoxyCodeLine{00866\ }
+\DoxyCodeLine{00867\ \ \ \ \ \textcolor{keywordtype}{double}\ zoomCoef\ =\ 1.0;}
+\DoxyCodeLine{00868\ \ \ \ \ \textcolor{keywordtype}{double}\ gridOffset\ =\ 20;}
+\DoxyCodeLine{00869\ \ \ \ \ }
+\DoxyCodeLine{00870\ \ \ \ \ \textcolor{keywordtype}{double}\ drawFrom\ =\ -\/100,\ drawTo\ =\ 100,\ step\ =\ 1;}
+\DoxyCodeLine{00871\ }
+\DoxyCodeLine{00872\ \ \ \ \ \textcolor{keywordflow}{while}\ (!WindowShouldClose())\ \{}
+\DoxyCodeLine{00873\ \ \ \ \ \ \ \ \ BeginDrawing();}
+\DoxyCodeLine{00874\ \ \ \ \ \ \ \ \ ClearBackground(RAYWHITE);}
+\DoxyCodeLine{00875\ }
+\DoxyCodeLine{00876\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{FunctionGraphic_8cpp_a9a9ca9934f42623e039588bbf7028b26}{drawGrid}}(gridOffset,\ zoomCoef);}
+\DoxyCodeLine{00877\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{FunctionGraphic_8cpp_a7f3f2de05ded10e5289d7c6217d81b5c}{drawFunctionGraphic}}(ptrCoefs,\ drawFrom,\ drawTo,\ step,\ zoomCoef,\ ptrFile);}
+\DoxyCodeLine{00878\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{FunctionGraphic_8cpp_aadbc6d76ff09e601ba5b638711a55f43}{drawAxes}}(zoomCoef);}
+\DoxyCodeLine{00879\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{FunctionGraphic_8cpp_a1d464d342b8a0ff196f051c6630e26db}{drawScale}}(zoomCoef);}
+\DoxyCodeLine{00880\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{FunctionGraphic_8cpp_a0f77c0b9d4e5be1b7f802e167b2bd322}{printParabolaApex}}(ptrCoefs,\ zoomCoef,\ ptrFile);}
+\DoxyCodeLine{00881\ }
+\DoxyCodeLine{00882\ \ \ \ \ \ \ \ \ zoomCoef\ +=\ GetMouseWheelMoveV().y;}
+\DoxyCodeLine{00883\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (IsMouseButtonPressed(MOUSE\_BUTTON\_LEFT)\ ||\ IsMouseButtonDown(MOUSE\_BUTTON\_LEFT))\ \{}
+\DoxyCodeLine{00884\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{FunctionGraphic_8cpp_abb74433d5c37eeba81f4d4aa93a7811b}{drawMouseLines}}();}
+\DoxyCodeLine{00885\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ printMouseCoords();}}
+\DoxyCodeLine{00886\ }
+\DoxyCodeLine{00887\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Vector2\ mouseCoords\ =\ GetMousePosition();}}
+\DoxyCodeLine{00888\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ DrawLine(XMIN,\ mouseCoords.y,\ XMAX,\ mouseCoords.y,\ RED);}}
+\DoxyCodeLine{00889\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00890\ }
+\DoxyCodeLine{00891\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (IsKeyPressed(\doxymbox{\hyperlink{FunctionGraphic_8h_a73bf15efafcdd45fed68e9d3a7cb88a4}{SCREENSHOT\_KEY}}))\ \{}
+\DoxyCodeLine{00892\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ TakeScreenshot(SCREENSHOT\_FILE);}}
+\DoxyCodeLine{00893\ \ \ \ \ \ \ \ \ \ \ \ \ Image\ screenshotImage\ =\ LoadImageFromScreen();}
+\DoxyCodeLine{00894\ \ \ \ \ \ \ \ \ \ \ \ \ ExportImage(screenshotImage,\ \doxymbox{\hyperlink{FunctionGraphic_8h_a6e25b6a7bd71c03e993f9ea5567a6f11}{SCREENSHOT\_FILE}});}
+\DoxyCodeLine{00895\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00896\ }
+\DoxyCodeLine{00897\ \ \ \ \ \ \ \ \ EndDrawing();}
+\DoxyCodeLine{00898\ \ \ \ \ \}}
+\DoxyCodeLine{00899\ \ \ \ \ CloseWindow();}
+\DoxyCodeLine{00900\ \}}
+
+\end{DoxyCode}
+
+
+References \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00014}{equation\+Coefs::\+a}}, \doxymbox{\hyperlink{main_8cpp_source_l00903}{acess\+File()}}, \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00014}{equation\+Coefs::\+b}}, \doxymbox{\hyperlink{main_8cpp_source_l00828}{build\+Function\+Graphic()}}, \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00014}{equation\+Coefs::\+c}}, \doxymbox{\hyperlink{FunctionGraphic_8cpp_source_l00042}{draw\+Axes()}}, \doxymbox{\hyperlink{FunctionGraphic_8cpp_source_l00021}{draw\+Function\+Graphic()}}, \doxymbox{\hyperlink{FunctionGraphic_8cpp_source_l00001}{draw\+Grid()}}, \doxymbox{\hyperlink{FunctionGraphic_8cpp_source_l00055}{draw\+Mouse\+Lines()}}, \doxymbox{\hyperlink{FunctionGraphic_8cpp_source_l00050}{draw\+Scale()}}, \doxymbox{\hyperlink{main_8cpp_source_l00050}{equation\+Coefs\+Init\+Pointers()}}, \doxymbox{\hyperlink{main_8cpp_source_l00922}{file\+Coef\+Input()}}, \doxymbox{\hyperlink{lib_8h_source_l00066}{INPUT\+\_\+\+CORRECT}}, \doxymbox{\hyperlink{lib_8h_source_l00019}{MY\+\_\+\+RESET}}, \doxymbox{\hyperlink{lib_8h_source_l00017}{MY\+\_\+\+YELLOW}}, \doxymbox{\hyperlink{lib_8h_source_l00010}{ON\+\_\+\+DEBUG}}, \doxymbox{\hyperlink{FunctionGraphic_8cpp_source_l00061}{print\+Parabola\+Apex()}}, \doxymbox{\hyperlink{FunctionGraphic_8h_source_l00008}{SCREENSHOT\+\_\+\+FILE}}, \doxymbox{\hyperlink{FunctionGraphic_8h_source_l00007}{SCREENSHOT\+\_\+\+KEY}}, \doxymbox{\hyperlink{FunctionGraphic_8h_source_l00044}{TARGET\+\_\+\+FPS}}, \doxymbox{\hyperlink{FunctionGraphic_8h_source_l00047}{WINDOW\+\_\+\+HEIGHT}}, and \doxymbox{\hyperlink{FunctionGraphic_8h_source_l00046}{WINDOW\+\_\+\+WIDTH}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00828}{build\+Function\+Graphic()}}, and \doxymbox{\hyperlink{main_8cpp_source_l00113}{choose\+Mode()}}.
+
+\Hypertarget{main_8cpp_a3739532044c80256a286754add531789}\index{main.cpp@{main.cpp}!checkRoots@{checkRoots}}
+\index{checkRoots@{checkRoots}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{checkRoots()}{checkRoots()}}
+{\footnotesize\ttfamily \label{main_8cpp_a3739532044c80256a286754add531789} 
+\doxymbox{\hyperlink{lib_8h_abced6a6f14d20822e71c39f39c75c0ae}{CHECK\+\_\+\+STATUSES}} check\+Roots (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structequationCoefs}{equation\+Coefs}}}]{coefs}{, }\item[{\doxymbox{\hyperlink{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6}{QUADRATIC\+\_\+\+SOLVER\+\_\+\+STATUSES}}}]{cnt\+Roots}{, }\item[{const double}]{eq\+Root1}{, }\item[{const double}]{eq\+Root2}{}\end{DoxyParamCaption})}
+
+
+
+Function, which is checking generated by program roots (in Solving case). 
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00423}{423}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00423\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00424\ \ \ \ \ \textcolor{keywordflow}{switch}\ (cntRoots)\ \{}
+\DoxyCodeLine{00425\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6a52da2ea29bc7f0697300ec26acb69715}{ZERO\_ROOTS}}:}
+\DoxyCodeLine{00426\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{lib_8h_abced6a6f14d20822e71c39f39c75c0aeaaad2d36806162d71fef089ba24176b0f}{CHECK\_SUCCESS}};}
+\DoxyCodeLine{00427\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00428\ }
+\DoxyCodeLine{00429\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6a6700c0f6efd23571cb22aefd2510b1cf}{ONE\_ROOT}}:}
+\DoxyCodeLine{00430\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{lib_8h_a1fd441eac7a17e4f237e134b06485752}{checkSingleRoot}}(coefs,\ eqRoot1))\ \{}
+\DoxyCodeLine{00431\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{lib_8h_abced6a6f14d20822e71c39f39c75c0aeaaad2d36806162d71fef089ba24176b0f}{CHECK\_SUCCESS}};}
+\DoxyCodeLine{00432\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00433\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{lib_8h_abced6a6f14d20822e71c39f39c75c0aea0884b3f08d1e7360e25807b5dd8ee4cf}{CHECK\_FAIL}};}
+\DoxyCodeLine{00434\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00435\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00436\ }
+\DoxyCodeLine{00437\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6a876622d3c0b008da13a3685c64714e81}{TWO\_ROOTS}}:}
+\DoxyCodeLine{00438\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\doxymbox{\hyperlink{lib_8h_a1fd441eac7a17e4f237e134b06485752}{checkSingleRoot}}(coefs,\ eqRoot1)\ \&\&\ \doxymbox{\hyperlink{lib_8h_a1fd441eac7a17e4f237e134b06485752}{checkSingleRoot}}(coefs,\ eqRoot2))\ ?\ \doxymbox{\hyperlink{lib_8h_abced6a6f14d20822e71c39f39c75c0aeaaad2d36806162d71fef089ba24176b0f}{CHECK\_SUCCESS}}\ :\ \doxymbox{\hyperlink{lib_8h_abced6a6f14d20822e71c39f39c75c0aea0884b3f08d1e7360e25807b5dd8ee4cf}{CHECK\_FAIL}};}
+\DoxyCodeLine{00439\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00440\ }
+\DoxyCodeLine{00441\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6a5a79e9e49077da58fe5d46a98f0b5e36}{INF\_ROOTS}}:}
+\DoxyCodeLine{00442\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\doxymbox{\hyperlink{lib_8h_a1fd441eac7a17e4f237e134b06485752}{checkSingleRoot}}(coefs,\ 0.0)\ \&\&\ \doxymbox{\hyperlink{lib_8h_a1fd441eac7a17e4f237e134b06485752}{checkSingleRoot}}(coefs,\ 1.0)\ \&\&\ \doxymbox{\hyperlink{lib_8h_a1fd441eac7a17e4f237e134b06485752}{checkSingleRoot}}(coefs,\ 2.0))\ ?\ \doxymbox{\hyperlink{lib_8h_abced6a6f14d20822e71c39f39c75c0aeaaad2d36806162d71fef089ba24176b0f}{CHECK\_SUCCESS}}\ :\ \doxymbox{\hyperlink{lib_8h_abced6a6f14d20822e71c39f39c75c0aea0884b3f08d1e7360e25807b5dd8ee4cf}{CHECK\_FAIL}};}
+\DoxyCodeLine{00443\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00444\ }
+\DoxyCodeLine{00445\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00446\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{lib_8h_abced6a6f14d20822e71c39f39c75c0aeaac2692c8213efc1f1596e306a098e8ba}{CHECK\_ERROR}};}
+\DoxyCodeLine{00447\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00448\ \ \ \ \ \}}
+\DoxyCodeLine{00449\ \}}
+
+\end{DoxyCode}
+
+
+References \doxymbox{\hyperlink{lib_8h_source_l00054}{CHECK\+\_\+\+ERROR}}, \doxymbox{\hyperlink{lib_8h_source_l00053}{CHECK\+\_\+\+FAIL}}, \doxymbox{\hyperlink{lib_8h_source_l00052}{CHECK\+\_\+\+SUCCESS}}, \doxymbox{\hyperlink{main_8cpp_source_l00423}{check\+Roots()}}, \doxymbox{\hyperlink{main_8cpp_source_l00451}{check\+Single\+Root()}}, \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00016}{equation\+Coefs::\+eq\+Root1}}, \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00016}{equation\+Coefs::\+eq\+Root2}}, \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00010}{INF\+\_\+\+ROOTS}}, \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00008}{ONE\+\_\+\+ROOT}}, \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00009}{TWO\+\_\+\+ROOTS}}, and \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00007}{ZERO\+\_\+\+ROOTS}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00423}{check\+Roots()}}, and \doxymbox{\hyperlink{main_8cpp_source_l00337}{solve\+Real\+Time()}}.
+
+\Hypertarget{main_8cpp_a1fd441eac7a17e4f237e134b06485752}\index{main.cpp@{main.cpp}!checkSingleRoot@{checkSingleRoot}}
+\index{checkSingleRoot@{checkSingleRoot}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{checkSingleRoot()}{checkSingleRoot()}}
+{\footnotesize\ttfamily \label{main_8cpp_a1fd441eac7a17e4f237e134b06485752} 
+int check\+Single\+Root (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structequationCoefs}{equation\+Coefs}}}]{coefs}{, }\item[{const double}]{x}{}\end{DoxyParamCaption})}
+
+
+
+a\texorpdfstring{$\ast$}{*}x\texorpdfstring{$\ast$}{*}x + b\texorpdfstring{$\ast$}{*}x + c == 0? 
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00451}{451}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00451\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00452\ \ \ \ \ \textcolor{keywordtype}{double}\ a\ =\ coefs.\doxymbox{\hyperlink{structequationCoefs_a2b6a27c420a402738f62897dffb8c289}{a}},\ b\ =\ coefs.\doxymbox{\hyperlink{structequationCoefs_aac91acb14d7dbbf9ffc0e38eb58a71e0}{b}},\ c\ =\ coefs.\doxymbox{\hyperlink{structequationCoefs_a5d2166bc753ec5ed1a3e4c73418db81f}{c}};}
+\DoxyCodeLine{00453\ }
+\DoxyCodeLine{00454\ \ \ \ \ \textcolor{keywordtype}{double}\ result\ =\ a\ *\ x\ *\ x\ +\ b\ *\ x\ +\ c;}
+\DoxyCodeLine{00455\ }
+\DoxyCodeLine{00456\ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{CmpDouble_8cpp_ab9b61cbfa9a9cad7d8cfa2d7eeb6261c}{CmpDouble}}(result,\ 0)\ ==\ 0;}
+\DoxyCodeLine{00457\ \}}
+
+\end{DoxyCode}
+
+
+References \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00014}{equation\+Coefs::\+a}}, \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00014}{equation\+Coefs::\+b}}, \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00014}{equation\+Coefs::\+c}}, \doxymbox{\hyperlink{main_8cpp_source_l00451}{check\+Single\+Root()}}, and \doxymbox{\hyperlink{CmpDouble_8cpp_source_l00001}{Cmp\+Double()}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00423}{check\+Roots()}}, and \doxymbox{\hyperlink{main_8cpp_source_l00451}{check\+Single\+Root()}}.
+
+\Hypertarget{main_8cpp_ab9efef65deae8e82d58379e256b5c478}\index{main.cpp@{main.cpp}!chooseMode@{chooseMode}}
+\index{chooseMode@{chooseMode}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{chooseMode()}{chooseMode()}}
+{\footnotesize\ttfamily \label{main_8cpp_ab9efef65deae8e82d58379e256b5c478} 
+void choose\+Mode (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{lib_8h_a780cb1180cc5e51ff4ce71c1fc4e6422}{INPUT\+\_\+\+MODE\+\_\+\+STATUS}}}]{input\+Mode\+Status}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00113}{113}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keywordflow}{switch}\ (inputModeStatus)\ \{}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{lib_8h_a780cb1180cc5e51ff4ce71c1fc4e6422ab09b6d718c535c4d6fe77cc69ae8de0b}{SOLVING}}:\ \{}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ attempts\ =\ \doxymbox{\hyperlink{lib_8h_a75a5da1a3042c8d8af5e0fd9db9e9bae}{getPositiveIntInputSafe}}();}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{lib_8h_aae14dd629f9a45297506b274dee1cd70}{solveRealTime}}(attempts);}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{lib_8h_a780cb1180cc5e51ff4ce71c1fc4e6422aca6c0848647c55068d1de35320dc1d11}{TESTING}}:\ \{}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{lib_8h_a4bbb217fb2817e448718577f63221d75}{TESTING\_MODE\_STATUSES}}\ testingModeStatus\ =\ \doxymbox{\hyperlink{lib_8h_a79fdb792c6fe55861a046fdeff525584}{userChoosingTestingMode}}();}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ chooseTestingMode(testingModeStatus);}}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ TODO\ заменить\ if\ на\ switch\ ,вынести\ в\ ф-\/ю}}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (testingModeStatus\ !=\ \doxymbox{\hyperlink{lib_8h_a4bbb217fb2817e448718577f63221d75adc6c3c530461925117d8dd7821a1af21}{TESTING\_MODE\_INPUT\_ERROR}})\ \{}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{lib_8h_a5ab881fdb3a704bf01f559b8f29e97ee}{RUN\_ALL\_TESTS\_STATUSES}}\ runAllTestsStatus\ =\ \doxymbox{\hyperlink{lib_8h_a851414ac610f62aa5d48d3be9d41594a}{runAllTests}}(testingModeStatus);}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \textcolor{keyword}{const}\ LineRunAllTestsStatus\ =\ \doxymbox{\hyperlink{lib_8h_ab67d39cb6d6e9e15a4b222d8eb94e7fc}{getStringRunAllTestsStatus}}(runAllTestsStatus);}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (runAllTestsStatus\ !=\ \doxymbox{\hyperlink{lib_8h_a5ab881fdb3a704bf01f559b8f29e97eea5482d7204e9fe0a20244009e009fe19e}{RUN\_ALL\_TESTS\_SUCCESS}})\ \{}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%s\%s\%s"{}},\ \doxymbox{\hyperlink{lib_8h_aabc8a60b2b78eecc6da447f98beacb95}{MY\_RED}},\ LineRunAllTestsStatus,\ \doxymbox{\hyperlink{lib_8h_a245f38fcd075b74c3f6ee738db944280}{MY\_RESET}});}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{main_8cpp_ad2cca253e601712b5df1562061a50898}{myPlaySound}}(\doxymbox{\hyperlink{Sound_8h_aede0902e3afd72bbb4db993004370bd9}{INCORRECT\_SOUND}});}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%s\%s\%s"{}},\ \doxymbox{\hyperlink{lib_8h_a1c5e36af22d578c2458e0d5f18e3700a}{MY\_GREEN}},\ LineRunAllTestsStatus,\ \doxymbox{\hyperlink{lib_8h_a245f38fcd075b74c3f6ee738db944280}{MY\_RESET}});}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{main_8cpp_ad2cca253e601712b5df1562061a50898}{myPlaySound}}(\doxymbox{\hyperlink{Sound_8h_a3f76dc09973abaf61e915d81375318de}{CORRECT\_SOUND}});}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%sError:\ cannot\ process\ testing\ mode\ input\(\backslash\)n\%s"{}},\ \doxymbox{\hyperlink{lib_8h_aabc8a60b2b78eecc6da447f98beacb95}{MY\_RED}},\ \doxymbox{\hyperlink{lib_8h_a245f38fcd075b74c3f6ee738db944280}{MY\_RESET}});}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{main_8cpp_ad2cca253e601712b5df1562061a50898}{myPlaySound}}(\doxymbox{\hyperlink{Sound_8h_aede0902e3afd72bbb4db993004370bd9}{INCORRECT\_SOUND}});}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{lib_8h_a780cb1180cc5e51ff4ce71c1fc4e6422ae3878a295794b6a8739a8eee58524112}{FUNCTION\_GRAPHIC}}:\ \{}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{lib_8h_a62315d443bb153ce5e41b5bd2a6a5eeb}{buildFunctionGraphic}}();}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{lib_8h_a780cb1180cc5e51ff4ce71c1fc4e6422a9b6bba8dc8a8905c42d8b88c12c774d1}{USER\_INPUT\_MODE\_ERROR}}:\ \{}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%sError:\ cannot\ process\ input\ mode!\ Bye...\(\backslash\)n\%s"{}},\ \doxymbox{\hyperlink{lib_8h_aabc8a60b2b78eecc6da447f98beacb95}{MY\_RED}},\ \doxymbox{\hyperlink{lib_8h_a245f38fcd075b74c3f6ee738db944280}{MY\_RESET}});}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{main_8cpp_ad2cca253e601712b5df1562061a50898}{myPlaySound}}(\doxymbox{\hyperlink{Sound_8h_aede0902e3afd72bbb4db993004370bd9}{INCORRECT\_SOUND}});}
+\DoxyCodeLine{00160\ }
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\ \{}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%sError:\ unknown\ input\ mode\ error\ happened\(\backslash\)n\%s"{}},\ \doxymbox{\hyperlink{lib_8h_aabc8a60b2b78eecc6da447f98beacb95}{MY\_RED}},\ \doxymbox{\hyperlink{lib_8h_a245f38fcd075b74c3f6ee738db944280}{MY\_RESET}});}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{main_8cpp_ad2cca253e601712b5df1562061a50898}{myPlaySound}}(\doxymbox{\hyperlink{Sound_8h_aede0902e3afd72bbb4db993004370bd9}{INCORRECT\_SOUND}});}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00170\ }
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00173\ \ \ \ \ \}}
+\DoxyCodeLine{00174\ \}}
+
+\end{DoxyCode}
+
+
+References \doxymbox{\hyperlink{main_8cpp_source_l00828}{build\+Function\+Graphic()}}, \doxymbox{\hyperlink{main_8cpp_source_l00113}{choose\+Mode()}}, \doxymbox{\hyperlink{Sound_8h_source_l00007}{CORRECT\+\_\+\+SOUND}}, \doxymbox{\hyperlink{lib_8h_source_l00038}{FUNCTION\+\_\+\+GRAPHIC}}, \doxymbox{\hyperlink{main_8cpp_source_l00318}{get\+Positive\+Int\+Input\+Safe()}}, \doxymbox{\hyperlink{main_8cpp_source_l00574}{get\+String\+Run\+All\+Tests\+Status()}}, \doxymbox{\hyperlink{Sound_8h_source_l00008}{INCORRECT\+\_\+\+SOUND}}, \doxymbox{\hyperlink{lib_8h_source_l00018}{MY\+\_\+\+GREEN}}, \doxymbox{\hyperlink{lib_8h_source_l00016}{MY\+\_\+\+RED}}, \doxymbox{\hyperlink{lib_8h_source_l00019}{MY\+\_\+\+RESET}}, \doxymbox{\hyperlink{main_8cpp_source_l01034}{my\+Play\+Sound()}}, \doxymbox{\hyperlink{lib_8h_source_l00076}{RUN\+\_\+\+ALL\+\_\+\+TESTS\+\_\+\+SUCCESS}}, \doxymbox{\hyperlink{main_8cpp_source_l00592}{run\+All\+Tests()}}, \doxymbox{\hyperlink{main_8cpp_source_l00337}{solve\+Real\+Time()}}, \doxymbox{\hyperlink{lib_8h_source_l00036}{SOLVING}}, \doxymbox{\hyperlink{lib_8h_source_l00037}{TESTING}}, \doxymbox{\hyperlink{lib_8h_source_l00047}{TESTING\+\_\+\+MODE\+\_\+\+INPUT\+\_\+\+ERROR}}, \doxymbox{\hyperlink{lib_8h_source_l00039}{USER\+\_\+\+INPUT\+\_\+\+MODE\+\_\+\+ERROR}}, and \doxymbox{\hyperlink{main_8cpp_source_l00176}{user\+Choosing\+Testing\+Mode()}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00113}{choose\+Mode()}}, and \doxymbox{\hyperlink{main_8cpp_source_l00025}{main()}}.
+
+\Hypertarget{main_8cpp_a279261d98ce324d84c227231a1d1e024}\index{main.cpp@{main.cpp}!equationCoefsInit@{equationCoefsInit}}
+\index{equationCoefsInit@{equationCoefsInit}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{equationCoefsInit()}{equationCoefsInit()}}
+{\footnotesize\ttfamily \label{main_8cpp_a279261d98ce324d84c227231a1d1e024} 
+struct \doxymbox{\hyperlink{structequationCoefs}{equation\+Coefs}} equation\+Coefs\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00036}{36}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{structequationCoefs}{equationCoefs}}\ coefs;}
+\DoxyCodeLine{00038\ \ \ \ \ coefs.\doxymbox{\hyperlink{structequationCoefs_a2b6a27c420a402738f62897dffb8c289}{a}}\ =\ 0;}
+\DoxyCodeLine{00039\ \ \ \ \ coefs.b\ =\ 0;}
+\DoxyCodeLine{00040\ \ \ \ \ coefs.c\ =\ 0;}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ coefs.cntRoot\ =\ 0;}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ coefs.eqRoot1\ =\ NAN;}
+\DoxyCodeLine{00045\ \ \ \ \ coefs.eqRoot2\ =\ NAN;}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordflow}{return}\ coefs;}
+\DoxyCodeLine{00048\ \}}
+
+\end{DoxyCode}
+
+
+References \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00014}{equation\+Coefs::\+a}}, \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00014}{equation\+Coefs::\+b}}, \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00014}{equation\+Coefs::\+c}}, \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00015}{equation\+Coefs::\+cnt\+Root}}, \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00016}{equation\+Coefs::\+eq\+Root1}}, \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00016}{equation\+Coefs::\+eq\+Root2}}, and \doxymbox{\hyperlink{main_8cpp_source_l00036}{equation\+Coefs\+Init()}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00036}{equation\+Coefs\+Init()}}.
+
+\Hypertarget{main_8cpp_aaef59fc3966d753f08ffa9734cdd387f}\index{main.cpp@{main.cpp}!equationCoefsInitPointers@{equationCoefsInitPointers}}
+\index{equationCoefsInitPointers@{equationCoefsInitPointers}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{equationCoefsInitPointers()}{equationCoefsInitPointers()}}
+{\footnotesize\ttfamily \label{main_8cpp_aaef59fc3966d753f08ffa9734cdd387f} 
+void equation\+Coefs\+Init\+Pointers (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structequationCoefs}{equation\+Coefs}} \texorpdfstring{$\ast$}{*}}]{ptr\+Coefs}{}\end{DoxyParamCaption})}
+
+
+
+Initialize structure by pointer on it. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ptr\+Coefs} & Pointer to structure \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00050}{50}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00051\ \ \ \ \ ptrCoefs-\/>\doxymbox{\hyperlink{structequationCoefs_a2b6a27c420a402738f62897dffb8c289}{a}}\ =\ 0;}
+\DoxyCodeLine{00052\ \ \ \ \ ptrCoefs-\/>\doxymbox{\hyperlink{structequationCoefs_aac91acb14d7dbbf9ffc0e38eb58a71e0}{b}}\ =\ 0;}
+\DoxyCodeLine{00053\ \ \ \ \ ptrCoefs-\/>\doxymbox{\hyperlink{structequationCoefs_a5d2166bc753ec5ed1a3e4c73418db81f}{c}}\ =\ 0;}
+\DoxyCodeLine{00054\ \}}
+
+\end{DoxyCode}
+
+
+References \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00014}{equation\+Coefs::\+a}}, \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00014}{equation\+Coefs::\+b}}, \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00014}{equation\+Coefs::\+c}}, and \doxymbox{\hyperlink{main_8cpp_source_l00050}{equation\+Coefs\+Init\+Pointers()}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00828}{build\+Function\+Graphic()}}, \doxymbox{\hyperlink{main_8cpp_source_l00050}{equation\+Coefs\+Init\+Pointers()}}, \doxymbox{\hyperlink{main_8cpp_source_l00337}{solve\+Real\+Time()}}, and \doxymbox{\hyperlink{main_8cpp_source_l00700}{user\+Testing()}}.
+
+\Hypertarget{main_8cpp_adcdc3cdf2fd6ea693d54d533647af4f2}\index{main.cpp@{main.cpp}!fileCoefInput@{fileCoefInput}}
+\index{fileCoefInput@{fileCoefInput}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{fileCoefInput()}{fileCoefInput()}}
+{\footnotesize\ttfamily \label{main_8cpp_adcdc3cdf2fd6ea693d54d533647af4f2} 
+\doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3}{INPUT\+\_\+\+STATUSES}} file\+Coef\+Input (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structequationCoefs}{equation\+Coefs}} \texorpdfstring{$\ast$}{*}}]{ptr\+Coefs}{, }\item[{FILE \texorpdfstring{$\ast$}{*}}]{ptr\+File}{}\end{DoxyParamCaption})}
+
+
+
+This function handles exceptions while reading equation coefficients from User input. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & pointer to struct, storaging coefficients of equation \\
+\hline
+{\em A} & pointer to file OR stdin \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00922}{922}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00922\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00923\ }
+\DoxyCodeLine{00924\ \ \ \ \ \textcolor{keywordflow}{if}\ (ptrFile\ ==\ stdin)\ \{}
+\DoxyCodeLine{00925\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Enter\ a,\ b,\ c:"{}});}
+\DoxyCodeLine{00926\ \ \ \ \ \}}
+\DoxyCodeLine{00927\ }
+\DoxyCodeLine{00928\ \ \ \ \ \doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3}{INPUT\_STATUSES}}\ inputStatus\ =\ \doxymbox{\hyperlink{lib_8h_a185bfd0ed530066ecb37a8feda899c5b}{getCoefInput}}(ptrCoefs,\ ptrFile);}
+\DoxyCodeLine{00929\ }
+\DoxyCodeLine{00930\ \doxymbox{\hyperlink{lib_8h_a1bdd7c1369b250215a080e8421d4ecf3}{ON\_DEBUG}}(printf(\textcolor{stringliteral}{"{}\%sa:\%lf,\ b:\%lf,\ c:\%lf\(\backslash\)n\%s"{}},}
+\DoxyCodeLine{00931\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{lib_8h_af733a2e19265664c7fb7fab3ff7910f3}{MY\_YELLOW}},\ ptrCoefs-\/>\doxymbox{\hyperlink{structequationCoefs_a2b6a27c420a402738f62897dffb8c289}{a}},\ ptrCoefs-\/>\doxymbox{\hyperlink{structequationCoefs_aac91acb14d7dbbf9ffc0e38eb58a71e0}{b}},\ ptrCoefs-\/>\doxymbox{\hyperlink{structequationCoefs_a5d2166bc753ec5ed1a3e4c73418db81f}{c}},\ \doxymbox{\hyperlink{lib_8h_a245f38fcd075b74c3f6ee738db944280}{MY\_RESET}}));}
+\DoxyCodeLine{00932\ \ \ \ \ \textcolor{keywordflow}{if}\ (inputStatus\ !=\ \doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3a85532f7f4c9ad5482709c4233650db27}{INPUT\_CORRECT}})\ \{}
+\DoxyCodeLine{00933\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \textcolor{keyword}{const}\ inputStatusLine\ =\ \doxymbox{\hyperlink{lib_8h_ad9ce0de5a3cffb3e56d4c3aa63d5f0e5}{getStringInputStatus}}(inputStatus);}
+\DoxyCodeLine{00934\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00935\ \ \ \ \ \ \ \ \ assert(inputStatusLine\ !=\ NULL);}
+\DoxyCodeLine{00936\ }
+\DoxyCodeLine{00937\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%s\%s\%s"{}},\ \doxymbox{\hyperlink{lib_8h_aabc8a60b2b78eecc6da447f98beacb95}{MY\_RED}},\ inputStatusLine,\ \doxymbox{\hyperlink{lib_8h_a245f38fcd075b74c3f6ee738db944280}{MY\_RESET}});}
+\DoxyCodeLine{00938\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{main_8cpp_ad2cca253e601712b5df1562061a50898}{myPlaySound}}(\doxymbox{\hyperlink{Sound_8h_aede0902e3afd72bbb4db993004370bd9}{INCORRECT\_SOUND}});}
+\DoxyCodeLine{00939\ \ \ \ \ \}}
+\DoxyCodeLine{00940\ \ \ \ \ \textcolor{keywordflow}{return}\ inputStatus;}
+\DoxyCodeLine{00941\ \}}
+
+\end{DoxyCode}
+
+
+References \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00014}{equation\+Coefs::\+a}}, \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00014}{equation\+Coefs::\+b}}, \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00014}{equation\+Coefs::\+c}}, \doxymbox{\hyperlink{main_8cpp_source_l00922}{file\+Coef\+Input()}}, \doxymbox{\hyperlink{main_8cpp_source_l00535}{get\+Coef\+Input()}}, \doxymbox{\hyperlink{main_8cpp_source_l00496}{get\+String\+Input\+Status()}}, \doxymbox{\hyperlink{Sound_8h_source_l00008}{INCORRECT\+\_\+\+SOUND}}, \doxymbox{\hyperlink{lib_8h_source_l00066}{INPUT\+\_\+\+CORRECT}}, \doxymbox{\hyperlink{lib_8h_source_l00016}{MY\+\_\+\+RED}}, \doxymbox{\hyperlink{lib_8h_source_l00019}{MY\+\_\+\+RESET}}, \doxymbox{\hyperlink{lib_8h_source_l00017}{MY\+\_\+\+YELLOW}}, \doxymbox{\hyperlink{main_8cpp_source_l01034}{my\+Play\+Sound()}}, and \doxymbox{\hyperlink{lib_8h_source_l00010}{ON\+\_\+\+DEBUG}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00828}{build\+Function\+Graphic()}}, \doxymbox{\hyperlink{main_8cpp_source_l00922}{file\+Coef\+Input()}}, \doxymbox{\hyperlink{main_8cpp_source_l00337}{solve\+Real\+Time()}}, and \doxymbox{\hyperlink{main_8cpp_source_l00700}{user\+Testing()}}.
+
+\Hypertarget{main_8cpp_a5200bb9b08a97c53e741e23cb0639298}\index{main.cpp@{main.cpp}!fileRefInput@{fileRefInput}}
+\index{fileRefInput@{fileRefInput}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{fileRefInput()}{fileRefInput()}}
+{\footnotesize\ttfamily \label{main_8cpp_a5200bb9b08a97c53e741e23cb0639298} 
+\doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3}{INPUT\+\_\+\+STATUSES}} file\+Ref\+Input (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structequationCoefsTest}{equation\+Coefs\+Test}} \texorpdfstring{$\ast$}{*}}]{coefs\+Test}{, }\item[{FILE \texorpdfstring{$\ast$}{*}}]{ptr\+File}{}\end{DoxyParamCaption})}
+
+
+
+This function handles exceptions while reading reference values, if something is wrong, string with explanation of error is printed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em coefs\+Test} & A pointer to struct, stroraging reference values \\
+\hline
+{\em ptr\+File} & A pointer to file OR stdin \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00943}{943}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00943\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00944\ \ \ \ \ \doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3}{INPUT\_STATUSES}}\ inputStatus\ =\ \doxymbox{\hyperlink{lib_8h_a356a3ac4667279f39128e868f90b1753}{getRefInput}}(ptrTest,\ ptrFile);}
+\DoxyCodeLine{00945\ }
+\DoxyCodeLine{00946\ \ \ \ \ \textcolor{keywordflow}{if}\ (inputStatus\ !=\ \doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3a85532f7f4c9ad5482709c4233650db27}{INPUT\_CORRECT}})\ \{}
+\DoxyCodeLine{00947\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \textcolor{keyword}{const}\ inputStatusLine\ =\ \doxymbox{\hyperlink{lib_8h_ad9ce0de5a3cffb3e56d4c3aa63d5f0e5}{getStringInputStatus}}(inputStatus);}
+\DoxyCodeLine{00948\ \ \ \ \ \ \ \ \ assert(inputStatusLine\ !=\ NULL);}
+\DoxyCodeLine{00949\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%s"{}},\ inputStatusLine);}
+\DoxyCodeLine{00950\ \ \ \ \ \}}
+\DoxyCodeLine{00951\ }
+\DoxyCodeLine{00952\ \ \ \ \ \textcolor{keywordflow}{return}\ inputStatus;}
+\DoxyCodeLine{00953\ \}}
+
+\end{DoxyCode}
+
+
+References \doxymbox{\hyperlink{main_8cpp_source_l00943}{file\+Ref\+Input()}}, \doxymbox{\hyperlink{main_8cpp_source_l00955}{get\+Ref\+Input()}}, \doxymbox{\hyperlink{main_8cpp_source_l00496}{get\+String\+Input\+Status()}}, and \doxymbox{\hyperlink{lib_8h_source_l00066}{INPUT\+\_\+\+CORRECT}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00943}{file\+Ref\+Input()}}, and \doxymbox{\hyperlink{main_8cpp_source_l00700}{user\+Testing()}}.
+
+\Hypertarget{main_8cpp_a185bfd0ed530066ecb37a8feda899c5b}\index{main.cpp@{main.cpp}!getCoefInput@{getCoefInput}}
+\index{getCoefInput@{getCoefInput}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{getCoefInput()}{getCoefInput()}}
+{\footnotesize\ttfamily \label{main_8cpp_a185bfd0ed530066ecb37a8feda899c5b} 
+\doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3}{INPUT\+\_\+\+STATUSES}} get\+Coef\+Input (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structequationCoefs}{equation\+Coefs}} \texorpdfstring{$\ast$}{*}}]{ptr\+Coefs}{, }\item[{FILE \texorpdfstring{$\ast$}{*}}]{ptr\+File}{}\end{DoxyParamCaption})}
+
+
+
+Gets coeficients of equation from file or stdin. 
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00535}{535}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00535\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00536\ \ \ \ \ \textcolor{keywordtype}{int}\ inputStatus\ =\ fscanf(ptrFile,\ \textcolor{stringliteral}{"{}\%lf\ \%lf\ \%lf"{}},\ \&(ptrCoefs-\/>\doxymbox{\hyperlink{structequationCoefs_a2b6a27c420a402738f62897dffb8c289}{a}}),\ \&(ptrCoefs-\/>\doxymbox{\hyperlink{structequationCoefs_aac91acb14d7dbbf9ffc0e38eb58a71e0}{b}}),\ \&(ptrCoefs-\/>\doxymbox{\hyperlink{structequationCoefs_a5d2166bc753ec5ed1a3e4c73418db81f}{c}}));}
+\DoxyCodeLine{00537\ \ \ \ \ \textcolor{keywordtype}{bool}\ isGoodEnd\ =\ \doxymbox{\hyperlink{lib_8h_aca89ceac44a3d790fbce5240e20cb61a}{processEnd}}();}
+\DoxyCodeLine{00538\ }
+\DoxyCodeLine{00539\ \ \ \ \ \textcolor{keywordflow}{switch}\ (inputStatus)\ \{}
+\DoxyCodeLine{00540\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 0:}
+\DoxyCodeLine{00541\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3a6d2ff4b7b6bf62bc7a0a327adfb1658c}{INPUT\_ERROR\_FIRST}};}
+\DoxyCodeLine{00542\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00543\ }
+\DoxyCodeLine{00544\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 1:}
+\DoxyCodeLine{00545\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3a3c5f0cea9872fb57fb1927105cef1d82}{INPUT\_ERROR\_SECOND}};}
+\DoxyCodeLine{00546\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00547\ }
+\DoxyCodeLine{00548\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 2:}
+\DoxyCodeLine{00549\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3aee4ce48316d423ac68114df49a6d678b}{INPUT\_ERROR\_THIRD}};}
+\DoxyCodeLine{00550\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00551\ }
+\DoxyCodeLine{00552\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 3:}
+\DoxyCodeLine{00553\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!isGoodEnd)\ \{}
+\DoxyCodeLine{00554\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3af6ed44afdcaed22db975a1a7a4b6ffe1}{INPUT\_ERROR\_AFTER\_THIRD}};}
+\DoxyCodeLine{00555\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00556\ }
+\DoxyCodeLine{00557\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\doxymbox{\hyperlink{lib_8h_af832b6db4c503316d88806c7b5b7a142}{isGoodCoefs}}(ptrCoefs))\ \{}
+\DoxyCodeLine{00558\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3a2b57a7a34e4cb133171bc2bcca941598}{INPUT\_ERROR\_BAD\_NUMBERS}};}
+\DoxyCodeLine{00559\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00560\ }
+\DoxyCodeLine{00561\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \ \doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3a85532f7f4c9ad5482709c4233650db27}{INPUT\_CORRECT}};}
+\DoxyCodeLine{00562\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00563\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00564\ }
+\DoxyCodeLine{00565\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00566\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3a708b209286c89d99428496ec87ff02b8}{UNKNOWN\_INPUT\_ERROR}};}
+\DoxyCodeLine{00567\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00568\ \ \ \ \ \}}
+\DoxyCodeLine{00569\ \}}
+
+\end{DoxyCode}
+
+
+References \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00014}{equation\+Coefs::\+a}}, \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00014}{equation\+Coefs::\+b}}, \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00014}{equation\+Coefs::\+c}}, \doxymbox{\hyperlink{main_8cpp_source_l00535}{get\+Coef\+Input()}}, \doxymbox{\hyperlink{lib_8h_source_l00066}{INPUT\+\_\+\+CORRECT}}, \doxymbox{\hyperlink{lib_8h_source_l00063}{INPUT\+\_\+\+ERROR\+\_\+\+AFTER\+\_\+\+THIRD}}, \doxymbox{\hyperlink{lib_8h_source_l00064}{INPUT\+\_\+\+ERROR\+\_\+\+BAD\+\_\+\+NUMBERS}}, \doxymbox{\hyperlink{lib_8h_source_l00059}{INPUT\+\_\+\+ERROR\+\_\+\+FIRST}}, \doxymbox{\hyperlink{lib_8h_source_l00060}{INPUT\+\_\+\+ERROR\+\_\+\+SECOND}}, \doxymbox{\hyperlink{lib_8h_source_l00061}{INPUT\+\_\+\+ERROR\+\_\+\+THIRD}}, \doxymbox{\hyperlink{main_8cpp_source_l00993}{is\+Good\+Coefs()}}, \doxymbox{\hyperlink{main_8cpp_source_l00279}{process\+End()}}, and \doxymbox{\hyperlink{lib_8h_source_l00065}{UNKNOWN\+\_\+\+INPUT\+\_\+\+ERROR}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00922}{file\+Coef\+Input()}}, and \doxymbox{\hyperlink{main_8cpp_source_l00535}{get\+Coef\+Input()}}.
+
+\Hypertarget{main_8cpp_a5f2d1a509c4f0fc69cf24d99938ba14d}\index{main.cpp@{main.cpp}!getFormatLine@{getFormatLine}}
+\index{getFormatLine@{getFormatLine}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{getFormatLine()}{getFormatLine()}}
+{\footnotesize\ttfamily \label{main_8cpp_a5f2d1a509c4f0fc69cf24d99938ba14d} 
+void get\+Format\+Line (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{format\+Line}{, }\item[{size\+\_\+t}]{scanf\+Len}{}\end{DoxyParamCaption})}
+
+
+
+Creating format line for fscanf to read first scanf\+Len symbols. 
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00206}{206}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00207\ \ \ \ \ snprintf(formatLine,\ \doxymbox{\hyperlink{lib_8h_ae70df03518a247f245d72df135cd480e}{MAX\_NUMBER\_LEN}},\ \textcolor{stringliteral}{"{}\ \%\%\%zus"{}},\ scanfLen);}
+\DoxyCodeLine{00208\ \}}
+
+\end{DoxyCode}
+
+
+References \doxymbox{\hyperlink{main_8cpp_source_l00206}{get\+Format\+Line()}}, and \doxymbox{\hyperlink{lib_8h_source_l00027}{MAX\+\_\+\+NUMBER\+\_\+\+LEN}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00206}{get\+Format\+Line()}}, and \doxymbox{\hyperlink{main_8cpp_source_l00210}{get\+Statement\+Line()}}.
+
+\Hypertarget{main_8cpp_a93f9d0fc1eeb08af2ff364d1099beaa0}\index{main.cpp@{main.cpp}!getPositiveIntInputSafe@{getPositiveIntInputSafe}}
+\index{getPositiveIntInputSafe@{getPositiveIntInputSafe}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{getPositiveIntInputSafe()}{getPositiveIntInputSafe()}}
+{\footnotesize\ttfamily \label{main_8cpp_a93f9d0fc1eeb08af2ff364d1099beaa0} 
+int get\+Positive\+Int\+Input\+Safe (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Tries to read the the positive integer, otherwise asking again (there is no other stop condition). 
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00318}{318}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00318\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00319\ \ \ \ \ \textcolor{keywordtype}{int}\ attempts\ =\ 0;}
+\DoxyCodeLine{00320\ }
+\DoxyCodeLine{00321\ \ \ \ \ \textcolor{keywordflow}{while}\ (\textcolor{keyword}{true})\ \{}
+\DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{lib_8h_a02f6d077b0b70a2a72df749935046ae8}{greetingsIntInput}}();}
+\DoxyCodeLine{00323\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!scanf(\textcolor{stringliteral}{"{}\%i"{}},\ \&attempts))\ \{}
+\DoxyCodeLine{00324\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{lib_8h_a99429615fd6ee98269269a9ef7287444}{readToEnd}}();}
+\DoxyCodeLine{00325\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{lib_8h_aca89ceac44a3d790fbce5240e20cb61a}{processEnd}}()\ \&\&\ attempts\ >=\ 0)\ \{}
+\DoxyCodeLine{00326\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ attempts;}
+\DoxyCodeLine{00327\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00328\ \ \ \ \ \}}
+\DoxyCodeLine{00329\ }
+\DoxyCodeLine{00330\ \ \ \ \ \textcolor{comment}{//tests,\ causing\ errrors\ in\ eraly\ versions:}}
+\DoxyCodeLine{00331\ \ \ \ \ \textcolor{comment}{//gjgghbkjbn}}
+\DoxyCodeLine{00332\ \ \ \ \ \textcolor{comment}{//2a}}
+\DoxyCodeLine{00333\ \}}
+
+\end{DoxyCode}
+
+
+References \doxymbox{\hyperlink{main_8cpp_source_l00318}{get\+Positive\+Int\+Input\+Safe()}}, \doxymbox{\hyperlink{main_8cpp_source_l00314}{greetings\+Int\+Input()}}, \doxymbox{\hyperlink{main_8cpp_source_l00279}{process\+End()}}, and \doxymbox{\hyperlink{main_8cpp_source_l00300}{read\+To\+End()}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00113}{choose\+Mode()}}, \doxymbox{\hyperlink{main_8cpp_source_l00318}{get\+Positive\+Int\+Input\+Safe()}}, and \doxymbox{\hyperlink{main_8cpp_source_l00700}{user\+Testing()}}.
+
+\Hypertarget{main_8cpp_a356a3ac4667279f39128e868f90b1753}\index{main.cpp@{main.cpp}!getRefInput@{getRefInput}}
+\index{getRefInput@{getRefInput}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{getRefInput()}{getRefInput()}}
+{\footnotesize\ttfamily \label{main_8cpp_a356a3ac4667279f39128e868f90b1753} 
+\doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3}{INPUT\+\_\+\+STATUSES}} get\+Ref\+Input (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structequationCoefsTest}{equation\+Coefs\+Test}} \texorpdfstring{$\ast$}{*}}]{ptr\+Test}{, }\item[{FILE \texorpdfstring{$\ast$}{*}}]{ptr\+File}{}\end{DoxyParamCaption})}
+
+
+
+This function reads reference values from User input. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em coefs\+Test} & A pointer to struct, storaging reference values \\
+\hline
+{\em ptr\+File} & A pointer to file OR stdin \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00955}{955}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00955\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00956\ \ \ \ \ \textcolor{keywordtype}{int}\ inputStatus\ =\ fscanf(ptrFile,\ \textcolor{stringliteral}{"{}\%i\ \%lf\ \%lf"{}},}
+\DoxyCodeLine{00957\ \ \ \ \ \&(ptrTest-\/>\doxymbox{\hyperlink{structequationCoefsTest_ac796ab130262b4093c55c579860a95aa}{refCntRoots}}),\ \&(ptrTest-\/>\doxymbox{\hyperlink{structequationCoefsTest_ac1118788719412a7aa8fbd2960238919}{refRoot1}}),\ \&(ptrTest-\/>\doxymbox{\hyperlink{structequationCoefsTest_accbdfbd289bc6b553365e0ce32a657c5}{refRoot2}}));}
+\DoxyCodeLine{00958\ }
+\DoxyCodeLine{00959\ \ \ \ \ \textcolor{keywordtype}{bool}\ isGoodEnd\ =\ \doxymbox{\hyperlink{lib_8h_aca89ceac44a3d790fbce5240e20cb61a}{processEnd}}();}
+\DoxyCodeLine{00960\ \ \ \ \ }
+\DoxyCodeLine{00961\ \ \ \ \ \textcolor{keywordflow}{switch}\ (inputStatus)\ \{}
+\DoxyCodeLine{00962\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 0:}
+\DoxyCodeLine{00963\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3a6d2ff4b7b6bf62bc7a0a327adfb1658c}{INPUT\_ERROR\_FIRST}};}
+\DoxyCodeLine{00964\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00965\ }
+\DoxyCodeLine{00966\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 1:}
+\DoxyCodeLine{00967\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3a3c5f0cea9872fb57fb1927105cef1d82}{INPUT\_ERROR\_SECOND}};}
+\DoxyCodeLine{00968\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00969\ }
+\DoxyCodeLine{00970\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 2:}
+\DoxyCodeLine{00971\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3aee4ce48316d423ac68114df49a6d678b}{INPUT\_ERROR\_THIRD}};}
+\DoxyCodeLine{00972\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00973\ }
+\DoxyCodeLine{00974\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 3:}
+\DoxyCodeLine{00975\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!isGoodEnd)\ \{}
+\DoxyCodeLine{00976\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3af6ed44afdcaed22db975a1a7a4b6ffe1}{INPUT\_ERROR\_AFTER\_THIRD}};}
+\DoxyCodeLine{00977\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00978\ }
+\DoxyCodeLine{00979\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\doxymbox{\hyperlink{lib_8h_a375d049e58ab0c6e75ac8ed27a5ebca2}{isGoodRef}}(ptrTest))\ \{}
+\DoxyCodeLine{00980\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3a2b57a7a34e4cb133171bc2bcca941598}{INPUT\_ERROR\_BAD\_NUMBERS}};}
+\DoxyCodeLine{00981\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00982\ }
+\DoxyCodeLine{00983\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3a85532f7f4c9ad5482709c4233650db27}{INPUT\_CORRECT}};}
+\DoxyCodeLine{00984\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00985\ }
+\DoxyCodeLine{00986\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00987\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3a708b209286c89d99428496ec87ff02b8}{UNKNOWN\_INPUT\_ERROR}};}
+\DoxyCodeLine{00988\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00989\ \ \ \ \ \}}
+\DoxyCodeLine{00990\ \}}
+
+\end{DoxyCode}
+
+
+References \doxymbox{\hyperlink{main_8cpp_source_l00955}{get\+Ref\+Input()}}, \doxymbox{\hyperlink{lib_8h_source_l00066}{INPUT\+\_\+\+CORRECT}}, \doxymbox{\hyperlink{lib_8h_source_l00063}{INPUT\+\_\+\+ERROR\+\_\+\+AFTER\+\_\+\+THIRD}}, \doxymbox{\hyperlink{lib_8h_source_l00064}{INPUT\+\_\+\+ERROR\+\_\+\+BAD\+\_\+\+NUMBERS}}, \doxymbox{\hyperlink{lib_8h_source_l00059}{INPUT\+\_\+\+ERROR\+\_\+\+FIRST}}, \doxymbox{\hyperlink{lib_8h_source_l00060}{INPUT\+\_\+\+ERROR\+\_\+\+SECOND}}, \doxymbox{\hyperlink{lib_8h_source_l00061}{INPUT\+\_\+\+ERROR\+\_\+\+THIRD}}, \doxymbox{\hyperlink{main_8cpp_source_l00997}{is\+Good\+Ref()}}, \doxymbox{\hyperlink{main_8cpp_source_l00279}{process\+End()}}, \doxymbox{\hyperlink{lib_8h_source_l00095}{equation\+Coefs\+Test::\+ref\+Cnt\+Roots}}, \doxymbox{\hyperlink{lib_8h_source_l00096}{equation\+Coefs\+Test::\+ref\+Root1}}, \doxymbox{\hyperlink{lib_8h_source_l00096}{equation\+Coefs\+Test::\+ref\+Root2}}, and \doxymbox{\hyperlink{lib_8h_source_l00065}{UNKNOWN\+\_\+\+INPUT\+\_\+\+ERROR}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00943}{file\+Ref\+Input()}}, and \doxymbox{\hyperlink{main_8cpp_source_l00955}{get\+Ref\+Input()}}.
+
+\Hypertarget{main_8cpp_a04893442fe652fb5f387f6ad1aed9ea9}\index{main.cpp@{main.cpp}!getStatementLine@{getStatementLine}}
+\index{getStatementLine@{getStatementLine}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{getStatementLine()}{getStatementLine()}}
+{\footnotesize\ttfamily \label{main_8cpp_a04893442fe652fb5f387f6ad1aed9ea9} 
+void get\+Statement\+Line (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{statement\+Line}{, }\item[{\doxymbox{\hyperlink{structstatementInfo}{statement\+Info}}}]{info}{}\end{DoxyParamCaption})}
+
+
+
+To read statement\+Line, expecting to get string similar in \doxylink{structstatementInfo}{statement\+Info}. 
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00210}{210}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00211\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ scanfLen\ =\ 0;}
+\DoxyCodeLine{00212\ }
+\DoxyCodeLine{00213\ \ \ \ \ \textcolor{keywordtype}{char}\ tempStatementLine\ [\doxymbox{\hyperlink{lib_8h_a42bc9ea40135c763cd21cdf9b8554670}{MAX\_STATEMENT\_LEN}}]\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00214\ }
+\DoxyCodeLine{00215\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \doxymbox{\hyperlink{lib_8h_a0bdc5ad93019f9e3db8ad418b39eacb2}{MAX\_STATEMENTS}}\ \&\&\ info.\doxymbox{\hyperlink{structstatementInfo_ad0b3769e975359677cdf081691e2ffb1}{statements}}[i];\ i++)\ \{}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ snprintf(tempStatementLine,\ \doxymbox{\hyperlink{lib_8h_a42bc9ea40135c763cd21cdf9b8554670}{MAX\_STATEMENT\_LEN}},\ \textcolor{stringliteral}{"{}\%s"{}},\ info.\doxymbox{\hyperlink{structstatementInfo_ad0b3769e975359677cdf081691e2ffb1}{statements}}[i]);}
+\DoxyCodeLine{00217\ }
+\DoxyCodeLine{00218\ \doxymbox{\hyperlink{lib_8h_a1bdd7c1369b250215a080e8421d4ecf3}{ON\_DEBUG}}(printf(\textcolor{stringliteral}{"{}\%s\%s\(\backslash\)n\%s"{}},\ \doxymbox{\hyperlink{lib_8h_af733a2e19265664c7fb7fab3ff7910f3}{MY\_YELLOW}},\ info.\doxymbox{\hyperlink{structstatementInfo_ad0b3769e975359677cdf081691e2ffb1}{statements}}[i],\ \doxymbox{\hyperlink{lib_8h_a245f38fcd075b74c3f6ee738db944280}{MY\_RESET}}));}
+\DoxyCodeLine{00219\ \doxymbox{\hyperlink{lib_8h_a1bdd7c1369b250215a080e8421d4ecf3}{ON\_DEBUG}}(printf(\textcolor{stringliteral}{"{}\%s(getStatementLine)\ info.statements[\%i]\ have\ len\%i\(\backslash\)n\%s"{}},}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{lib_8h_af733a2e19265664c7fb7fab3ff7910f3}{MY\_YELLOW}},\ i,\ (\textcolor{keywordtype}{int})strlen(info.\doxymbox{\hyperlink{structstatementInfo_ad0b3769e975359677cdf081691e2ffb1}{statements}}[i]),\ \doxymbox{\hyperlink{lib_8h_a245f38fcd075b74c3f6ee738db944280}{MY\_RESET}}));}
+\DoxyCodeLine{00221\ }
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ scanfLen\ =\ \doxymbox{\hyperlink{lib_8h_a79a14b1a43f36a7de4094322bf83873b}{max\_size\_t}}(scanfLen,\ strlen(tempStatementLine));}
+\DoxyCodeLine{00223\ \ \ \ \ \}}
+\DoxyCodeLine{00224\ }
+\DoxyCodeLine{00225\ \doxymbox{\hyperlink{lib_8h_a1bdd7c1369b250215a080e8421d4ecf3}{ON\_DEBUG}}(printf(\textcolor{stringliteral}{"{}\%s(getStatementLine)\ scanfLen:\%zu\(\backslash\)n\%s"{}},}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{lib_8h_af733a2e19265664c7fb7fab3ff7910f3}{MY\_YELLOW}},\ scanfLen,\ \doxymbox{\hyperlink{lib_8h_a245f38fcd075b74c3f6ee738db944280}{MY\_RESET}}));}
+\DoxyCodeLine{00227\ }
+\DoxyCodeLine{00228\ \ \ \ \ \textcolor{keywordtype}{char}\ formatLine\ [\doxymbox{\hyperlink{lib_8h_a4e34bb083d3349029a94995a2e3292b9}{MAX\_FORMAT\_LINE\_LEN}}]\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00229\ }
+\DoxyCodeLine{00230\ \ \ \ \ \doxymbox{\hyperlink{lib_8h_a5f2d1a509c4f0fc69cf24d99938ba14d}{getFormatLine}}(formatLine,\ scanfLen);}
+\DoxyCodeLine{00231\ }
+\DoxyCodeLine{00232\ \doxymbox{\hyperlink{lib_8h_a1bdd7c1369b250215a080e8421d4ecf3}{ON\_DEBUG}}(printf(\textcolor{stringliteral}{"{}\%s(getStatementLine)\ formatLine:\%s\(\backslash\)n\%s"{}},}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{lib_8h_af733a2e19265664c7fb7fab3ff7910f3}{MY\_YELLOW}},\ formatLine,\ \doxymbox{\hyperlink{lib_8h_a245f38fcd075b74c3f6ee738db944280}{MY\_RESET}}));}
+\DoxyCodeLine{00234\ }
+\DoxyCodeLine{00235\ \ \ \ \ scanf(formatLine,\ \ statementLine);}
+\DoxyCodeLine{00236\ }
+\DoxyCodeLine{00237\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\doxymbox{\hyperlink{lib_8h_a4fc23fd74c9f7aad4bfa17e91d0bdf99}{goodEnd}}())\ \{}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{lib_8h_a99429615fd6ee98269269a9ef7287444}{readToEnd}}();}
+\DoxyCodeLine{00239\ }
+\DoxyCodeLine{00240\ \doxymbox{\hyperlink{lib_8h_a1bdd7c1369b250215a080e8421d4ecf3}{ON\_DEBUG}}(printf(\textcolor{stringliteral}{"{}\%s(getStatementLine)\ read\ to\ end!\(\backslash\)n\%s"{}},\ }
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{lib_8h_af733a2e19265664c7fb7fab3ff7910f3}{MY\_YELLOW}},\ \doxymbox{\hyperlink{lib_8h_a245f38fcd075b74c3f6ee738db944280}{MY\_RESET}}));}
+\DoxyCodeLine{00242\ }
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}*\ ptrStatementLine\ =\ statementLine\ +\ (int)strlen(statementLine);}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ *ptrStatementLine++\ =\ \doxymbox{\hyperlink{lib_8h_aabb926ac41416ac6499c4c1a7b47f8a5}{TRASH\_CHAR}};}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ *ptrStatementLine\ =\ \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{00246\ \ \ \ \ \}}
+\DoxyCodeLine{00247\ }
+\DoxyCodeLine{00248\ \doxymbox{\hyperlink{lib_8h_a1bdd7c1369b250215a080e8421d4ecf3}{ON\_DEBUG}}(printf(\textcolor{stringliteral}{"{}\%s(getStatementLine)\ statementLine:\%s\(\backslash\)n\%s"{}},}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{lib_8h_af733a2e19265664c7fb7fab3ff7910f3}{MY\_YELLOW}},\ statementLine,\ \doxymbox{\hyperlink{lib_8h_a245f38fcd075b74c3f6ee738db944280}{MY\_RESET}}));}
+\DoxyCodeLine{00250\ \doxymbox{\hyperlink{lib_8h_a1bdd7c1369b250215a080e8421d4ecf3}{ON\_DEBUG}}(printf(\textcolor{stringliteral}{"{}\%s(getStatementLine)\ len\ of\ statementLine:\%i\(\backslash\)n\%s"{}},\ }
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{lib_8h_af733a2e19265664c7fb7fab3ff7910f3}{MY\_YELLOW}},\ (\textcolor{keywordtype}{int})strlen(statementLine),\ \doxymbox{\hyperlink{lib_8h_a245f38fcd075b74c3f6ee738db944280}{MY\_RESET}}));}
+\DoxyCodeLine{00252\ \}}
+
+\end{DoxyCode}
+
+
+References \doxymbox{\hyperlink{main_8cpp_source_l00206}{get\+Format\+Line()}}, \doxymbox{\hyperlink{main_8cpp_source_l00210}{get\+Statement\+Line()}}, \doxymbox{\hyperlink{main_8cpp_source_l00287}{good\+End()}}, \doxymbox{\hyperlink{lib_8h_source_l00026}{MAX\+\_\+\+FORMAT\+\_\+\+LINE\+\_\+\+LEN}}, \doxymbox{\hyperlink{main_8cpp_source_l01022}{max\+\_\+size\+\_\+t()}}, \doxymbox{\hyperlink{lib_8h_source_l00023}{MAX\+\_\+\+STATEMENT\+\_\+\+LEN}}, \doxymbox{\hyperlink{lib_8h_source_l00024}{MAX\+\_\+\+STATEMENTS}}, \doxymbox{\hyperlink{lib_8h_source_l00019}{MY\+\_\+\+RESET}}, \doxymbox{\hyperlink{lib_8h_source_l00017}{MY\+\_\+\+YELLOW}}, \doxymbox{\hyperlink{lib_8h_source_l00010}{ON\+\_\+\+DEBUG}}, \doxymbox{\hyperlink{main_8cpp_source_l00300}{read\+To\+End()}}, \doxymbox{\hyperlink{lib_8h_source_l00082}{statement\+Info::\+statements}}, and \doxymbox{\hyperlink{lib_8h_source_l00031}{TRASH\+\_\+\+CHAR}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00210}{get\+Statement\+Line()}}, \doxymbox{\hyperlink{main_8cpp_source_l00381}{resume()}}, \doxymbox{\hyperlink{main_8cpp_source_l00074}{user\+Choosing\+Mode()}}, and \doxymbox{\hyperlink{main_8cpp_source_l00176}{user\+Choosing\+Testing\+Mode()}}.
+
+\Hypertarget{main_8cpp_ae0acbc53d095ae2b0889cbc06075e1da}\index{main.cpp@{main.cpp}!getStringCheckStatus@{getStringCheckStatus}}
+\index{getStringCheckStatus@{getStringCheckStatus}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{getStringCheckStatus()}{getStringCheckStatus()}}
+{\footnotesize\ttfamily \label{main_8cpp_ae0acbc53d095ae2b0889cbc06075e1da} 
+const char \texorpdfstring{$\ast$}{*}const get\+String\+Check\+Status (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{lib_8h_abced6a6f14d20822e71c39f39c75c0ae}{CHECK\+\_\+\+STATUSES}}}]{Check\+Status}{}\end{DoxyParamCaption})}
+
+
+
+Transforms check\+Status to string with explanation, suitable for output to User. 
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00256}{256}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00257\ \ \ \ \ \textcolor{keywordflow}{switch}\ (CheckStatus)\ \{}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{lib_8h_abced6a6f14d20822e71c39f39c75c0aeaaad2d36806162d71fef089ba24176b0f}{CHECK\_SUCCESS}}:}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Both\ roots\ are\ correct\(\backslash\)n"{}};}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00261\ }
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{lib_8h_abced6a6f14d20822e71c39f39c75c0aea0884b3f08d1e7360e25807b5dd8ee4cf}{CHECK\_FAIL}}:}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Roots\ are\ incorrect\(\backslash\)n"{}};}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00265\ }
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{lib_8h_abced6a6f14d20822e71c39f39c75c0aeaac2692c8213efc1f1596e306a098e8ba}{CHECK\_ERROR}}:}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Error:\ error\ happened\ when\ checking\ coefs\(\backslash\)n"{}};}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00269\ }
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Error:\ unknown\ error\ happened\ while\ getting\ check\ status\(\backslash\)n"{}};}
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00273\ \ \ \ \ \}}
+\DoxyCodeLine{00274\ \}}
+
+\end{DoxyCode}
+
+
+References \doxymbox{\hyperlink{lib_8h_source_l00054}{CHECK\+\_\+\+ERROR}}, \doxymbox{\hyperlink{lib_8h_source_l00053}{CHECK\+\_\+\+FAIL}}, \doxymbox{\hyperlink{lib_8h_source_l00052}{CHECK\+\_\+\+SUCCESS}}, and \doxymbox{\hyperlink{main_8cpp_source_l00256}{get\+String\+Check\+Status()}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00256}{get\+String\+Check\+Status()}}, and \doxymbox{\hyperlink{main_8cpp_source_l00337}{solve\+Real\+Time()}}.
+
+\Hypertarget{main_8cpp_ad9ce0de5a3cffb3e56d4c3aa63d5f0e5}\index{main.cpp@{main.cpp}!getStringInputStatus@{getStringInputStatus}}
+\index{getStringInputStatus@{getStringInputStatus}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{getStringInputStatus()}{getStringInputStatus()}}
+{\footnotesize\ttfamily \label{main_8cpp_ad9ce0de5a3cffb3e56d4c3aa63d5f0e5} 
+const char \texorpdfstring{$\ast$}{*}const get\+String\+Input\+Status (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3}{INPUT\+\_\+\+STATUSES}}}]{input\+Status}{}\end{DoxyParamCaption})}
+
+
+
+Tranforms input status to string suitable for User. 
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00496}{496}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00496\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00497\ \ \ \ \ \textcolor{keywordflow}{switch}\ (inputStatus)\ \{}
+\DoxyCodeLine{00498\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3a6d2ff4b7b6bf62bc7a0a327adfb1658c}{INPUT\_ERROR\_FIRST}}:}
+\DoxyCodeLine{00499\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Error:\ cannot\ process\ first\ coef\(\backslash\)n"{}};}
+\DoxyCodeLine{00500\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00501\ }
+\DoxyCodeLine{00502\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3a3c5f0cea9872fb57fb1927105cef1d82}{INPUT\_ERROR\_SECOND}}:}
+\DoxyCodeLine{00503\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Error:\ cannot\ process\ second\ coef\(\backslash\)n"{}};}
+\DoxyCodeLine{00504\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00505\ }
+\DoxyCodeLine{00506\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3aee4ce48316d423ac68114df49a6d678b}{INPUT\_ERROR\_THIRD}}:}
+\DoxyCodeLine{00507\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Error:\ cannot\ process\ third\ coef\(\backslash\)n"{}};}
+\DoxyCodeLine{00508\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00509\ }
+\DoxyCodeLine{00510\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3af6ed44afdcaed22db975a1a7a4b6ffe1}{INPUT\_ERROR\_AFTER\_THIRD}}:}
+\DoxyCodeLine{00511\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Error:\ bad\ input\ after\ third\ coef\(\backslash\)n"{}};}
+\DoxyCodeLine{00512\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00513\ }
+\DoxyCodeLine{00514\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3a2b57a7a34e4cb133171bc2bcca941598}{INPUT\_ERROR\_BAD\_NUMBERS}}:}
+\DoxyCodeLine{00515\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Error:\ bad\ input\ coefs\(\backslash\)n"{}};}
+\DoxyCodeLine{00516\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00517\ }
+\DoxyCodeLine{00518\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3a708b209286c89d99428496ec87ff02b8}{UNKNOWN\_INPUT\_ERROR}}:}
+\DoxyCodeLine{00519\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Error:\ unknown\ input\ error\ happened\(\backslash\)n"{}};}
+\DoxyCodeLine{00520\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00521\ }
+\DoxyCodeLine{00522\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3a85532f7f4c9ad5482709c4233650db27}{INPUT\_CORRECT}}:}
+\DoxyCodeLine{00523\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Input\ correct\(\backslash\)n"{}};}
+\DoxyCodeLine{00524\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00525\ }
+\DoxyCodeLine{00526\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00527\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Error:\ unknown\ error\ happened\ while\ getting\ input\ status\(\backslash\)n"{}};}
+\DoxyCodeLine{00528\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00529\ \ \ \ \ \}}
+\DoxyCodeLine{00530\ \ \ \ \ \textcolor{keywordflow}{return}\ NULL;}
+\DoxyCodeLine{00531\ \}}
+
+\end{DoxyCode}
+
+
+References \doxymbox{\hyperlink{main_8cpp_source_l00496}{get\+String\+Input\+Status()}}, \doxymbox{\hyperlink{lib_8h_source_l00066}{INPUT\+\_\+\+CORRECT}}, \doxymbox{\hyperlink{lib_8h_source_l00063}{INPUT\+\_\+\+ERROR\+\_\+\+AFTER\+\_\+\+THIRD}}, \doxymbox{\hyperlink{lib_8h_source_l00064}{INPUT\+\_\+\+ERROR\+\_\+\+BAD\+\_\+\+NUMBERS}}, \doxymbox{\hyperlink{lib_8h_source_l00059}{INPUT\+\_\+\+ERROR\+\_\+\+FIRST}}, \doxymbox{\hyperlink{lib_8h_source_l00060}{INPUT\+\_\+\+ERROR\+\_\+\+SECOND}}, \doxymbox{\hyperlink{lib_8h_source_l00061}{INPUT\+\_\+\+ERROR\+\_\+\+THIRD}}, and \doxymbox{\hyperlink{lib_8h_source_l00065}{UNKNOWN\+\_\+\+INPUT\+\_\+\+ERROR}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00922}{file\+Coef\+Input()}}, \doxymbox{\hyperlink{main_8cpp_source_l00943}{file\+Ref\+Input()}}, and \doxymbox{\hyperlink{main_8cpp_source_l00496}{get\+String\+Input\+Status()}}.
+
+\Hypertarget{main_8cpp_a6b9d0aa048cc00127b69a11b1652504e}\index{main.cpp@{main.cpp}!getStringRunAllTestsStatus@{getStringRunAllTestsStatus}}
+\index{getStringRunAllTestsStatus@{getStringRunAllTestsStatus}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{getStringRunAllTestsStatus()}{getStringRunAllTestsStatus()}}
+{\footnotesize\ttfamily \label{main_8cpp_a6b9d0aa048cc00127b69a11b1652504e} 
+const char \texorpdfstring{$\ast$}{*}const get\+String\+Run\+All\+Tests\+Status (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{lib_8h_a5ab881fdb3a704bf01f559b8f29e97ee}{RUN\+\_\+\+ALL\+\_\+\+TESTS\+\_\+\+STATUSES}}}]{Run\+All\+Tests\+Status}{}\end{DoxyParamCaption})}
+
+
+
+Transforms status of running all tests to string suitable for User. 
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00574}{574}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00574\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00575\ \ \ \ \ \textcolor{keywordflow}{switch}\ (RunAllTestsStatus)\ \{}
+\DoxyCodeLine{00576\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{lib_8h_a5ab881fdb3a704bf01f559b8f29e97eea5482d7204e9fe0a20244009e009fe19e}{RUN\_ALL\_TESTS\_SUCCESS}}:}
+\DoxyCodeLine{00577\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}All\ tests\ passed\ without\ testing\ errors!\(\backslash\)n"{}};}
+\DoxyCodeLine{00578\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00579\ }
+\DoxyCodeLine{00580\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{lib_8h_a5ab881fdb3a704bf01f559b8f29e97eea2ff76a0f8414bc6b3d886a8884ad5fa4}{RUN\_ALL\_TESTS\_ERROR}}:}
+\DoxyCodeLine{00581\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Error:\ error\ happened\ while\ running\ all\ tests!\(\backslash\)n"{}};}
+\DoxyCodeLine{00582\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00583\ }
+\DoxyCodeLine{00584\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00585\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Error:\ unknown\ error\ happened\ while\ getting\ RunAllTests\ status!\(\backslash\)n"{}};}
+\DoxyCodeLine{00586\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00587\ \ \ \ \ \}}
+\DoxyCodeLine{00588\ \}}
+
+\end{DoxyCode}
+
+
+References \doxymbox{\hyperlink{main_8cpp_source_l00574}{get\+String\+Run\+All\+Tests\+Status()}}, \doxymbox{\hyperlink{lib_8h_source_l00077}{RUN\+\_\+\+ALL\+\_\+\+TESTS\+\_\+\+ERROR}}, and \doxymbox{\hyperlink{lib_8h_source_l00076}{RUN\+\_\+\+ALL\+\_\+\+TESTS\+\_\+\+SUCCESS}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00113}{choose\+Mode()}}, and \doxymbox{\hyperlink{main_8cpp_source_l00574}{get\+String\+Run\+All\+Tests\+Status()}}.
+
+\Hypertarget{main_8cpp_a6f9fd14ec6cfc73c7ac7c6e6aeaf7b90}\index{main.cpp@{main.cpp}!getStringTestCheckStatus@{getStringTestCheckStatus}}
+\index{getStringTestCheckStatus@{getStringTestCheckStatus}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{getStringTestCheckStatus()}{getStringTestCheckStatus()}}
+{\footnotesize\ttfamily \label{main_8cpp_a6f9fd14ec6cfc73c7ac7c6e6aeaf7b90} 
+const char \texorpdfstring{$\ast$}{*}const get\+String\+Test\+Check\+Status (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{lib_8h_a615beba20980376980ffc687b9201ca3}{RUN\+\_\+\+SINGLE\+\_\+\+TEST\+\_\+\+STATUSES}}}]{Test\+Check\+Status}{}\end{DoxyParamCaption})}
+
+
+
+Transforms status of running single test to string suitable for User. 
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00633}{633}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00633\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00634\ \ \ \ \ \textcolor{keywordflow}{switch}\ (TestCheckStatus)\ \{}
+\DoxyCodeLine{00635\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{lib_8h_a615beba20980376980ffc687b9201ca3a93866eb62cc80c66316ccb6282ba3289}{TEST\_CHECK\_SUCCESS}}:}
+\DoxyCodeLine{00636\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Test\ passed\ successfully!\(\backslash\)n"{}};}
+\DoxyCodeLine{00637\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00638\ }
+\DoxyCodeLine{00639\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{lib_8h_a615beba20980376980ffc687b9201ca3a551428584afa7900f2c84bdd04505757}{TEST\_CHECK\_FAIL}}:}
+\DoxyCodeLine{00640\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Test\ gives\ incorrect\ answer!\(\backslash\)n"{}};}
+\DoxyCodeLine{00641\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00642\ }
+\DoxyCodeLine{00643\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{lib_8h_a615beba20980376980ffc687b9201ca3a6629d128037b7899fbaf1c4a02088d42}{TEST\_CHECK\_ERROR}}:}
+\DoxyCodeLine{00644\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Error:\ error\ happened\ while\ testing!\(\backslash\)n"{}};}
+\DoxyCodeLine{00645\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00646\ }
+\DoxyCodeLine{00647\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00648\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Error:\ unknown\ error\ happened\ while\ getting\ test\ check\ status!\(\backslash\)n"{}};}
+\DoxyCodeLine{00649\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00650\ \ \ \ \ \}}
+\DoxyCodeLine{00651\ \}}
+
+\end{DoxyCode}
+
+
+References \doxymbox{\hyperlink{main_8cpp_source_l00633}{get\+String\+Test\+Check\+Status()}}, \doxymbox{\hyperlink{lib_8h_source_l00072}{TEST\+\_\+\+CHECK\+\_\+\+ERROR}}, \doxymbox{\hyperlink{lib_8h_source_l00071}{TEST\+\_\+\+CHECK\+\_\+\+FAIL}}, and \doxymbox{\hyperlink{lib_8h_source_l00070}{TEST\+\_\+\+CHECK\+\_\+\+SUCCESS}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00633}{get\+String\+Test\+Check\+Status()}}, \doxymbox{\hyperlink{main_8cpp_source_l00797}{unit\+Testing()}}, and \doxymbox{\hyperlink{main_8cpp_source_l00700}{user\+Testing()}}.
+
+\Hypertarget{main_8cpp_a25b56859a147395d7953d407544992c4}\index{main.cpp@{main.cpp}!goodEnd@{goodEnd}}
+\index{goodEnd@{goodEnd}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{goodEnd()}{goodEnd()}}
+{\footnotesize\ttfamily \label{main_8cpp_a25b56859a147395d7953d407544992c4} 
+bool good\+End (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Skips all \textquotesingle{} \textquotesingle{} and \textquotesingle{}\textbackslash{}t\textquotesingle{} chars and if current char is \textquotesingle{}~\newline
+\textquotesingle{} or EOF, then returns true, otherwise -\/ false. 
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00287}{287}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00288\ \ \ \ \ \textcolor{keywordtype}{char}\ c\ =\ \textcolor{charliteral}{'\ '};}
+\DoxyCodeLine{00289\ }
+\DoxyCodeLine{00290\ \ \ \ \ \textcolor{keywordflow}{while}\ (scanf(\textcolor{stringliteral}{"{}\%c"{}},\ \&c)\ \&\&\ (c\ ==\ \textcolor{charliteral}{'\ '}\ ||\ c\ ==\ \textcolor{charliteral}{'\(\backslash\)t'}))\ \{}
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ ;}
+\DoxyCodeLine{00292\ \ \ \ \ \}}
+\DoxyCodeLine{00293\ }
+\DoxyCodeLine{00294\ \doxymbox{\hyperlink{lib_8h_a1bdd7c1369b250215a080e8421d4ecf3}{ON\_DEBUG}}(printf(\textcolor{stringliteral}{"{}\%s(goodEnd)\ last\ char:\%c\(\backslash\)n\%s"{}},}
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{lib_8h_af733a2e19265664c7fb7fab3ff7910f3}{MY\_YELLOW}},\ c,\ \doxymbox{\hyperlink{lib_8h_a245f38fcd075b74c3f6ee738db944280}{MY\_RESET}}));}
+\DoxyCodeLine{00296\ }
+\DoxyCodeLine{00297\ \ \ \ \ \textcolor{keywordflow}{return}\ c\ ==\ \textcolor{charliteral}{'\(\backslash\)n'}\ ||\ c\ ==\ EOF;}
+\DoxyCodeLine{00298\ \}}
+
+\end{DoxyCode}
+
+
+References \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00014}{equation\+Coefs::\+c}}, \doxymbox{\hyperlink{main_8cpp_source_l00287}{good\+End()}}, \doxymbox{\hyperlink{lib_8h_source_l00019}{MY\+\_\+\+RESET}}, \doxymbox{\hyperlink{lib_8h_source_l00017}{MY\+\_\+\+YELLOW}}, and \doxymbox{\hyperlink{lib_8h_source_l00010}{ON\+\_\+\+DEBUG}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00210}{get\+Statement\+Line()}}, \doxymbox{\hyperlink{main_8cpp_source_l00287}{good\+End()}}, and \doxymbox{\hyperlink{main_8cpp_source_l00279}{process\+End()}}.
+
+\Hypertarget{main_8cpp_a6a5c27d3b3273f4730caf6231d79ac25}\index{main.cpp@{main.cpp}!greetings@{greetings}}
+\index{greetings@{greetings}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{greetings()}{greetings()}}
+{\footnotesize\ttfamily \label{main_8cpp_a6a5c27d3b3273f4730caf6231d79ac25} 
+void greetings (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Greets User by printing text. 
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00065}{65}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00066\ \ \ \ \ printf(\textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\(\backslash\)n"{}}}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Equation\ solver\(\backslash\)n"{}}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Powered\ by\ AK\(\backslash\)n"{}}}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\(\backslash\)n"{}});}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \doxymbox{\hyperlink{main_8cpp_ad2cca253e601712b5df1562061a50898}{myPlaySound}}(\doxymbox{\hyperlink{Sound_8h_a0ace12fab11d37785803373f0d20bad7}{GREETINGS\_SOUND}});}
+\DoxyCodeLine{00072\ \}}
+
+\end{DoxyCode}
+
+
+References \doxymbox{\hyperlink{main_8cpp_source_l00065}{greetings()}}, \doxymbox{\hyperlink{Sound_8h_source_l00009}{GREETINGS\+\_\+\+SOUND}}, and \doxymbox{\hyperlink{main_8cpp_source_l01034}{my\+Play\+Sound()}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00903}{acess\+File()}}, \doxymbox{\hyperlink{main_8cpp_source_l00065}{greetings()}}, and \doxymbox{\hyperlink{main_8cpp_source_l00025}{main()}}.
+
+\Hypertarget{main_8cpp_a97f685ea4a9f55e751eaf6d8af9d97bc}\index{main.cpp@{main.cpp}!greetingsIntInput@{greetingsIntInput}}
+\index{greetingsIntInput@{greetingsIntInput}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{greetingsIntInput()}{greetingsIntInput()}}
+{\footnotesize\ttfamily \label{main_8cpp_a97f685ea4a9f55e751eaf6d8af9d97bc} 
+void greetings\+Int\+Input (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Prints invitation to enter positive numbers. 
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00314}{314}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00314\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00315\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Enter\ the\ positive\ number:"{}});}
+\DoxyCodeLine{00316\ \}}
+
+\end{DoxyCode}
+
+
+References \doxymbox{\hyperlink{main_8cpp_source_l00314}{greetings\+Int\+Input()}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00318}{get\+Positive\+Int\+Input\+Safe()}}, and \doxymbox{\hyperlink{main_8cpp_source_l00314}{greetings\+Int\+Input()}}.
+
+\Hypertarget{main_8cpp_af832b6db4c503316d88806c7b5b7a142}\index{main.cpp@{main.cpp}!isGoodCoefs@{isGoodCoefs}}
+\index{isGoodCoefs@{isGoodCoefs}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{isGoodCoefs()}{isGoodCoefs()}}
+{\footnotesize\ttfamily \label{main_8cpp_af832b6db4c503316d88806c7b5b7a142} 
+bool is\+Good\+Coefs (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structequationCoefs}{equation\+Coefs}} \texorpdfstring{$\ast$}{*}}]{ptr\+Coefs}{}\end{DoxyParamCaption})}
+
+
+
+Checks are equation coefs finite? 
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00993}{993}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00993\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00994\ \ \ \ \ \textcolor{keywordflow}{return}\ isfinite(ptrCoefs-\/>\doxymbox{\hyperlink{structequationCoefs_a2b6a27c420a402738f62897dffb8c289}{a}})\ \&\&\ isfinite(ptrCoefs-\/>\doxymbox{\hyperlink{structequationCoefs_aac91acb14d7dbbf9ffc0e38eb58a71e0}{b}})\ \&\&\ isfinite(ptrCoefs-\/>\doxymbox{\hyperlink{structequationCoefs_a5d2166bc753ec5ed1a3e4c73418db81f}{c}});\ \textcolor{comment}{//\ nan\ также\ учитывает}}
+\DoxyCodeLine{00995\ \}}
+
+\end{DoxyCode}
+
+
+References \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00014}{equation\+Coefs::\+a}}, \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00014}{equation\+Coefs::\+b}}, \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00014}{equation\+Coefs::\+c}}, and \doxymbox{\hyperlink{main_8cpp_source_l00993}{is\+Good\+Coefs()}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00535}{get\+Coef\+Input()}}, and \doxymbox{\hyperlink{main_8cpp_source_l00993}{is\+Good\+Coefs()}}.
+
+\Hypertarget{main_8cpp_a375d049e58ab0c6e75ac8ed27a5ebca2}\index{main.cpp@{main.cpp}!isGoodRef@{isGoodRef}}
+\index{isGoodRef@{isGoodRef}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{isGoodRef()}{isGoodRef()}}
+{\footnotesize\ttfamily \label{main_8cpp_a375d049e58ab0c6e75ac8ed27a5ebca2} 
+bool is\+Good\+Ref (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structequationCoefsTest}{equation\+Coefs\+Test}} \texorpdfstring{$\ast$}{*}}]{ptr\+Test}{}\end{DoxyParamCaption})}
+
+
+
+Checks do reference values have valid format? Number of roots should be 0, 1, 2 or 8 (INF), both roots should be finite. 
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00997}{997}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00997\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00998\ \ \ \ \ \doxymbox{\hyperlink{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6}{QUADRATIC\_SOLVER\_STATUSES}}\ refCntRoots\ =\ ptrTest-\/>\doxymbox{\hyperlink{structequationCoefsTest_ac796ab130262b4093c55c579860a95aa}{refCntRoots}};}
+\DoxyCodeLine{00999\ \ \ \ \ }
+\DoxyCodeLine{01000\ \ \ \ \ \textcolor{keywordflow}{switch}\ (refCntRoots)\ \{}
+\DoxyCodeLine{01001\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6a52da2ea29bc7f0697300ec26acb69715}{ZERO\_ROOTS}}:}
+\DoxyCodeLine{01002\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{01003\ }
+\DoxyCodeLine{01004\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6a6700c0f6efd23571cb22aefd2510b1cf}{ONE\_ROOT}}:}
+\DoxyCodeLine{01005\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{01006\ }
+\DoxyCodeLine{01007\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6a876622d3c0b008da13a3685c64714e81}{TWO\_ROOTS}}:}
+\DoxyCodeLine{01008\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{01009\ }
+\DoxyCodeLine{01010\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6a5a79e9e49077da58fe5d46a98f0b5e36}{INF\_ROOTS}}:}
+\DoxyCodeLine{01011\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{01012\ }
+\DoxyCodeLine{01013\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{01014\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{01015\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{01016\ \ \ \ \ \}}
+\DoxyCodeLine{01017\ }
+\DoxyCodeLine{01018\ \ \ \ \ \textcolor{keywordflow}{return}\ !isinf(ptrTest-\/>\doxymbox{\hyperlink{structequationCoefsTest_ac1118788719412a7aa8fbd2960238919}{refRoot1}})\ \&\&\ !isinf(ptrTest-\/>\doxymbox{\hyperlink{structequationCoefsTest_accbdfbd289bc6b553365e0ce32a657c5}{refRoot2}});}
+\DoxyCodeLine{01019\ \}}
+
+\end{DoxyCode}
+
+
+References \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00010}{INF\+\_\+\+ROOTS}}, \doxymbox{\hyperlink{main_8cpp_source_l00997}{is\+Good\+Ref()}}, \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00008}{ONE\+\_\+\+ROOT}}, \doxymbox{\hyperlink{lib_8h_source_l00095}{equation\+Coefs\+Test::\+ref\+Cnt\+Roots}}, \doxymbox{\hyperlink{lib_8h_source_l00096}{equation\+Coefs\+Test::\+ref\+Root1}}, \doxymbox{\hyperlink{lib_8h_source_l00096}{equation\+Coefs\+Test::\+ref\+Root2}}, \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00009}{TWO\+\_\+\+ROOTS}}, and \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00007}{ZERO\+\_\+\+ROOTS}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00955}{get\+Ref\+Input()}}, and \doxymbox{\hyperlink{main_8cpp_source_l00997}{is\+Good\+Ref()}}.
+
+\Hypertarget{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\index{main.cpp@{main.cpp}!main@{main}}
+\index{main@{main}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+int main (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00025}{25}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \doxymbox{\hyperlink{lib_8h_afe95cbf25cb718882af3b270d8444891}{greetings}}();}
+\DoxyCodeLine{00027\ \ \ \ \ \doxymbox{\hyperlink{lib_8h_a780cb1180cc5e51ff4ce71c1fc4e6422}{INPUT\_MODE\_STATUS}}\ inputModeStatus\ =\ \doxymbox{\hyperlink{lib_8h_a5989702ba297ec8e4991aeb494d72ac4}{userChoosingMode}}();}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \doxymbox{\hyperlink{lib_8h_ab9efef65deae8e82d58379e256b5c478}{chooseMode}}(inputModeStatus);}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00032\ \}}
+
+\end{DoxyCode}
+
+
+References \doxymbox{\hyperlink{main_8cpp_source_l00113}{choose\+Mode()}}, \doxymbox{\hyperlink{main_8cpp_source_l00065}{greetings()}}, \doxymbox{\hyperlink{example_8cpp_source_l00006}{main()}}, and \doxymbox{\hyperlink{main_8cpp_source_l00074}{user\+Choosing\+Mode()}}.
+
+\Hypertarget{main_8cpp_a79a14b1a43f36a7de4094322bf83873b}\index{main.cpp@{main.cpp}!max\_size\_t@{max\_size\_t}}
+\index{max\_size\_t@{max\_size\_t}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{max\_size\_t()}{max\_size\_t()}}
+{\footnotesize\ttfamily \label{main_8cpp_a79a14b1a43f36a7de4094322bf83873b} 
+size\+\_\+t max\+\_\+size\+\_\+t (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{op1}{, }\item[{size\+\_\+t}]{op2}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l01022}{1022}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01022\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{01023\ \ \ \ \ \textcolor{keywordflow}{return}\ (op1\ >\ op2)\ ?\ op1\ :\ op2;}
+\DoxyCodeLine{01024\ \}}
+
+\end{DoxyCode}
+
+
+References \doxymbox{\hyperlink{main_8cpp_source_l01022}{max\+\_\+size\+\_\+t()}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00210}{get\+Statement\+Line()}}, and \doxymbox{\hyperlink{main_8cpp_source_l01022}{max\+\_\+size\+\_\+t()}}.
+
+\Hypertarget{main_8cpp_ad2cca253e601712b5df1562061a50898}\index{main.cpp@{main.cpp}!myPlaySound@{myPlaySound}}
+\index{myPlaySound@{myPlaySound}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{myPlaySound()}{myPlaySound()}}
+{\footnotesize\ttfamily \label{main_8cpp_ad2cca253e601712b5df1562061a50898} 
+void my\+Play\+Sound (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}const}]{sound\+Line}{}\end{DoxyParamCaption})}
+
+
+
+Calls for mpv to playback sound. 
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l01034}{1034}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{01035\ \ \ \ \ \textcolor{keywordtype}{char}\ commandLine[\doxymbox{\hyperlink{Sound_8h_a3444b5f90f19b5a5191ea331a519d423}{MAX\_LEN\_COMMAND\_LINE}}];}
+\DoxyCodeLine{01036\ \ \ \ \ sprintf(commandLine,\ \textcolor{stringliteral}{"{}mpv\ \%s"{}},\ soundLine);}
+\DoxyCodeLine{01037\ \ \ \ \ system(commandLine);}
+\DoxyCodeLine{01038\ \}}
+
+\end{DoxyCode}
+
+
+References \doxymbox{\hyperlink{Sound_8h_source_l00005}{MAX\+\_\+\+LEN\+\_\+\+COMMAND\+\_\+\+LINE}}, and \doxymbox{\hyperlink{main_8cpp_source_l01034}{my\+Play\+Sound()}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00903}{acess\+File()}}, \doxymbox{\hyperlink{main_8cpp_source_l00113}{choose\+Mode()}}, \doxymbox{\hyperlink{main_8cpp_source_l00922}{file\+Coef\+Input()}}, \doxymbox{\hyperlink{main_8cpp_source_l00065}{greetings()}}, \doxymbox{\hyperlink{main_8cpp_source_l01034}{my\+Play\+Sound()}}, \doxymbox{\hyperlink{main_8cpp_source_l00459}{print\+Roots()}}, \doxymbox{\hyperlink{main_8cpp_source_l00381}{resume()}}, \doxymbox{\hyperlink{main_8cpp_source_l00592}{run\+All\+Tests()}}, \doxymbox{\hyperlink{main_8cpp_source_l00337}{solve\+Real\+Time()}}, \doxymbox{\hyperlink{main_8cpp_source_l00700}{user\+Testing()}}, and \doxymbox{\hyperlink{FunctionGraphic_8cpp_source_l00077}{zoom()}}.
+
+\Hypertarget{main_8cpp_aaa0833d15df8a8bb183fd0354389d1d1}\index{main.cpp@{main.cpp}!printAttempts@{printAttempts}}
+\index{printAttempts@{printAttempts}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{printAttempts()}{printAttempts()}}
+{\footnotesize\ttfamily \label{main_8cpp_aaa0833d15df8a8bb183fd0354389d1d1} 
+void print\+Attempts (\begin{DoxyParamCaption}\item[{int}]{attempts}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00404}{404}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00404\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00405\ \ \ \ \ assert(attempts\ >=\ 0);}
+\DoxyCodeLine{00406\ }
+\DoxyCodeLine{00407\ \ \ \ \ \textcolor{keywordflow}{switch}\ (attempts)\ \{}
+\DoxyCodeLine{00408\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 0:}
+\DoxyCodeLine{00409\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}This\ is\ last\ attempt!\(\backslash\)n"{}});}
+\DoxyCodeLine{00410\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00411\ }
+\DoxyCodeLine{00412\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 1:}
+\DoxyCodeLine{00413\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%i\ attempt\ left!\(\backslash\)n"{}},\ attempts);}
+\DoxyCodeLine{00414\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00415\ }
+\DoxyCodeLine{00416\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00417\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%i\ attempts\ left!\(\backslash\)n"{}},\ attempts);}
+\DoxyCodeLine{00418\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00419\ \ \ \ \ \}}
+\DoxyCodeLine{00420\ \}}
+
+\end{DoxyCode}
+
+
+References \doxymbox{\hyperlink{main_8cpp_source_l00404}{print\+Attempts()}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00404}{print\+Attempts()}}, and \doxymbox{\hyperlink{main_8cpp_source_l00337}{solve\+Real\+Time()}}.
+
+\Hypertarget{main_8cpp_af30ce291bf231d6295202c155a59f680}\index{main.cpp@{main.cpp}!printEquationCoefsTest@{printEquationCoefsTest}}
+\index{printEquationCoefsTest@{printEquationCoefsTest}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{printEquationCoefsTest()}{printEquationCoefsTest()}}
+{\footnotesize\ttfamily \label{main_8cpp_af30ce291bf231d6295202c155a59f680} 
+void print\+Equation\+Coefs\+Test (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structequationCoefsTest}{equation\+Coefs\+Test}}}]{test}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00056}{56}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00057\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Coefs:\ a:\ \%lf,\ b:\ \%lf,\ c:\ \%lf\(\backslash\)n"{}}}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}refCntRoots:\ \%i,\ refRoot1:\ \%lf,\ refRoot2:\ \%lf\(\backslash\)n"{}},}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ test.\doxymbox{\hyperlink{structequationCoefsTest_a7c6c308b47522b8646601f1b25712875}{coefs}}.\doxymbox{\hyperlink{structequationCoefs_a2b6a27c420a402738f62897dffb8c289}{a}},\ test.\doxymbox{\hyperlink{structequationCoefsTest_a7c6c308b47522b8646601f1b25712875}{coefs}}.\doxymbox{\hyperlink{structequationCoefs_aac91acb14d7dbbf9ffc0e38eb58a71e0}{b}},\ test.\doxymbox{\hyperlink{structequationCoefsTest_a7c6c308b47522b8646601f1b25712875}{coefs}}.\doxymbox{\hyperlink{structequationCoefs_a5d2166bc753ec5ed1a3e4c73418db81f}{c}},}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ test.\doxymbox{\hyperlink{structequationCoefsTest_ac796ab130262b4093c55c579860a95aa}{refCntRoots}},\ test.\doxymbox{\hyperlink{structequationCoefsTest_ac1118788719412a7aa8fbd2960238919}{refRoot1}},\ test.\doxymbox{\hyperlink{structequationCoefsTest_accbdfbd289bc6b553365e0ce32a657c5}{refRoot2}});}
+\DoxyCodeLine{00061\ \}\ }
+
+\end{DoxyCode}
+
+
+References \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00014}{equation\+Coefs::\+a}}, \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00014}{equation\+Coefs::\+b}}, \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00014}{equation\+Coefs::\+c}}, \doxymbox{\hyperlink{lib_8h_source_l00093}{equation\+Coefs\+Test::\+coefs}}, \doxymbox{\hyperlink{main_8cpp_source_l00056}{print\+Equation\+Coefs\+Test()}}, \doxymbox{\hyperlink{lib_8h_source_l00095}{equation\+Coefs\+Test::\+ref\+Cnt\+Roots}}, \doxymbox{\hyperlink{lib_8h_source_l00096}{equation\+Coefs\+Test::\+ref\+Root1}}, and \doxymbox{\hyperlink{lib_8h_source_l00096}{equation\+Coefs\+Test::\+ref\+Root2}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00056}{print\+Equation\+Coefs\+Test()}}, \doxymbox{\hyperlink{main_8cpp_source_l00655}{run\+Single\+Test()}}, and \doxymbox{\hyperlink{main_8cpp_source_l00797}{unit\+Testing()}}.
+
+\Hypertarget{main_8cpp_adb3188631463b61350d26c542f757030}\index{main.cpp@{main.cpp}!printRoots@{printRoots}}
+\index{printRoots@{printRoots}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{printRoots()}{printRoots()}}
+{\footnotesize\ttfamily \label{main_8cpp_adb3188631463b61350d26c542f757030} 
+void print\+Roots (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6}{QUADRATIC\+\_\+\+SOLVER\+\_\+\+STATUSES}}}]{cnt\+Roots}{, }\item[{const double}]{eq\+Root1}{, }\item[{const double}]{eq\+Root2}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em cnt\+Roots} & 8 if there is infinite number of roots \\
+\hline
+{\em eq\+Root1} & NAN if there is no root \\
+\hline
+{\em eq\+Root2} & NAN if there is no root \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00459}{459}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00459\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00460\ \ \ \ \ \textcolor{keywordflow}{switch}\ (cntRoots)\ \{}
+\DoxyCodeLine{00461\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6a52da2ea29bc7f0697300ec26acb69715}{ZERO\_ROOTS}}:}
+\DoxyCodeLine{00462\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}No\ solutions\(\backslash\)n"{}});}
+\DoxyCodeLine{00463\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00464\ }
+\DoxyCodeLine{00465\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6a6700c0f6efd23571cb22aefd2510b1cf}{ONE\_ROOT}}:}
+\DoxyCodeLine{00466\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Have\ one\ root:\ \%lf\(\backslash\)n"{}},\ eqRoot1);}
+\DoxyCodeLine{00467\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00468\ }
+\DoxyCodeLine{00469\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6a876622d3c0b008da13a3685c64714e81}{TWO\_ROOTS}}:}
+\DoxyCodeLine{00470\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Have\ two\ roots:\ \%lf,\ \%lf\(\backslash\)n"{}},\ eqRoot1,\ eqRoot2);}
+\DoxyCodeLine{00471\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00472\ }
+\DoxyCodeLine{00473\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6a5a79e9e49077da58fe5d46a98f0b5e36}{INF\_ROOTS}}:}
+\DoxyCodeLine{00474\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Have\ infinite\ number\ of\ solutions\(\backslash\)n"{}});}
+\DoxyCodeLine{00475\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00476\ }
+\DoxyCodeLine{00477\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6a3e72a207980317e2a7929fddd881e2fb}{QUADRATIC\_SOLVER\_ERROR}}\ :}
+\DoxyCodeLine{00478\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%sHave\ error\ in\ quadratic\ solver\(\backslash\)n\%s"{}},\ \doxymbox{\hyperlink{lib_8h_aabc8a60b2b78eecc6da447f98beacb95}{MY\_RED}},\ \doxymbox{\hyperlink{lib_8h_a245f38fcd075b74c3f6ee738db944280}{MY\_RESET}});}
+\DoxyCodeLine{00479\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{main_8cpp_ad2cca253e601712b5df1562061a50898}{myPlaySound}}(\doxymbox{\hyperlink{Sound_8h_aede0902e3afd72bbb4db993004370bd9}{INCORRECT\_SOUND}});}
+\DoxyCodeLine{00480\ }
+\DoxyCodeLine{00481\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00482\ }
+\DoxyCodeLine{00483\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00484\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%sError:\ have\ \%i\ roots\(\backslash\)n\%s"{}},\ \doxymbox{\hyperlink{lib_8h_aabc8a60b2b78eecc6da447f98beacb95}{MY\_RED}},\ cntRoots,\ \doxymbox{\hyperlink{lib_8h_a245f38fcd075b74c3f6ee738db944280}{MY\_RESET}});}
+\DoxyCodeLine{00485\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{main_8cpp_ad2cca253e601712b5df1562061a50898}{myPlaySound}}(\doxymbox{\hyperlink{Sound_8h_aede0902e3afd72bbb4db993004370bd9}{INCORRECT\_SOUND}});}
+\DoxyCodeLine{00486\ }
+\DoxyCodeLine{00487\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00488\ \ \ \ \ \}}
+\DoxyCodeLine{00489\ \}}
+
+\end{DoxyCode}
+
+
+References \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00016}{equation\+Coefs::\+eq\+Root1}}, \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00016}{equation\+Coefs::\+eq\+Root2}}, \doxymbox{\hyperlink{Sound_8h_source_l00008}{INCORRECT\+\_\+\+SOUND}}, \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00010}{INF\+\_\+\+ROOTS}}, \doxymbox{\hyperlink{lib_8h_source_l00016}{MY\+\_\+\+RED}}, \doxymbox{\hyperlink{lib_8h_source_l00019}{MY\+\_\+\+RESET}}, \doxymbox{\hyperlink{main_8cpp_source_l01034}{my\+Play\+Sound()}}, \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00008}{ONE\+\_\+\+ROOT}}, \doxymbox{\hyperlink{main_8cpp_source_l00459}{print\+Roots()}}, \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00006}{QUADRATIC\+\_\+\+SOLVER\+\_\+\+ERROR}}, \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00009}{TWO\+\_\+\+ROOTS}}, and \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00007}{ZERO\+\_\+\+ROOTS}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00459}{print\+Roots()}}, and \doxymbox{\hyperlink{main_8cpp_source_l00337}{solve\+Real\+Time()}}.
+
+\Hypertarget{main_8cpp_a990b9ce07bc44e4c3ba1c22b94e119c6}\index{main.cpp@{main.cpp}!processEnd@{processEnd}}
+\index{processEnd@{processEnd}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{processEnd()}{processEnd()}}
+{\footnotesize\ttfamily \label{main_8cpp_a990b9ce07bc44e4c3ba1c22b94e119c6} 
+bool process\+End (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Skips all \textquotesingle{} \textquotesingle{} and \textquotesingle{}\textbackslash{}t\textquotesingle{} chars and if current char is \textquotesingle{}~\newline
+\textquotesingle{} or EOF, then stop, otherwise read to such symbol. 
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00279}{279}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00280\ \ \ \ \ \textcolor{keywordtype}{int}\ isGoodEnd\ =\ \doxymbox{\hyperlink{lib_8h_a4fc23fd74c9f7aad4bfa17e91d0bdf99}{goodEnd}}();}
+\DoxyCodeLine{00281\ \ \ \ \ \textcolor{keywordflow}{if}\ (!isGoodEnd)\ \{}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{lib_8h_a99429615fd6ee98269269a9ef7287444}{readToEnd}}();}
+\DoxyCodeLine{00283\ \ \ \ \ \}}
+\DoxyCodeLine{00284\ \ \ \ \ \textcolor{keywordflow}{return}\ isGoodEnd;}
+\DoxyCodeLine{00285\ \}}
+
+\end{DoxyCode}
+
+
+References \doxymbox{\hyperlink{main_8cpp_source_l00287}{good\+End()}}, \doxymbox{\hyperlink{main_8cpp_source_l00279}{process\+End()}}, and \doxymbox{\hyperlink{main_8cpp_source_l00300}{read\+To\+End()}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00535}{get\+Coef\+Input()}}, \doxymbox{\hyperlink{main_8cpp_source_l00318}{get\+Positive\+Int\+Input\+Safe()}}, \doxymbox{\hyperlink{main_8cpp_source_l00955}{get\+Ref\+Input()}}, and \doxymbox{\hyperlink{main_8cpp_source_l00279}{process\+End()}}.
+
+\Hypertarget{main_8cpp_a7fdf8b1b0e3493aad0b28103b28039c6}\index{main.cpp@{main.cpp}!readToEnd@{readToEnd}}
+\index{readToEnd@{readToEnd}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{readToEnd()}{readToEnd()}}
+{\footnotesize\ttfamily \label{main_8cpp_a7fdf8b1b0e3493aad0b28103b28039c6} 
+void read\+To\+End (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Reads all chars until \textquotesingle{}~\newline
+\textquotesingle{} or EOF. 
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00300}{300}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00301\ \ \ \ \ \textcolor{keywordtype}{char}\ c\ =\ \textcolor{charliteral}{'A'};}
+\DoxyCodeLine{00302\ }
+\DoxyCodeLine{00303\ \ \ \ \ \textcolor{keywordflow}{while}\ ((c\ =\ (\textcolor{keywordtype}{char})getchar())\ \&\&\ c\ !=\ \textcolor{charliteral}{'\(\backslash\)n'})\ \{}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ ;}
+\DoxyCodeLine{00305\ \ \ \ \ \}}
+\DoxyCodeLine{00306\ }
+\DoxyCodeLine{00307\ \ \ \ \ \textcolor{keywordtype}{int}\ res\ =\ c\ ==\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{00308\ }
+\DoxyCodeLine{00309\ \doxymbox{\hyperlink{lib_8h_a1bdd7c1369b250215a080e8421d4ecf3}{ON\_DEBUG}}(printf(\textcolor{stringliteral}{"{}\%s(readToEnd)\ c\ ==\ backslashn:\%i\(\backslash\)n\%s"{}},}
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{lib_8h_af733a2e19265664c7fb7fab3ff7910f3}{MY\_YELLOW}},\ res,\ \doxymbox{\hyperlink{lib_8h_a245f38fcd075b74c3f6ee738db944280}{MY\_RESET}}));}
+\DoxyCodeLine{00311\ \}}
+
+\end{DoxyCode}
+
+
+References \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00014}{equation\+Coefs::\+c}}, \doxymbox{\hyperlink{lib_8h_source_l00019}{MY\+\_\+\+RESET}}, \doxymbox{\hyperlink{lib_8h_source_l00017}{MY\+\_\+\+YELLOW}}, \doxymbox{\hyperlink{lib_8h_source_l00010}{ON\+\_\+\+DEBUG}}, and \doxymbox{\hyperlink{main_8cpp_source_l00300}{read\+To\+End()}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00318}{get\+Positive\+Int\+Input\+Safe()}}, \doxymbox{\hyperlink{main_8cpp_source_l00210}{get\+Statement\+Line()}}, \doxymbox{\hyperlink{main_8cpp_source_l00279}{process\+End()}}, and \doxymbox{\hyperlink{main_8cpp_source_l00300}{read\+To\+End()}}.
+
+\Hypertarget{main_8cpp_acee85cf91ee5e73735fbf8717543844b}\index{main.cpp@{main.cpp}!resume@{resume}}
+\index{resume@{resume}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{resume()}{resume()}}
+{\footnotesize\ttfamily \label{main_8cpp_acee85cf91ee5e73735fbf8717543844b} 
+bool resume (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Function, which asks User to continue solving equations or not? 
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00381}{381}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00381\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00382\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Continue?\ \%s\ /\ \%s:"{}},\ \doxymbox{\hyperlink{lib_8h_a997ce61980fb638854974b855a8cf2a7}{YES\_NO}}.\doxymbox{\hyperlink{structstatementInfo_ad0b3769e975359677cdf081691e2ffb1}{statements}}[0],\ \doxymbox{\hyperlink{lib_8h_a997ce61980fb638854974b855a8cf2a7}{YES\_NO}}.\doxymbox{\hyperlink{structstatementInfo_ad0b3769e975359677cdf081691e2ffb1}{statements}}[1]);}
+\DoxyCodeLine{00383\ }
+\DoxyCodeLine{00384\ \ \ \ \ \textcolor{keywordtype}{char}\ resumeLine[\doxymbox{\hyperlink{lib_8h_a42bc9ea40135c763cd21cdf9b8554670}{MAX\_STATEMENT\_LEN}}]\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00385\ }
+\DoxyCodeLine{00386\ \ \ \ \ \doxymbox{\hyperlink{lib_8h_a04893442fe652fb5f387f6ad1aed9ea9}{getStatementLine}}(resumeLine,\ \doxymbox{\hyperlink{lib_8h_a997ce61980fb638854974b855a8cf2a7}{YES\_NO}});}
+\DoxyCodeLine{00387\ }
+\DoxyCodeLine{00388\ \doxymbox{\hyperlink{lib_8h_a1bdd7c1369b250215a080e8421d4ecf3}{ON\_DEBUG}}(printf(\textcolor{stringliteral}{"{}\%s(resume)\ resumeLine:\ \%c\%c\%c\%c\(\backslash\)n\%s"{}},}
+\DoxyCodeLine{00389\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{lib_8h_af733a2e19265664c7fb7fab3ff7910f3}{MY\_YELLOW}},\ resumeLine[0],\ resumeLine[1],\ resumeLine[2],\ resumeLine[3],\ \doxymbox{\hyperlink{lib_8h_a245f38fcd075b74c3f6ee738db944280}{MY\_RESET}}));}
+\DoxyCodeLine{00390\ }
+\DoxyCodeLine{00391\ \ \ \ \ \textcolor{keywordflow}{if}\ (strcmp(resumeLine,\ \doxymbox{\hyperlink{lib_8h_a997ce61980fb638854974b855a8cf2a7}{YES\_NO}}.\doxymbox{\hyperlink{structstatementInfo_ad0b3769e975359677cdf081691e2ffb1}{statements}}[0])\ ==\ 0)\ \{}
+\DoxyCodeLine{00392\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00393\ \ \ \ \ \}}
+\DoxyCodeLine{00394\ \ \ \ \ }
+\DoxyCodeLine{00395\ \ \ \ \ \textcolor{keywordflow}{if}\ (strcmp(resumeLine,\ \doxymbox{\hyperlink{lib_8h_a997ce61980fb638854974b855a8cf2a7}{YES\_NO}}.\doxymbox{\hyperlink{structstatementInfo_ad0b3769e975359677cdf081691e2ffb1}{statements}}[1])\ ==\ 0)\ \{}
+\DoxyCodeLine{00396\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00397\ \ \ \ \ \}}
+\DoxyCodeLine{00398\ \ \ \ \ }
+\DoxyCodeLine{00399\ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%sError:\ unknown\ error\ while\ resuming\(\backslash\)n\%s"{}},\ \doxymbox{\hyperlink{lib_8h_aabc8a60b2b78eecc6da447f98beacb95}{MY\_RED}},\ \doxymbox{\hyperlink{lib_8h_a245f38fcd075b74c3f6ee738db944280}{MY\_RESET}});}
+\DoxyCodeLine{00400\ \ \ \ \ \doxymbox{\hyperlink{main_8cpp_ad2cca253e601712b5df1562061a50898}{myPlaySound}}(\doxymbox{\hyperlink{Sound_8h_aede0902e3afd72bbb4db993004370bd9}{INCORRECT\_SOUND}});}
+\DoxyCodeLine{00401\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00402\ \}}
+
+\end{DoxyCode}
+
+
+References \doxymbox{\hyperlink{main_8cpp_source_l00210}{get\+Statement\+Line()}}, \doxymbox{\hyperlink{Sound_8h_source_l00008}{INCORRECT\+\_\+\+SOUND}}, \doxymbox{\hyperlink{lib_8h_source_l00023}{MAX\+\_\+\+STATEMENT\+\_\+\+LEN}}, \doxymbox{\hyperlink{lib_8h_source_l00016}{MY\+\_\+\+RED}}, \doxymbox{\hyperlink{lib_8h_source_l00019}{MY\+\_\+\+RESET}}, \doxymbox{\hyperlink{lib_8h_source_l00017}{MY\+\_\+\+YELLOW}}, \doxymbox{\hyperlink{main_8cpp_source_l01034}{my\+Play\+Sound()}}, \doxymbox{\hyperlink{lib_8h_source_l00010}{ON\+\_\+\+DEBUG}}, \doxymbox{\hyperlink{main_8cpp_source_l00381}{resume()}}, \doxymbox{\hyperlink{lib_8h_source_l00082}{statement\+Info::\+statements}}, and \doxymbox{\hyperlink{lib_8h_source_l00085}{YES\+\_\+\+NO}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00381}{resume()}}, \doxymbox{\hyperlink{main_8cpp_source_l00337}{solve\+Real\+Time()}}, and \doxymbox{\hyperlink{main_8cpp_source_l00700}{user\+Testing()}}.
+
+\Hypertarget{main_8cpp_a851414ac610f62aa5d48d3be9d41594a}\index{main.cpp@{main.cpp}!runAllTests@{runAllTests}}
+\index{runAllTests@{runAllTests}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{runAllTests()}{runAllTests()}}
+{\footnotesize\ttfamily \label{main_8cpp_a851414ac610f62aa5d48d3be9d41594a} 
+\doxymbox{\hyperlink{lib_8h_a5ab881fdb3a704bf01f559b8f29e97ee}{RUN\+\_\+\+ALL\+\_\+\+TESTS\+\_\+\+STATUSES}} run\+All\+Tests (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{lib_8h_a4bbb217fb2817e448718577f63221d75}{TESTING\+\_\+\+MODE\+\_\+\+STATUSES}}}]{testing\+Mode\+Status}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00592}{592}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00592\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00593\ \ \ \ \ \textcolor{keywordflow}{switch}\ (testingModeStatus)\ \{}
+\DoxyCodeLine{00594\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{lib_8h_a4bbb217fb2817e448718577f63221d75a1c0ecea4afff1ac5793a33f9bbd26ade}{MANUAL\_TESTING}}:\ \{}
+\DoxyCodeLine{00595\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{lib_8h_a40c366bec25315b1a72e9246b71d333d}{userTesting}}(\doxymbox{\hyperlink{lib_8h_a9da2734c8489ad23b27fcda3daf4d839}{MANUAL\_FILE\_AUTO}}.\doxymbox{\hyperlink{structstatementInfo_ad0b3769e975359677cdf081691e2ffb1}{statements}}[0]);}
+\DoxyCodeLine{00596\ }
+\DoxyCodeLine{00597\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00598\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00599\ }
+\DoxyCodeLine{00600\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{lib_8h_a4bbb217fb2817e448718577f63221d75af9b0c2adf601be2d3699f647dff402b6}{FILE\_TESTING}}:\ \{}
+\DoxyCodeLine{00601\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{lib_8h_a40c366bec25315b1a72e9246b71d333d}{userTesting}}(\doxymbox{\hyperlink{lib_8h_a9da2734c8489ad23b27fcda3daf4d839}{MANUAL\_FILE\_AUTO}}.\doxymbox{\hyperlink{structstatementInfo_ad0b3769e975359677cdf081691e2ffb1}{statements}}[1]);}
+\DoxyCodeLine{00602\ }
+\DoxyCodeLine{00603\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00604\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00605\ }
+\DoxyCodeLine{00606\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{lib_8h_a4bbb217fb2817e448718577f63221d75a66f99c3a111e9adf9ac338e55ede42ff}{UNIT\_TESTING}}:\ \{}
+\DoxyCodeLine{00607\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{lib_8h_a91a738d394fd68fa4a9caedd2a2bc8a1}{unitTesting}}();}
+\DoxyCodeLine{00608\ }
+\DoxyCodeLine{00609\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00610\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00611\ }
+\DoxyCodeLine{00612\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{lib_8h_a4bbb217fb2817e448718577f63221d75adc6c3c530461925117d8dd7821a1af21}{TESTING\_MODE\_INPUT\_ERROR}}:\ \{}
+\DoxyCodeLine{00613\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%sError:\ cannot\ process\ testing\ mode\ input\(\backslash\)n\%s"{}},\ \doxymbox{\hyperlink{lib_8h_aabc8a60b2b78eecc6da447f98beacb95}{MY\_RED}},\ \doxymbox{\hyperlink{lib_8h_a245f38fcd075b74c3f6ee738db944280}{MY\_RESET}});}
+\DoxyCodeLine{00614\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{main_8cpp_ad2cca253e601712b5df1562061a50898}{myPlaySound}}(\doxymbox{\hyperlink{Sound_8h_aede0902e3afd72bbb4db993004370bd9}{INCORRECT\_SOUND}});}
+\DoxyCodeLine{00615\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00616\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{lib_8h_a5ab881fdb3a704bf01f559b8f29e97eea2ff76a0f8414bc6b3d886a8884ad5fa4}{RUN\_ALL\_TESTS\_ERROR}};}
+\DoxyCodeLine{00617\ }
+\DoxyCodeLine{00618\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00619\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00620\ }
+\DoxyCodeLine{00621\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\ \{}
+\DoxyCodeLine{00622\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{lib_8h_a5ab881fdb3a704bf01f559b8f29e97eea2ff76a0f8414bc6b3d886a8884ad5fa4}{RUN\_ALL\_TESTS\_ERROR}};}
+\DoxyCodeLine{00623\ }
+\DoxyCodeLine{00624\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00625\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00626\ \ \ \ \ \}}
+\DoxyCodeLine{00627\ }
+\DoxyCodeLine{00628\ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{lib_8h_a5ab881fdb3a704bf01f559b8f29e97eea5482d7204e9fe0a20244009e009fe19e}{RUN\_ALL\_TESTS\_SUCCESS}};}
+\DoxyCodeLine{00629\ \}}
+
+\end{DoxyCode}
+
+
+References \doxymbox{\hyperlink{lib_8h_source_l00045}{FILE\+\_\+\+TESTING}}, \doxymbox{\hyperlink{Sound_8h_source_l00008}{INCORRECT\+\_\+\+SOUND}}, \doxymbox{\hyperlink{lib_8h_source_l00089}{MANUAL\+\_\+\+FILE\+\_\+\+AUTO}}, \doxymbox{\hyperlink{lib_8h_source_l00044}{MANUAL\+\_\+\+TESTING}}, \doxymbox{\hyperlink{lib_8h_source_l00016}{MY\+\_\+\+RED}}, \doxymbox{\hyperlink{lib_8h_source_l00019}{MY\+\_\+\+RESET}}, \doxymbox{\hyperlink{main_8cpp_source_l01034}{my\+Play\+Sound()}}, \doxymbox{\hyperlink{lib_8h_source_l00077}{RUN\+\_\+\+ALL\+\_\+\+TESTS\+\_\+\+ERROR}}, \doxymbox{\hyperlink{lib_8h_source_l00076}{RUN\+\_\+\+ALL\+\_\+\+TESTS\+\_\+\+SUCCESS}}, \doxymbox{\hyperlink{main_8cpp_source_l00592}{run\+All\+Tests()}}, \doxymbox{\hyperlink{lib_8h_source_l00082}{statement\+Info::\+statements}}, \doxymbox{\hyperlink{lib_8h_source_l00047}{TESTING\+\_\+\+MODE\+\_\+\+INPUT\+\_\+\+ERROR}}, \doxymbox{\hyperlink{lib_8h_source_l00046}{UNIT\+\_\+\+TESTING}}, \doxymbox{\hyperlink{main_8cpp_source_l00797}{unit\+Testing()}}, and \doxymbox{\hyperlink{main_8cpp_source_l00700}{user\+Testing()}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00113}{choose\+Mode()}}, and \doxymbox{\hyperlink{main_8cpp_source_l00592}{run\+All\+Tests()}}.
+
+\Hypertarget{main_8cpp_ac9854a7e8e2a9f22ea0466b5fcdae323}\index{main.cpp@{main.cpp}!runSingleTest@{runSingleTest}}
+\index{runSingleTest@{runSingleTest}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{runSingleTest()}{runSingleTest()}}
+{\footnotesize\ttfamily \label{main_8cpp_ac9854a7e8e2a9f22ea0466b5fcdae323} 
+\doxymbox{\hyperlink{lib_8h_a615beba20980376980ffc687b9201ca3}{RUN\+\_\+\+SINGLE\+\_\+\+TEST\+\_\+\+STATUSES}} run\+Single\+Test (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structequationCoefsTest}{equation\+Coefs\+Test}}}]{test}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00655}{655}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00655\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00656\ \doxymbox{\hyperlink{lib_8h_a1bdd7c1369b250215a080e8421d4ecf3}{ON\_DEBUG}}(printf(\textcolor{stringliteral}{"{}\%s(runSingleTest)\%s"{}},\ }
+\DoxyCodeLine{00657\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{lib_8h_af733a2e19265664c7fb7fab3ff7910f3}{MY\_YELLOW}},\ \doxymbox{\hyperlink{lib_8h_a245f38fcd075b74c3f6ee738db944280}{MY\_RESET}}));}
+\DoxyCodeLine{00658\ }
+\DoxyCodeLine{00659\ \ \ \ \ \doxymbox{\hyperlink{lib_8h_af30ce291bf231d6295202c155a59f680}{printEquationCoefsTest}}(test);}
+\DoxyCodeLine{00660\ }
+\DoxyCodeLine{00661\ \ \ \ \ \textcolor{keywordtype}{double}\ eqRoot1\ =\ NAN,\ eqRoot2\ =\ NAN;}
+\DoxyCodeLine{00662\ }
+\DoxyCodeLine{00663\ \ \ \ \ \doxymbox{\hyperlink{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6}{QUADRATIC\_SOLVER\_STATUSES}}\ cntRoots\ =\ \doxymbox{\hyperlink{QuadraticSolver_8cpp_a85ea464c2ea19752014b9f0baae305d6}{QuadraticSolver}}(\&test.\doxymbox{\hyperlink{structequationCoefsTest_a7c6c308b47522b8646601f1b25712875}{coefs}},\ \&eqRoot1,\ \&eqRoot2);}
+\DoxyCodeLine{00664\ \ \ \ \ \textcolor{keywordtype}{bool}\ correct\_test\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00665\ }
+\DoxyCodeLine{00666\ \ \ \ \ \textcolor{keywordflow}{if}\ (test.\doxymbox{\hyperlink{structequationCoefsTest_ac796ab130262b4093c55c579860a95aa}{refCntRoots}}\ !=\ cntRoots)\ \{}
+\DoxyCodeLine{00667\ \ \ \ \ \ \ \ \ correct\_test\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00668\ }
+\DoxyCodeLine{00669\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Number\ of\ roots\ differs!\(\backslash\)n"{}}}
+\DoxyCodeLine{00670\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Expected:\ \%i\ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)n"{}}}
+\DoxyCodeLine{00671\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Got:\ \ \ \ \ \ \%i\ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)n"{}},\ test.\doxymbox{\hyperlink{structequationCoefsTest_ac796ab130262b4093c55c579860a95aa}{refCntRoots}},\ cntRoots);}
+\DoxyCodeLine{00672\ \ \ \ \ \}}
+\DoxyCodeLine{00673\ \ \ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{CmpDouble_8cpp_ab9b61cbfa9a9cad7d8cfa2d7eeb6261c}{CmpDouble}}(test.\doxymbox{\hyperlink{structequationCoefsTest_ac1118788719412a7aa8fbd2960238919}{refRoot1}},\ eqRoot1)\ !=\ 0\ \&\&\ !(isnan(test.\doxymbox{\hyperlink{structequationCoefsTest_ac1118788719412a7aa8fbd2960238919}{refRoot1}})\ \&\&\ isnan(eqRoot1)))\ \{}
+\DoxyCodeLine{00674\ \ \ \ \ \ \ \ \ correct\_test\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00675\ }
+\DoxyCodeLine{00676\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}First\ root\ differs!\(\backslash\)n"{}}}
+\DoxyCodeLine{00677\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Expected:\ \%lf\ \ \ \ \ \ \(\backslash\)n"{}}}
+\DoxyCodeLine{00678\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Got:\ \ \ \ \ \ \%lf\ \ \ \ \ \ \(\backslash\)n"{}},\ test.\doxymbox{\hyperlink{structequationCoefsTest_ac1118788719412a7aa8fbd2960238919}{refRoot1}},\ eqRoot1);}
+\DoxyCodeLine{00679\ \ \ \ \ \}}
+\DoxyCodeLine{00680\ \ \ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{CmpDouble_8cpp_ab9b61cbfa9a9cad7d8cfa2d7eeb6261c}{CmpDouble}}(test.\doxymbox{\hyperlink{structequationCoefsTest_accbdfbd289bc6b553365e0ce32a657c5}{refRoot2}},\ eqRoot2)\ \ !=\ 0\ \&\&\ !(isnan(test.\doxymbox{\hyperlink{structequationCoefsTest_accbdfbd289bc6b553365e0ce32a657c5}{refRoot2}})\ \&\&\ isnan(eqRoot2)))\ \{}
+\DoxyCodeLine{00681\ \ \ \ \ \ \ \ \ correct\_test\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00682\ }
+\DoxyCodeLine{00683\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Second\ root\ differs!\(\backslash\)n"{}}}
+\DoxyCodeLine{00684\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Expected:\ \%lf\(\backslash\)n"{}}}
+\DoxyCodeLine{00685\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Got:\ \ \ \ \ \ \%lf\(\backslash\)n"{}},\ test.\doxymbox{\hyperlink{structequationCoefsTest_accbdfbd289bc6b553365e0ce32a657c5}{refRoot2}},\ eqRoot2);}
+\DoxyCodeLine{00686\ \ \ \ \ \}}
+\DoxyCodeLine{00687\ }
+\DoxyCodeLine{00688\ \ \ \ \ \textcolor{keywordflow}{if}\ (correct\_test)\ \{}
+\DoxyCodeLine{00689\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{lib_8h_a615beba20980376980ffc687b9201ca3a93866eb62cc80c66316ccb6282ba3289}{TEST\_CHECK\_SUCCESS}};}
+\DoxyCodeLine{00690\ \ \ \ \ \}}
+\DoxyCodeLine{00691\ \ \ \ \ printf(\textcolor{stringliteral}{"{}a:\ \%lf,\ b:\ \%lf,\ c:\ \%lf,\ cntRoots:\ \%i,"{}}}
+\DoxyCodeLine{00692\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}eqRoot1:\ \%lf,\ eqRoot2:\ \%lf,\ refCntRoots:\ \%i,\ refRoot1:"{}}}
+\DoxyCodeLine{00693\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\%lf,\ refRoot2:\ \%lf\(\backslash\)n"{}},\ test.\doxymbox{\hyperlink{structequationCoefsTest_a7c6c308b47522b8646601f1b25712875}{coefs}}.\doxymbox{\hyperlink{structequationCoefs_a2b6a27c420a402738f62897dffb8c289}{a}},\ test.\doxymbox{\hyperlink{structequationCoefsTest_a7c6c308b47522b8646601f1b25712875}{coefs}}.\doxymbox{\hyperlink{structequationCoefs_aac91acb14d7dbbf9ffc0e38eb58a71e0}{b}},\ test.\doxymbox{\hyperlink{structequationCoefsTest_a7c6c308b47522b8646601f1b25712875}{coefs}}.\doxymbox{\hyperlink{structequationCoefs_a5d2166bc753ec5ed1a3e4c73418db81f}{c}},\ cntRoots,}
+\DoxyCodeLine{00694\ \ \ \ \ \ \ \ \ \ \ \ \ eqRoot1,\ eqRoot2,\ test.\doxymbox{\hyperlink{structequationCoefsTest_ac796ab130262b4093c55c579860a95aa}{refCntRoots}},\ test.\doxymbox{\hyperlink{structequationCoefsTest_ac1118788719412a7aa8fbd2960238919}{refRoot1}},\ test.\doxymbox{\hyperlink{structequationCoefsTest_accbdfbd289bc6b553365e0ce32a657c5}{refRoot2}});}
+\DoxyCodeLine{00695\ }
+\DoxyCodeLine{00696\ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{lib_8h_a615beba20980376980ffc687b9201ca3a551428584afa7900f2c84bdd04505757}{TEST\_CHECK\_FAIL}};}
+\DoxyCodeLine{00697\ \}}
+
+\end{DoxyCode}
+
+
+References \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00014}{equation\+Coefs::\+a}}, \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00014}{equation\+Coefs::\+b}}, \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00014}{equation\+Coefs::\+c}}, \doxymbox{\hyperlink{CmpDouble_8cpp_source_l00001}{Cmp\+Double()}}, \doxymbox{\hyperlink{lib_8h_source_l00093}{equation\+Coefs\+Test::\+coefs}}, \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00016}{equation\+Coefs::\+eq\+Root1}}, \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00016}{equation\+Coefs::\+eq\+Root2}}, \doxymbox{\hyperlink{lib_8h_source_l00019}{MY\+\_\+\+RESET}}, \doxymbox{\hyperlink{lib_8h_source_l00017}{MY\+\_\+\+YELLOW}}, \doxymbox{\hyperlink{lib_8h_source_l00010}{ON\+\_\+\+DEBUG}}, \doxymbox{\hyperlink{main_8cpp_source_l00056}{print\+Equation\+Coefs\+Test()}}, \doxymbox{\hyperlink{QuadraticSolver_8cpp_source_l00001}{Quadratic\+Solver()}}, \doxymbox{\hyperlink{lib_8h_source_l00095}{equation\+Coefs\+Test::\+ref\+Cnt\+Roots}}, \doxymbox{\hyperlink{lib_8h_source_l00096}{equation\+Coefs\+Test::\+ref\+Root1}}, \doxymbox{\hyperlink{lib_8h_source_l00096}{equation\+Coefs\+Test::\+ref\+Root2}}, \doxymbox{\hyperlink{main_8cpp_source_l00655}{run\+Single\+Test()}}, \doxymbox{\hyperlink{lib_8h_source_l00071}{TEST\+\_\+\+CHECK\+\_\+\+FAIL}}, and \doxymbox{\hyperlink{lib_8h_source_l00070}{TEST\+\_\+\+CHECK\+\_\+\+SUCCESS}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00655}{run\+Single\+Test()}}, \doxymbox{\hyperlink{main_8cpp_source_l00797}{unit\+Testing()}}, and \doxymbox{\hyperlink{main_8cpp_source_l00700}{user\+Testing()}}.
+
+\Hypertarget{main_8cpp_aae14dd629f9a45297506b274dee1cd70}\index{main.cpp@{main.cpp}!solveRealTime@{solveRealTime}}
+\index{solveRealTime@{solveRealTime}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{solveRealTime()}{solveRealTime()}}
+{\footnotesize\ttfamily \label{main_8cpp_aae14dd629f9a45297506b274dee1cd70} 
+void solve\+Real\+Time (\begin{DoxyParamCaption}\item[{int}]{attempts}{}\end{DoxyParamCaption})}
+
+
+
+Wrapper function for handling Solving case. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Number} & of equations to solve \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00337}{337}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00337\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00338\ \ \ \ \ \doxymbox{\hyperlink{structequationCoefs}{equationCoefs}}\ coefs;}
+\DoxyCodeLine{00339\ }
+\DoxyCodeLine{00340\ \ \ \ \ \doxymbox{\hyperlink{structequationCoefs}{equationCoefs}}*\ ptrCoefs\ =\ \&coefs;}
+\DoxyCodeLine{00341\ }
+\DoxyCodeLine{00342\ \ \ \ \ \doxymbox{\hyperlink{lib_8h_aaef59fc3966d753f08ffa9734cdd387f}{equationCoefsInitPointers}}(ptrCoefs);}
+\DoxyCodeLine{00343\ }
+\DoxyCodeLine{00344\ \ \ \ \ \textcolor{keywordtype}{double}\ eqRoot1\ =\ NAN,\ eqRoot2\ =\ NAN;}
+\DoxyCodeLine{00345\ }
+\DoxyCodeLine{00346\ \ \ \ \ \textcolor{keywordflow}{while}\ (attempts-\/-\/)\ \{}
+\DoxyCodeLine{00347\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{lib_8h_aaa0833d15df8a8bb183fd0354389d1d1}{printAttempts}}(attempts);}
+\DoxyCodeLine{00348\ }
+\DoxyCodeLine{00349\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\doxymbox{\hyperlink{lib_8h_acee85cf91ee5e73735fbf8717543844b}{resume}}())\ \{}
+\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00351\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00352\ }
+\DoxyCodeLine{00353\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3}{INPUT\_STATUSES}}\ inputStatus\ =\ \doxymbox{\hyperlink{lib_8h_adcdc3cdf2fd6ea693d54d533647af4f2}{fileCoefInput}}(ptrCoefs,\ stdin);}
+\DoxyCodeLine{00354\ }
+\DoxyCodeLine{00355\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (inputStatus\ !=\ \doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3a85532f7f4c9ad5482709c4233650db27}{INPUT\_CORRECT}})\ \{}
+\DoxyCodeLine{00356\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Try\ another\ time!\(\backslash\)n"{}});}
+\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00359\ }
+\DoxyCodeLine{00360\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6}{QUADRATIC\_SOLVER\_STATUSES}}\ cntRoots\ =\ \doxymbox{\hyperlink{QuadraticSolver_8cpp_a85ea464c2ea19752014b9f0baae305d6}{QuadraticSolver}}(ptrCoefs,\ \&eqRoot1,\ \&eqRoot2);}
+\DoxyCodeLine{00361\ }
+\DoxyCodeLine{00362\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{lib_8h_abced6a6f14d20822e71c39f39c75c0ae}{CHECK\_STATUSES}}\ equationCheckStatus\ =\ \doxymbox{\hyperlink{lib_8h_af92ddd5a250f8c03626f50a4ca3be608}{checkRoots}}(coefs,\ cntRoots,\ eqRoot1,\ eqRoot2);}
+\DoxyCodeLine{00363\ }
+\DoxyCodeLine{00364\ }
+\DoxyCodeLine{00365\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \textcolor{keyword}{const}\ equationCheckStatusLine\ =\ \doxymbox{\hyperlink{lib_8h_a9539a46a0bba9021e5be899fa8dc628b}{getStringCheckStatus}}(equationCheckStatus);}
+\DoxyCodeLine{00366\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00367\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (equationCheckStatus\ !=\ \doxymbox{\hyperlink{lib_8h_abced6a6f14d20822e71c39f39c75c0aeaaad2d36806162d71fef089ba24176b0f}{CHECK\_SUCCESS}})\ \{}
+\DoxyCodeLine{00368\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%s\%s\(\backslash\)n\%s"{}},\ \doxymbox{\hyperlink{lib_8h_aabc8a60b2b78eecc6da447f98beacb95}{MY\_RED}},\ equationCheckStatusLine,\ \doxymbox{\hyperlink{lib_8h_a245f38fcd075b74c3f6ee738db944280}{MY\_RESET}});}
+\DoxyCodeLine{00369\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00370\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{main_8cpp_ad2cca253e601712b5df1562061a50898}{myPlaySound}}(\doxymbox{\hyperlink{Sound_8h_aede0902e3afd72bbb4db993004370bd9}{INCORRECT\_SOUND}});}
+\DoxyCodeLine{00371\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00372\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%s\%s\(\backslash\)n\%s"{}},\ \doxymbox{\hyperlink{lib_8h_a1c5e36af22d578c2458e0d5f18e3700a}{MY\_GREEN}},\ equationCheckStatusLine,\ \doxymbox{\hyperlink{lib_8h_a245f38fcd075b74c3f6ee738db944280}{MY\_RESET}});}
+\DoxyCodeLine{00373\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00374\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{main_8cpp_ad2cca253e601712b5df1562061a50898}{myPlaySound}}(\doxymbox{\hyperlink{Sound_8h_a3f76dc09973abaf61e915d81375318de}{CORRECT\_SOUND}});}
+\DoxyCodeLine{00375\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00376\ }
+\DoxyCodeLine{00377\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{lib_8h_adb3188631463b61350d26c542f757030}{printRoots}}(cntRoots,\ eqRoot1,\ eqRoot2);}
+\DoxyCodeLine{00378\ \ \ \ \ \}}
+\DoxyCodeLine{00379\ \}}
+
+\end{DoxyCode}
+
+
+References \doxymbox{\hyperlink{lib_8h_source_l00052}{CHECK\+\_\+\+SUCCESS}}, \doxymbox{\hyperlink{main_8cpp_source_l00423}{check\+Roots()}}, \doxymbox{\hyperlink{Sound_8h_source_l00007}{CORRECT\+\_\+\+SOUND}}, \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00016}{equation\+Coefs::\+eq\+Root1}}, \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00016}{equation\+Coefs::\+eq\+Root2}}, \doxymbox{\hyperlink{main_8cpp_source_l00050}{equation\+Coefs\+Init\+Pointers()}}, \doxymbox{\hyperlink{main_8cpp_source_l00922}{file\+Coef\+Input()}}, \doxymbox{\hyperlink{main_8cpp_source_l00256}{get\+String\+Check\+Status()}}, \doxymbox{\hyperlink{Sound_8h_source_l00008}{INCORRECT\+\_\+\+SOUND}}, \doxymbox{\hyperlink{lib_8h_source_l00066}{INPUT\+\_\+\+CORRECT}}, \doxymbox{\hyperlink{lib_8h_source_l00018}{MY\+\_\+\+GREEN}}, \doxymbox{\hyperlink{lib_8h_source_l00016}{MY\+\_\+\+RED}}, \doxymbox{\hyperlink{lib_8h_source_l00019}{MY\+\_\+\+RESET}}, \doxymbox{\hyperlink{main_8cpp_source_l01034}{my\+Play\+Sound()}}, \doxymbox{\hyperlink{main_8cpp_source_l00404}{print\+Attempts()}}, \doxymbox{\hyperlink{main_8cpp_source_l00459}{print\+Roots()}}, \doxymbox{\hyperlink{QuadraticSolver_8cpp_source_l00001}{Quadratic\+Solver()}}, \doxymbox{\hyperlink{main_8cpp_source_l00381}{resume()}}, and \doxymbox{\hyperlink{main_8cpp_source_l00337}{solve\+Real\+Time()}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00113}{choose\+Mode()}}, and \doxymbox{\hyperlink{main_8cpp_source_l00337}{solve\+Real\+Time()}}.
+
+\Hypertarget{main_8cpp_a73ff21ea7641bd1cc87e7450c37bda3a}\index{main.cpp@{main.cpp}!unitTesting@{unitTesting}}
+\index{unitTesting@{unitTesting}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{unitTesting()}{unitTesting()}}
+{\footnotesize\ttfamily \label{main_8cpp_a73ff21ea7641bd1cc87e7450c37bda3a} 
+\doxymbox{\hyperlink{lib_8h_a5ab881fdb3a704bf01f559b8f29e97ee}{RUN\+\_\+\+ALL\+\_\+\+TESTS\+\_\+\+STATUSES}} unit\+Testing (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00797}{797}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00797\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00798\ \ \ \ \ \textcolor{keywordtype}{int}\ TESTSize\ =\ \textcolor{keyword}{sizeof}(\doxymbox{\hyperlink{test_8h_ae3f582bf14927b133f82bbf5e727c29d}{TESTS}})\ /\ \textcolor{keyword}{sizeof}(\doxymbox{\hyperlink{test_8h_ae3f582bf14927b133f82bbf5e727c29d}{TESTS}}[0]);}
+\DoxyCodeLine{00799\ }
+\DoxyCodeLine{00800\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ TESTSize;\ i++)\ \{}
+\DoxyCodeLine{00801\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{lib_8h_a615beba20980376980ffc687b9201ca3}{RUN\_SINGLE\_TEST\_STATUSES}}\ checkTestStatus\ =\ \doxymbox{\hyperlink{lib_8h_ac9854a7e8e2a9f22ea0466b5fcdae323}{runSingleTest}}(\doxymbox{\hyperlink{test_8h_ae3f582bf14927b133f82bbf5e727c29d}{TESTS}}[i]);}
+\DoxyCodeLine{00802\ }
+\DoxyCodeLine{00803\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \textcolor{keyword}{const}\ CheckTestStatusLine\ =\ \doxymbox{\hyperlink{lib_8h_a4784b9a6ac16cb8f71050bf8e55aa3ee}{getStringTestCheckStatus}}(checkTestStatus);}
+\DoxyCodeLine{00804\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%s"{}},\ CheckTestStatusLine);}
+\DoxyCodeLine{00805\ }
+\DoxyCodeLine{00806\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (checkTestStatus)\ \{}
+\DoxyCodeLine{00807\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{lib_8h_a615beba20980376980ffc687b9201ca3a93866eb62cc80c66316ccb6282ba3289}{TEST\_CHECK\_SUCCESS}}:}
+\DoxyCodeLine{00808\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00809\ }
+\DoxyCodeLine{00810\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{lib_8h_a615beba20980376980ffc687b9201ca3a551428584afa7900f2c84bdd04505757}{TEST\_CHECK\_FAIL}}:}
+\DoxyCodeLine{00811\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Test\ number:\%i\ has\ incorrect\ answer\(\backslash\)n"{}}}
+\DoxyCodeLine{00812\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Info\ about\ test:"{}},\ i);}
+\DoxyCodeLine{00813\ }
+\DoxyCodeLine{00814\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{lib_8h_af30ce291bf231d6295202c155a59f680}{printEquationCoefsTest}}(\doxymbox{\hyperlink{test_8h_ae3f582bf14927b133f82bbf5e727c29d}{TESTS}}[i]);}
+\DoxyCodeLine{00815\ }
+\DoxyCodeLine{00816\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00817\ }
+\DoxyCodeLine{00818\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{lib_8h_a615beba20980376980ffc687b9201ca3a6629d128037b7899fbaf1c4a02088d42}{TEST\_CHECK\_ERROR}}:}
+\DoxyCodeLine{00819\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00820\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{lib_8h_a5ab881fdb3a704bf01f559b8f29e97eea2ff76a0f8414bc6b3d886a8884ad5fa4}{RUN\_ALL\_TESTS\_ERROR}};}
+\DoxyCodeLine{00821\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00822\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00823\ \ \ \ \ \}}
+\DoxyCodeLine{00824\ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{lib_8h_a5ab881fdb3a704bf01f559b8f29e97eea5482d7204e9fe0a20244009e009fe19e}{RUN\_ALL\_TESTS\_SUCCESS}};}
+\DoxyCodeLine{00825\ \}}
+
+\end{DoxyCode}
+
+
+References \doxymbox{\hyperlink{main_8cpp_source_l00633}{get\+String\+Test\+Check\+Status()}}, \doxymbox{\hyperlink{main_8cpp_source_l00056}{print\+Equation\+Coefs\+Test()}}, \doxymbox{\hyperlink{lib_8h_source_l00077}{RUN\+\_\+\+ALL\+\_\+\+TESTS\+\_\+\+ERROR}}, \doxymbox{\hyperlink{lib_8h_source_l00076}{RUN\+\_\+\+ALL\+\_\+\+TESTS\+\_\+\+SUCCESS}}, \doxymbox{\hyperlink{main_8cpp_source_l00655}{run\+Single\+Test()}}, \doxymbox{\hyperlink{lib_8h_source_l00072}{TEST\+\_\+\+CHECK\+\_\+\+ERROR}}, \doxymbox{\hyperlink{lib_8h_source_l00071}{TEST\+\_\+\+CHECK\+\_\+\+FAIL}}, \doxymbox{\hyperlink{lib_8h_source_l00070}{TEST\+\_\+\+CHECK\+\_\+\+SUCCESS}}, \doxymbox{\hyperlink{test_8h_source_l00005}{TESTS}}, and \doxymbox{\hyperlink{main_8cpp_source_l00797}{unit\+Testing()}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00592}{run\+All\+Tests()}}, and \doxymbox{\hyperlink{main_8cpp_source_l00797}{unit\+Testing()}}.
+
+\Hypertarget{main_8cpp_abd1144dc08e9e67c624b186f4f961465}\index{main.cpp@{main.cpp}!userChoosingMode@{userChoosingMode}}
+\index{userChoosingMode@{userChoosingMode}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{userChoosingMode()}{userChoosingMode()}}
+{\footnotesize\ttfamily \label{main_8cpp_abd1144dc08e9e67c624b186f4f961465} 
+\doxymbox{\hyperlink{lib_8h_a780cb1180cc5e51ff4ce71c1fc4e6422}{INPUT\+\_\+\+MODE\+\_\+\+STATUS}} user\+Choosing\+Mode (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00074}{74}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00075\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Choose\ input\ mode:\(\backslash\)n"{}}}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}For\ solving\ type\ \%s\(\backslash\)n"{}}}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}For\ testing\ type\ \%s\(\backslash\)n"{}}}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}For\ graphical\ mode\ type\ \%s\(\backslash\)n"{}}}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Choose\ mode:"{}},\ \doxymbox{\hyperlink{lib_8h_a8789bc8a5d14a41e1013b86e80e72eca}{SOLVE\_TEST\_GRAPHICAL}}.\doxymbox{\hyperlink{structstatementInfo_ad0b3769e975359677cdf081691e2ffb1}{statements}}[0],}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{lib_8h_a8789bc8a5d14a41e1013b86e80e72eca}{SOLVE\_TEST\_GRAPHICAL}}.\doxymbox{\hyperlink{structstatementInfo_ad0b3769e975359677cdf081691e2ffb1}{statements}}[1],\ }
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{lib_8h_a8789bc8a5d14a41e1013b86e80e72eca}{SOLVE\_TEST\_GRAPHICAL}}.\doxymbox{\hyperlink{structstatementInfo_ad0b3769e975359677cdf081691e2ffb1}{statements}}[2]);}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordtype}{char}\ modeLine[\doxymbox{\hyperlink{lib_8h_a42bc9ea40135c763cd21cdf9b8554670}{MAX\_STATEMENT\_LEN}}]\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \doxymbox{\hyperlink{lib_8h_a04893442fe652fb5f387f6ad1aed9ea9}{getStatementLine}}(modeLine,\ \doxymbox{\hyperlink{lib_8h_a8789bc8a5d14a41e1013b86e80e72eca}{SOLVE\_TEST\_GRAPHICAL}});}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordflow}{if}\ (strcmp(modeLine,\ \doxymbox{\hyperlink{lib_8h_a8789bc8a5d14a41e1013b86e80e72eca}{SOLVE\_TEST\_GRAPHICAL}}.\doxymbox{\hyperlink{structstatementInfo_ad0b3769e975359677cdf081691e2ffb1}{statements}}[0])\ ==\ 0)\ \{}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \doxymbox{\hyperlink{lib_8h_a1bdd7c1369b250215a080e8421d4ecf3}{ON\_DEBUG}}(printf(\textcolor{stringliteral}{"{}\%s(userChoosingMode)\ SOLVING\(\backslash\)n\%s"{}},\ \doxymbox{\hyperlink{lib_8h_af733a2e19265664c7fb7fab3ff7910f3}{MY\_YELLOW}},\ \doxymbox{\hyperlink{lib_8h_a245f38fcd075b74c3f6ee738db944280}{MY\_RESET}}));}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{lib_8h_a780cb1180cc5e51ff4ce71c1fc4e6422ab09b6d718c535c4d6fe77cc69ae8de0b}{SOLVING}};}
+\DoxyCodeLine{00092\ \ \ \ \ \}}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordflow}{if}\ (strcmp(modeLine,\ \doxymbox{\hyperlink{lib_8h_a8789bc8a5d14a41e1013b86e80e72eca}{SOLVE\_TEST\_GRAPHICAL}}.\doxymbox{\hyperlink{structstatementInfo_ad0b3769e975359677cdf081691e2ffb1}{statements}}[1])\ ==\ 0)\ \{}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \doxymbox{\hyperlink{lib_8h_a1bdd7c1369b250215a080e8421d4ecf3}{ON\_DEBUG}}(printf(\textcolor{stringliteral}{"{}\%s(userChoosingMode)\ TESTING\(\backslash\)n\%s"{}},\ \doxymbox{\hyperlink{lib_8h_af733a2e19265664c7fb7fab3ff7910f3}{MY\_YELLOW}},\ \doxymbox{\hyperlink{lib_8h_a245f38fcd075b74c3f6ee738db944280}{MY\_RESET}}));}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{lib_8h_a780cb1180cc5e51ff4ce71c1fc4e6422aca6c0848647c55068d1de35320dc1d11}{TESTING}};}
+\DoxyCodeLine{00098\ \ \ \ \ \}}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keywordflow}{if}\ (strcmp(modeLine,\ \doxymbox{\hyperlink{lib_8h_a8789bc8a5d14a41e1013b86e80e72eca}{SOLVE\_TEST\_GRAPHICAL}}.\doxymbox{\hyperlink{structstatementInfo_ad0b3769e975359677cdf081691e2ffb1}{statements}}[2])\ ==\ 0)\ \{}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \doxymbox{\hyperlink{lib_8h_a1bdd7c1369b250215a080e8421d4ecf3}{ON\_DEBUG}}(printf(\textcolor{stringliteral}{"{}\%s(userChoosingMode)\ GRAPHICAL\(\backslash\)n\%s"{}},\ \doxymbox{\hyperlink{lib_8h_af733a2e19265664c7fb7fab3ff7910f3}{MY\_YELLOW}},\ \doxymbox{\hyperlink{lib_8h_a245f38fcd075b74c3f6ee738db944280}{MY\_RESET}}));}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{lib_8h_a780cb1180cc5e51ff4ce71c1fc4e6422ae3878a295794b6a8739a8eee58524112}{FUNCTION\_GRAPHIC}};}
+\DoxyCodeLine{00105\ \ \ \ \ \}}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \doxymbox{\hyperlink{lib_8h_a1bdd7c1369b250215a080e8421d4ecf3}{ON\_DEBUG}}(printf(\textcolor{stringliteral}{"{}\%s(userChoosingMode)\ USER\_INPUT\_MODE\_ERROR\(\backslash\)n\%s"{}},\ \doxymbox{\hyperlink{lib_8h_af733a2e19265664c7fb7fab3ff7910f3}{MY\_YELLOW}},\ \doxymbox{\hyperlink{lib_8h_a245f38fcd075b74c3f6ee738db944280}{MY\_RESET}}));}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{lib_8h_a780cb1180cc5e51ff4ce71c1fc4e6422a9b6bba8dc8a8905c42d8b88c12c774d1}{USER\_INPUT\_MODE\_ERROR}};}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \}}
+
+\end{DoxyCode}
+
+
+References \doxymbox{\hyperlink{lib_8h_source_l00038}{FUNCTION\+\_\+\+GRAPHIC}}, \doxymbox{\hyperlink{main_8cpp_source_l00210}{get\+Statement\+Line()}}, \doxymbox{\hyperlink{lib_8h_source_l00023}{MAX\+\_\+\+STATEMENT\+\_\+\+LEN}}, \doxymbox{\hyperlink{lib_8h_source_l00019}{MY\+\_\+\+RESET}}, \doxymbox{\hyperlink{lib_8h_source_l00017}{MY\+\_\+\+YELLOW}}, \doxymbox{\hyperlink{lib_8h_source_l00010}{ON\+\_\+\+DEBUG}}, \doxymbox{\hyperlink{lib_8h_source_l00087}{SOLVE\+\_\+\+TEST\+\_\+\+GRAPHICAL}}, \doxymbox{\hyperlink{lib_8h_source_l00036}{SOLVING}}, \doxymbox{\hyperlink{lib_8h_source_l00082}{statement\+Info::\+statements}}, \doxymbox{\hyperlink{lib_8h_source_l00037}{TESTING}}, \doxymbox{\hyperlink{lib_8h_source_l00039}{USER\+\_\+\+INPUT\+\_\+\+MODE\+\_\+\+ERROR}}, and \doxymbox{\hyperlink{main_8cpp_source_l00074}{user\+Choosing\+Mode()}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00025}{main()}}, and \doxymbox{\hyperlink{main_8cpp_source_l00074}{user\+Choosing\+Mode()}}.
+
+\Hypertarget{main_8cpp_a5ae78c48dfe31c5fb13455c540161484}\index{main.cpp@{main.cpp}!userChoosingTestingMode@{userChoosingTestingMode}}
+\index{userChoosingTestingMode@{userChoosingTestingMode}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{userChoosingTestingMode()}{userChoosingTestingMode()}}
+{\footnotesize\ttfamily \label{main_8cpp_a5ae78c48dfe31c5fb13455c540161484} 
+\doxymbox{\hyperlink{lib_8h_a4bbb217fb2817e448718577f63221d75}{TESTING\+\_\+\+MODE\+\_\+\+STATUSES}} user\+Choosing\+Testing\+Mode (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00176}{176}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00177\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Choose\ testing\ mode:\(\backslash\)n"{}}}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}For\ manual\ testing\ type\ \%s\(\backslash\)n"{}}}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}For\ testing\ from\ file\ type\ \%s\(\backslash\)n"{}}}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}For\ auto\ testing\ on\ prepared\ tests\ type\ \%s\(\backslash\)n"{}}}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Choose\ testing\ mode:"{}},}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{lib_8h_a9da2734c8489ad23b27fcda3daf4d839}{MANUAL\_FILE\_AUTO}}.\doxymbox{\hyperlink{structstatementInfo_ad0b3769e975359677cdf081691e2ffb1}{statements}}[0],\ \doxymbox{\hyperlink{lib_8h_a9da2734c8489ad23b27fcda3daf4d839}{MANUAL\_FILE\_AUTO}}.\doxymbox{\hyperlink{structstatementInfo_ad0b3769e975359677cdf081691e2ffb1}{statements}}[1],}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{lib_8h_a9da2734c8489ad23b27fcda3daf4d839}{MANUAL\_FILE\_AUTO}}.\doxymbox{\hyperlink{structstatementInfo_ad0b3769e975359677cdf081691e2ffb1}{statements}}[2]);}
+\DoxyCodeLine{00184\ }
+\DoxyCodeLine{00185\ \ \ \ \ \textcolor{keywordtype}{char}\ testingModeLine[\doxymbox{\hyperlink{lib_8h_a42bc9ea40135c763cd21cdf9b8554670}{MAX\_STATEMENT\_LEN}}]\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00186\ }
+\DoxyCodeLine{00187\ \ \ \ \ \doxymbox{\hyperlink{lib_8h_a04893442fe652fb5f387f6ad1aed9ea9}{getStatementLine}}(testingModeLine,\ \doxymbox{\hyperlink{lib_8h_a9da2734c8489ad23b27fcda3daf4d839}{MANUAL\_FILE\_AUTO}});}
+\DoxyCodeLine{00188\ }
+\DoxyCodeLine{00189\ \ \ \ \ \textcolor{keywordflow}{if}\ (strcmp(testingModeLine,\ \doxymbox{\hyperlink{lib_8h_a9da2734c8489ad23b27fcda3daf4d839}{MANUAL\_FILE\_AUTO}}.\doxymbox{\hyperlink{structstatementInfo_ad0b3769e975359677cdf081691e2ffb1}{statements}}[0])\ ==\ 0)\ \{}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{lib_8h_a4bbb217fb2817e448718577f63221d75a1c0ecea4afff1ac5793a33f9bbd26ade}{MANUAL\_TESTING}};}
+\DoxyCodeLine{00191\ \ \ \ \ \}}
+\DoxyCodeLine{00192\ }
+\DoxyCodeLine{00193\ \ \ \ \ \textcolor{keywordflow}{if}\ (strcmp(testingModeLine,\ \doxymbox{\hyperlink{lib_8h_a9da2734c8489ad23b27fcda3daf4d839}{MANUAL\_FILE\_AUTO}}.\doxymbox{\hyperlink{structstatementInfo_ad0b3769e975359677cdf081691e2ffb1}{statements}}[1])\ ==\ 0)\ \{}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{lib_8h_a4bbb217fb2817e448718577f63221d75af9b0c2adf601be2d3699f647dff402b6}{FILE\_TESTING}};}
+\DoxyCodeLine{00195\ \ \ \ \ \}}
+\DoxyCodeLine{00196\ }
+\DoxyCodeLine{00197\ \ \ \ \ \textcolor{keywordflow}{if}\ (strcmp(testingModeLine,\ \doxymbox{\hyperlink{lib_8h_a9da2734c8489ad23b27fcda3daf4d839}{MANUAL\_FILE\_AUTO}}.\doxymbox{\hyperlink{structstatementInfo_ad0b3769e975359677cdf081691e2ffb1}{statements}}[2])\ ==\ 0)\ \{}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{lib_8h_a4bbb217fb2817e448718577f63221d75a66f99c3a111e9adf9ac338e55ede42ff}{UNIT\_TESTING}};}
+\DoxyCodeLine{00199\ \ \ \ \ \}}
+\DoxyCodeLine{00200\ }
+\DoxyCodeLine{00201\ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{lib_8h_a4bbb217fb2817e448718577f63221d75adc6c3c530461925117d8dd7821a1af21}{TESTING\_MODE\_INPUT\_ERROR}};}
+\DoxyCodeLine{00202\ }
+\DoxyCodeLine{00203\ \}}
+
+\end{DoxyCode}
+
+
+References \doxymbox{\hyperlink{lib_8h_source_l00045}{FILE\+\_\+\+TESTING}}, \doxymbox{\hyperlink{main_8cpp_source_l00210}{get\+Statement\+Line()}}, \doxymbox{\hyperlink{lib_8h_source_l00089}{MANUAL\+\_\+\+FILE\+\_\+\+AUTO}}, \doxymbox{\hyperlink{lib_8h_source_l00044}{MANUAL\+\_\+\+TESTING}}, \doxymbox{\hyperlink{lib_8h_source_l00023}{MAX\+\_\+\+STATEMENT\+\_\+\+LEN}}, \doxymbox{\hyperlink{lib_8h_source_l00082}{statement\+Info::\+statements}}, \doxymbox{\hyperlink{lib_8h_source_l00047}{TESTING\+\_\+\+MODE\+\_\+\+INPUT\+\_\+\+ERROR}}, \doxymbox{\hyperlink{lib_8h_source_l00046}{UNIT\+\_\+\+TESTING}}, and \doxymbox{\hyperlink{main_8cpp_source_l00176}{user\+Choosing\+Testing\+Mode()}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00113}{choose\+Mode()}}, and \doxymbox{\hyperlink{main_8cpp_source_l00176}{user\+Choosing\+Testing\+Mode()}}.
+
+\Hypertarget{main_8cpp_a40c366bec25315b1a72e9246b71d333d}\index{main.cpp@{main.cpp}!userTesting@{userTesting}}
+\index{userTesting@{userTesting}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{userTesting()}{userTesting()}}
+{\footnotesize\ttfamily \label{main_8cpp_a40c366bec25315b1a72e9246b71d333d} 
+\doxymbox{\hyperlink{lib_8h_a5ab881fdb3a704bf01f559b8f29e97ee}{RUN\+\_\+\+ALL\+\_\+\+TESTS\+\_\+\+STATUSES}} user\+Testing (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}const}]{mode}{}\end{DoxyParamCaption})}
+
+
+
+Function wraper for handling all testing modes (manual, file, unit). 
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00700}{700}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00700\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00701\ }
+\DoxyCodeLine{00702\ \ \ \ \ \doxymbox{\hyperlink{structequationCoefsTest}{equationCoefsTest}}\ coefsTest;}
+\DoxyCodeLine{00703\ }
+\DoxyCodeLine{00704\ \ \ \ \ \doxymbox{\hyperlink{structequationCoefs}{equationCoefs}}*\ ptrCoefs\ =\ \&coefsTest.\doxymbox{\hyperlink{structequationCoefsTest_a7c6c308b47522b8646601f1b25712875}{coefs}};}
+\DoxyCodeLine{00705\ }
+\DoxyCodeLine{00706\ \ \ \ \ \doxymbox{\hyperlink{lib_8h_aaef59fc3966d753f08ffa9734cdd387f}{equationCoefsInitPointers}}(ptrCoefs);}
+\DoxyCodeLine{00707\ }
+\DoxyCodeLine{00708\ \ \ \ \ coefsTest.\doxymbox{\hyperlink{structequationCoefsTest_ac796ab130262b4093c55c579860a95aa}{refCntRoots}}\ =\ \doxymbox{\hyperlink{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6a52da2ea29bc7f0697300ec26acb69715}{ZERO\_ROOTS}};}
+\DoxyCodeLine{00709\ }
+\DoxyCodeLine{00710\ \ \ \ \ coefsTest.\doxymbox{\hyperlink{structequationCoefsTest_ac1118788719412a7aa8fbd2960238919}{refRoot1}}\ =\ NAN,\ coefsTest.\doxymbox{\hyperlink{structequationCoefsTest_accbdfbd289bc6b553365e0ce32a657c5}{refRoot2}}\ =\ NAN;}
+\DoxyCodeLine{00711\ }
+\DoxyCodeLine{00712\ }
+\DoxyCodeLine{00713\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Starting\ \%s\ testing...\(\backslash\)n"{}},\ mode);}
+\DoxyCodeLine{00714\ }
+\DoxyCodeLine{00715\ \ \ \ \ FILE*\ ptrFile\ =\ stdin;}
+\DoxyCodeLine{00716\ }
+\DoxyCodeLine{00717\ \ \ \ \ \textcolor{keywordflow}{if}\ (mode\ ==\ \doxymbox{\hyperlink{lib_8h_a9da2734c8489ad23b27fcda3daf4d839}{MANUAL\_FILE\_AUTO}}.\doxymbox{\hyperlink{structstatementInfo_ad0b3769e975359677cdf081691e2ffb1}{statements}}[1])\ \{}
+\DoxyCodeLine{00718\ \ \ \ \ \ \ \ \ ptrFile\ =\ \doxymbox{\hyperlink{lib_8h_a35ac3e7cca9058a55ebd730f898e6b24}{acessFile}}(\textcolor{stringliteral}{"{}Enter\ the\ name\ of\ the\ file\ with\ tests:"{}},\ \textcolor{stringliteral}{"{}r"{}});}
+\DoxyCodeLine{00719\ }
+\DoxyCodeLine{00720\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!ptrFile)\ \{}
+\DoxyCodeLine{00721\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{lib_8h_a5ab881fdb3a704bf01f559b8f29e97eea2ff76a0f8414bc6b3d886a8884ad5fa4}{RUN\_ALL\_TESTS\_ERROR}};}
+\DoxyCodeLine{00722\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00723\ \ \ \ \ \}}
+\DoxyCodeLine{00724\ }
+\DoxyCodeLine{00725\ \ \ \ \ \textcolor{keywordtype}{int}\ testsLeft\ =\ 0;}
+\DoxyCodeLine{00726\ }
+\DoxyCodeLine{00727\ \ \ \ \ \textcolor{keywordflow}{if}\ (ptrFile\ !=\ stdin\ \&\&\ !fscanf(ptrFile,\ \textcolor{stringliteral}{"{}\%i"{}},\ \&testsLeft))\ \{}
+\DoxyCodeLine{00728\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Cannot\ read\ test\ number!\(\backslash\)n"{}});}
+\DoxyCodeLine{00729\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{lib_8h_a5ab881fdb3a704bf01f559b8f29e97eea2ff76a0f8414bc6b3d886a8884ad5fa4}{RUN\_ALL\_TESTS\_ERROR}};}
+\DoxyCodeLine{00730\ \ \ \ \ \}}
+\DoxyCodeLine{00731\ \ \ \ \ \textcolor{keywordflow}{if}\ (ptrFile\ ==\ stdin)\ \{}
+\DoxyCodeLine{00732\ \ \ \ \ \ \ \ \ testsLeft\ =\ \doxymbox{\hyperlink{lib_8h_a75a5da1a3042c8d8af5e0fd9db9e9bae}{getPositiveIntInputSafe}}();}
+\DoxyCodeLine{00733\ \ \ \ \ \}}
+\DoxyCodeLine{00734\ }
+\DoxyCodeLine{00735\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ testsLeft;\ i++)\ \{}
+\DoxyCodeLine{00736\ }
+\DoxyCodeLine{00737\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ptrFile\ ==\ stdin\ \&\&\ !\doxymbox{\hyperlink{lib_8h_acee85cf91ee5e73735fbf8717543844b}{resume}}())\ \{}
+\DoxyCodeLine{00738\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00739\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00740\ }
+\DoxyCodeLine{00741\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3}{INPUT\_STATUSES}}\ inputCoefStatus\ =\ \doxymbox{\hyperlink{lib_8h_adcdc3cdf2fd6ea693d54d533647af4f2}{fileCoefInput}}(ptrCoefs,\ ptrFile);}
+\DoxyCodeLine{00742\ }
+\DoxyCodeLine{00743\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (inputCoefStatus\ !=\ \doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3a85532f7f4c9ad5482709c4233650db27}{INPUT\_CORRECT}})\ \{}
+\DoxyCodeLine{00744\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Try\ another\ time!\(\backslash\)n"{}});}
+\DoxyCodeLine{00745\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ptrFile\ !=\ stdin)\ \{}
+\DoxyCodeLine{00746\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%sError:\ cannot\ process\ coefs\ in\ test\ number\ \%i\ .\ Skipping...\%s"{}},\ \doxymbox{\hyperlink{lib_8h_aabc8a60b2b78eecc6da447f98beacb95}{MY\_RED}},\ i,\ \doxymbox{\hyperlink{lib_8h_a245f38fcd075b74c3f6ee738db944280}{MY\_RESET}});}
+\DoxyCodeLine{00747\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{main_8cpp_ad2cca253e601712b5df1562061a50898}{myPlaySound}}(\doxymbox{\hyperlink{Sound_8h_aede0902e3afd72bbb4db993004370bd9}{INCORRECT\_SOUND}});}
+\DoxyCodeLine{00748\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00749\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00750\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00751\ }
+\DoxyCodeLine{00752\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ptrFile\ ==\ stdin)\ \{}
+\DoxyCodeLine{00753\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Enter\ refCntRoots,\ refRoot1,\ refRoot2:"{}});}
+\DoxyCodeLine{00754\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00755\ }
+\DoxyCodeLine{00756\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3}{INPUT\_STATUSES}}\ inputRefStatus\ =\ \ \doxymbox{\hyperlink{lib_8h_a901953972f7efc25cbfc53a8d35c3e28}{fileRefInput}}(\&coefsTest,\ ptrFile);}
+\DoxyCodeLine{00757\ }
+\DoxyCodeLine{00758\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (inputRefStatus\ !=\ \doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3a85532f7f4c9ad5482709c4233650db27}{INPUT\_CORRECT}})\ \{}
+\DoxyCodeLine{00759\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Try\ another\ time!\(\backslash\)n"{}});}
+\DoxyCodeLine{00760\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ptrFile\ !=\ stdin)\ \{}
+\DoxyCodeLine{00761\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%sError:\ cannot\ process\ reference\ values\ in\ test\ number\ \%i\ .\ Skipping...\%s"{}},\ \doxymbox{\hyperlink{lib_8h_aabc8a60b2b78eecc6da447f98beacb95}{MY\_RED}},\ i,\ \doxymbox{\hyperlink{lib_8h_a245f38fcd075b74c3f6ee738db944280}{MY\_RESET}});}
+\DoxyCodeLine{00762\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{main_8cpp_ad2cca253e601712b5df1562061a50898}{myPlaySound}}(\doxymbox{\hyperlink{Sound_8h_aede0902e3afd72bbb4db993004370bd9}{INCORRECT\_SOUND}});}
+\DoxyCodeLine{00763\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00764\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00765\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00766\ }
+\DoxyCodeLine{00767\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{lib_8h_a615beba20980376980ffc687b9201ca3}{RUN\_SINGLE\_TEST\_STATUSES}}\ checkTestStatus\ =\ \doxymbox{\hyperlink{lib_8h_ac9854a7e8e2a9f22ea0466b5fcdae323}{runSingleTest}}(coefsTest);}
+\DoxyCodeLine{00768\ }
+\DoxyCodeLine{00769\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \textcolor{keyword}{const}\ CheckTestStatusLine\ =\ \doxymbox{\hyperlink{lib_8h_a4784b9a6ac16cb8f71050bf8e55aa3ee}{getStringTestCheckStatus}}(checkTestStatus);}
+\DoxyCodeLine{00770\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%s"{}},\ CheckTestStatusLine);}
+\DoxyCodeLine{00771\ }
+\DoxyCodeLine{00772\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ stopTestingCycle\ =\ \textcolor{keyword}{false};\ \textcolor{comment}{//\ TODO\ a\ flag,\ that\ specifies\ the\ behaviour\ when\ caught\ error\ while\ testing\ (break\ or\ continue)}}
+\DoxyCodeLine{00773\ }
+\DoxyCodeLine{00774\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (checkTestStatus)\ \{}
+\DoxyCodeLine{00775\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{lib_8h_a615beba20980376980ffc687b9201ca3a93866eb62cc80c66316ccb6282ba3289}{TEST\_CHECK\_SUCCESS}}:}
+\DoxyCodeLine{00776\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00777\ }
+\DoxyCodeLine{00778\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{lib_8h_a615beba20980376980ffc687b9201ca3a551428584afa7900f2c84bdd04505757}{TEST\_CHECK\_FAIL}}:}
+\DoxyCodeLine{00779\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stopTestingCycle\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00780\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00781\ }
+\DoxyCodeLine{00782\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{lib_8h_a615beba20980376980ffc687b9201ca3a6629d128037b7899fbaf1c4a02088d42}{TEST\_CHECK\_ERROR}}:}
+\DoxyCodeLine{00783\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00784\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{lib_8h_a5ab881fdb3a704bf01f559b8f29e97eea2ff76a0f8414bc6b3d886a8884ad5fa4}{RUN\_ALL\_TESTS\_ERROR}};}
+\DoxyCodeLine{00785\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00786\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00787\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (stopTestingCycle)\ \{}
+\DoxyCodeLine{00788\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00789\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00790\ }
+\DoxyCodeLine{00791\ \ \ \ \ \}}
+\DoxyCodeLine{00792\ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{lib_8h_a5ab881fdb3a704bf01f559b8f29e97eea5482d7204e9fe0a20244009e009fe19e}{RUN\_ALL\_TESTS\_SUCCESS}};}
+\DoxyCodeLine{00793\ }
+\DoxyCodeLine{00794\ \}}
+
+\end{DoxyCode}
+
+
+References \doxymbox{\hyperlink{main_8cpp_source_l00903}{acess\+File()}}, \doxymbox{\hyperlink{lib_8h_source_l00093}{equation\+Coefs\+Test::\+coefs}}, \doxymbox{\hyperlink{main_8cpp_source_l00050}{equation\+Coefs\+Init\+Pointers()}}, \doxymbox{\hyperlink{main_8cpp_source_l00922}{file\+Coef\+Input()}}, \doxymbox{\hyperlink{main_8cpp_source_l00943}{file\+Ref\+Input()}}, \doxymbox{\hyperlink{main_8cpp_source_l00318}{get\+Positive\+Int\+Input\+Safe()}}, \doxymbox{\hyperlink{main_8cpp_source_l00633}{get\+String\+Test\+Check\+Status()}}, \doxymbox{\hyperlink{Sound_8h_source_l00008}{INCORRECT\+\_\+\+SOUND}}, \doxymbox{\hyperlink{lib_8h_source_l00066}{INPUT\+\_\+\+CORRECT}}, \doxymbox{\hyperlink{lib_8h_source_l00089}{MANUAL\+\_\+\+FILE\+\_\+\+AUTO}}, \doxymbox{\hyperlink{lib_8h_source_l00016}{MY\+\_\+\+RED}}, \doxymbox{\hyperlink{lib_8h_source_l00019}{MY\+\_\+\+RESET}}, \doxymbox{\hyperlink{main_8cpp_source_l01034}{my\+Play\+Sound()}}, \doxymbox{\hyperlink{lib_8h_source_l00095}{equation\+Coefs\+Test::\+ref\+Cnt\+Roots}}, \doxymbox{\hyperlink{lib_8h_source_l00096}{equation\+Coefs\+Test::\+ref\+Root1}}, \doxymbox{\hyperlink{lib_8h_source_l00096}{equation\+Coefs\+Test::\+ref\+Root2}}, \doxymbox{\hyperlink{main_8cpp_source_l00381}{resume()}}, \doxymbox{\hyperlink{lib_8h_source_l00077}{RUN\+\_\+\+ALL\+\_\+\+TESTS\+\_\+\+ERROR}}, \doxymbox{\hyperlink{lib_8h_source_l00076}{RUN\+\_\+\+ALL\+\_\+\+TESTS\+\_\+\+SUCCESS}}, \doxymbox{\hyperlink{main_8cpp_source_l00655}{run\+Single\+Test()}}, \doxymbox{\hyperlink{lib_8h_source_l00082}{statement\+Info::\+statements}}, \doxymbox{\hyperlink{lib_8h_source_l00072}{TEST\+\_\+\+CHECK\+\_\+\+ERROR}}, \doxymbox{\hyperlink{lib_8h_source_l00071}{TEST\+\_\+\+CHECK\+\_\+\+FAIL}}, \doxymbox{\hyperlink{lib_8h_source_l00070}{TEST\+\_\+\+CHECK\+\_\+\+SUCCESS}}, \doxymbox{\hyperlink{main_8cpp_source_l00700}{user\+Testing()}}, and \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00007}{ZERO\+\_\+\+ROOTS}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00592}{run\+All\+Tests()}}, and \doxymbox{\hyperlink{main_8cpp_source_l00700}{user\+Testing()}}.
+

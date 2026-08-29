@@ -1,0 +1,172 @@
+\doxysection{Quadratic\+Solver.\+h File Reference}
+\hypertarget{QuadraticSolver_8h}{}\label{QuadraticSolver_8h}\index{QuadraticSolver.h@{QuadraticSolver.h}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{structequationCoefs}{equation\+Coefs}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \doxymbox{\hyperlink{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6}{QUADRATIC\+\_\+\+SOLVER\+\_\+\+STATUSES}} \{ \newline
+\doxymbox{\hyperlink{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6a3e72a207980317e2a7929fddd881e2fb}{QUADRATIC\+\_\+\+SOLVER\+\_\+\+ERROR}} = -\/1
+, \doxymbox{\hyperlink{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6a52da2ea29bc7f0697300ec26acb69715}{ZERO\+\_\+\+ROOTS}} = 0
+, \doxymbox{\hyperlink{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6a6700c0f6efd23571cb22aefd2510b1cf}{ONE\+\_\+\+ROOT}} = 1
+, \doxymbox{\hyperlink{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6a876622d3c0b008da13a3685c64714e81}{TWO\+\_\+\+ROOTS}} = 2
+, \newline
+\doxymbox{\hyperlink{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6a5a79e9e49077da58fe5d46a98f0b5e36}{INF\+\_\+\+ROOTS}} = 8
+ \}
+\begin{DoxyCompactList}\small\item\em INF\+\_\+\+ROOTS are 8, becuase it is rotated 90 degrees:). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6}{QUADRATIC\+\_\+\+SOLVER\+\_\+\+STATUSES}} \doxymbox{\hyperlink{QuadraticSolver_8h_a85ea464c2ea19752014b9f0baae305d6}{Quadratic\+Solver}} (const \doxymbox{\hyperlink{structequationCoefs}{equation\+Coefs}} \texorpdfstring{$\ast$}{*}const ptr\+Coefs, double \texorpdfstring{$\ast$}{*}eq\+Root1, double \texorpdfstring{$\ast$}{*}eq\+Root2)
+\begin{DoxyCompactList}\small\item\em solves quadratic equation, edge cases e.\+g. linear equation are handled \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{QuadraticSolver_8h_doc-enum-members}
+\Hypertarget{QuadraticSolver_8h_doc-enum-members}
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6}\index{QuadraticSolver.h@{QuadraticSolver.h}!QUADRATIC\_SOLVER\_STATUSES@{QUADRATIC\_SOLVER\_STATUSES}}
+\index{QUADRATIC\_SOLVER\_STATUSES@{QUADRATIC\_SOLVER\_STATUSES}!QuadraticSolver.h@{QuadraticSolver.h}}
+\doxysubsubsection{\texorpdfstring{QUADRATIC\_SOLVER\_STATUSES}{QUADRATIC\_SOLVER\_STATUSES}}
+{\footnotesize\ttfamily \label{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6} 
+enum \doxymbox{\hyperlink{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6}{QUADRATIC\+\_\+\+SOLVER\+\_\+\+STATUSES}}}
+
+
+
+INF\+\_\+\+ROOTS are 8, becuase it is rotated 90 degrees:). 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{QUADRATIC\_SOLVER\_ERROR@{QUADRATIC\_SOLVER\_ERROR}!QuadraticSolver.h@{QuadraticSolver.h}}
+\index{QuadraticSolver.h@{QuadraticSolver.h}!QUADRATIC\_SOLVER\_ERROR@{QUADRATIC\_SOLVER\_ERROR}}
+}\Hypertarget{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6a3e72a207980317e2a7929fddd881e2fb}\label{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6a3e72a207980317e2a7929fddd881e2fb} 
+QUADRATIC\+\_\+\+SOLVER\+\_\+\+ERROR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ZERO\_ROOTS@{ZERO\_ROOTS}!QuadraticSolver.h@{QuadraticSolver.h}}
+\index{QuadraticSolver.h@{QuadraticSolver.h}!ZERO\_ROOTS@{ZERO\_ROOTS}}
+}\Hypertarget{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6a52da2ea29bc7f0697300ec26acb69715}\label{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6a52da2ea29bc7f0697300ec26acb69715} 
+ZERO\+\_\+\+ROOTS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ONE\_ROOT@{ONE\_ROOT}!QuadraticSolver.h@{QuadraticSolver.h}}
+\index{QuadraticSolver.h@{QuadraticSolver.h}!ONE\_ROOT@{ONE\_ROOT}}
+}\Hypertarget{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6a6700c0f6efd23571cb22aefd2510b1cf}\label{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6a6700c0f6efd23571cb22aefd2510b1cf} 
+ONE\+\_\+\+ROOT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TWO\_ROOTS@{TWO\_ROOTS}!QuadraticSolver.h@{QuadraticSolver.h}}
+\index{QuadraticSolver.h@{QuadraticSolver.h}!TWO\_ROOTS@{TWO\_ROOTS}}
+}\Hypertarget{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6a876622d3c0b008da13a3685c64714e81}\label{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6a876622d3c0b008da13a3685c64714e81} 
+TWO\+\_\+\+ROOTS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{INF\_ROOTS@{INF\_ROOTS}!QuadraticSolver.h@{QuadraticSolver.h}}
+\index{QuadraticSolver.h@{QuadraticSolver.h}!INF\_ROOTS@{INF\_ROOTS}}
+}\Hypertarget{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6a5a79e9e49077da58fe5d46a98f0b5e36}\label{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6a5a79e9e49077da58fe5d46a98f0b5e36} 
+INF\+\_\+\+ROOTS&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00005}{5}} of file \doxymbox{\hyperlink{QuadraticSolver_8h_source}{Quadratic\+Solver.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00005\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00006\ \ \ \ \ \doxymbox{\hyperlink{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6a3e72a207980317e2a7929fddd881e2fb}{QUADRATIC\_SOLVER\_ERROR}}\ =\ -\/1,}
+\DoxyCodeLine{00007\ \ \ \ \ \doxymbox{\hyperlink{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6a52da2ea29bc7f0697300ec26acb69715}{ZERO\_ROOTS}}\ =\ 0,}
+\DoxyCodeLine{00008\ \ \ \ \ \doxymbox{\hyperlink{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6a6700c0f6efd23571cb22aefd2510b1cf}{ONE\_ROOT}}\ =\ 1,}
+\DoxyCodeLine{00009\ \ \ \ \ \doxymbox{\hyperlink{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6a876622d3c0b008da13a3685c64714e81}{TWO\_ROOTS}}\ =\ 2,}
+\DoxyCodeLine{00010\ \ \ \ \ \doxymbox{\hyperlink{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6a5a79e9e49077da58fe5d46a98f0b5e36}{INF\_ROOTS}}\ =\ 8}
+\DoxyCodeLine{00011\ \};}
+
+\end{DoxyCode}
+
+
+\label{QuadraticSolver_8h_doc-func-members}
+\Hypertarget{QuadraticSolver_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{QuadraticSolver_8h_a85ea464c2ea19752014b9f0baae305d6}\index{QuadraticSolver.h@{QuadraticSolver.h}!QuadraticSolver@{QuadraticSolver}}
+\index{QuadraticSolver@{QuadraticSolver}!QuadraticSolver.h@{QuadraticSolver.h}}
+\doxysubsubsection{\texorpdfstring{QuadraticSolver()}{QuadraticSolver()}}
+{\footnotesize\ttfamily \label{QuadraticSolver_8h_a85ea464c2ea19752014b9f0baae305d6} 
+\doxymbox{\hyperlink{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6}{QUADRATIC\+\_\+\+SOLVER\+\_\+\+STATUSES}} Quadratic\+Solver (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structequationCoefs}{equation\+Coefs}} \texorpdfstring{$\ast$}{*}const}]{ptr\+Coefs}{, }\item[{double \texorpdfstring{$\ast$}{*}}]{eq\+Root1}{, }\item[{double \texorpdfstring{$\ast$}{*}}]{eq\+Root2}{}\end{DoxyParamCaption})}
+
+
+
+solves quadratic equation, edge cases e.\+g. linear equation are handled 
+
+
+\begin{DoxyParams}{Parameters}
+{\em coefs} & \\
+\hline
+{\em eq\+Root1} & ~\newline
+ \\
+\hline
+{\em eq\+Root2} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+first root \texorpdfstring{$<$}{<}= than second, if there is one root, \texorpdfstring{$\ast$}{*}eq\+Root2 = NAN; no roots -\/ both are NAN 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{QuadraticSolver_8cpp_source_l00001}{1}} of file \doxymbox{\hyperlink{QuadraticSolver_8cpp_source}{Quadratic\+Solver.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00002\ \ \ \ \ \textcolor{keywordtype}{double}\ a\ =\ ptrCoefs-\/>\doxymbox{\hyperlink{structequationCoefs_a2b6a27c420a402738f62897dffb8c289}{a}},\ b\ =\ ptrCoefs-\/>\doxymbox{\hyperlink{structequationCoefs_aac91acb14d7dbbf9ffc0e38eb58a71e0}{b}},\ c\ =\ ptrCoefs-\/>\doxymbox{\hyperlink{structequationCoefs_a5d2166bc753ec5ed1a3e4c73418db81f}{c}};}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \ \ \ \ assert(isfinite(a)\ \&\&\ isfinite(b)\ \&\&\ isfinite(c));}
+\DoxyCodeLine{00005\ \ \ \ \ assert(eqRoot1\ !=\ NULL\ \&\&\ eqRoot2\ !=\ NULL);}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \ \ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{CmpDouble_8cpp_ab9b61cbfa9a9cad7d8cfa2d7eeb6261c}{CmpDouble}}(a,\ 0)\ ==\ 0)\ \{}
+\DoxyCodeLine{00008\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ printf("{}HAVE\ ZERO\ A\(\backslash\)n"{});}}
+\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{CmpDouble_8cpp_ab9b61cbfa9a9cad7d8cfa2d7eeb6261c}{CmpDouble}}(b,\ 0)\ ==\ 0)\ \{}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{CmpDouble_8cpp_ab9b61cbfa9a9cad7d8cfa2d7eeb6261c}{CmpDouble}}(c,\ 0)\ ==\ 0)\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6a5a79e9e49077da58fe5d46a98f0b5e36}{INF\_ROOTS}};}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6a52da2ea29bc7f0697300ec26acb69715}{ZERO\_ROOTS}};\ \textcolor{comment}{//\ \ have\ NO\ solutions}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ *eqRoot1\ =\ -\/c\ /\ b;}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6a6700c0f6efd23571cb22aefd2510b1cf}{ONE\_ROOT}};}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ d\ =\ b\ *\ b\ -\/\ 4\ *\ a\ *\ c;}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{CmpDouble_8cpp_ab9b61cbfa9a9cad7d8cfa2d7eeb6261c}{CmpDouble}}(d,\ 0)\ ==\ -\/1)\ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6a52da2ea29bc7f0697300ec26acb69715}{ZERO\_ROOTS}};}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{CmpDouble_8cpp_ab9b61cbfa9a9cad7d8cfa2d7eeb6261c}{CmpDouble}}(d,\ 0)\ ==\ 0)\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ *eqRoot1\ =\ -\/b\ /\ (2\ *\ a);}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6a6700c0f6efd23571cb22aefd2510b1cf}{ONE\_ROOT}};}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ printf("{}discriminant:\ \%lf\(\backslash\)n"{},\ d);}}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ sqrt\_d\ =\ sqrt(d);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ *eqRoot1\ =\ (-\/b\ -\/\ sqrt\_d)\ /\ (2\ *\ a);}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ *eqRoot2\ =\ (-\/b\ +\ sqrt\_d)\ /\ (2\ *\ a);}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6a876622d3c0b008da13a3685c64714e81}{TWO\_ROOTS}};}
+\DoxyCodeLine{00040\ \ \ \ \ \}}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6a3e72a207980317e2a7929fddd881e2fb}{QUADRATIC\_SOLVER\_ERROR}};}
+\DoxyCodeLine{00042\ \}}
+
+\end{DoxyCode}
+
+
+References \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00014}{equation\+Coefs::\+a}}, \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00014}{equation\+Coefs::\+b}}, \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00014}{equation\+Coefs::\+c}}, \doxymbox{\hyperlink{CmpDouble_8cpp_source_l00001}{Cmp\+Double()}}, \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00010}{INF\+\_\+\+ROOTS}}, \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00008}{ONE\+\_\+\+ROOT}}, \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00006}{QUADRATIC\+\_\+\+SOLVER\+\_\+\+ERROR}}, \doxymbox{\hyperlink{QuadraticSolver_8cpp_source_l00001}{Quadratic\+Solver()}}, \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00009}{TWO\+\_\+\+ROOTS}}, and \doxymbox{\hyperlink{QuadraticSolver_8h_source_l00007}{ZERO\+\_\+\+ROOTS}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{QuadraticSolver_8cpp_source_l00001}{Quadratic\+Solver()}}, \doxymbox{\hyperlink{main_8cpp_source_l00655}{run\+Single\+Test()}}, and \doxymbox{\hyperlink{main_8cpp_source_l00337}{solve\+Real\+Time()}}.
+

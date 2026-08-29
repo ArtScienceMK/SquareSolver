@@ -1,0 +1,211 @@
+\doxysection{lib.\+h}
+\hypertarget{lib_8h_source}{}\label{lib_8h_source}\doxymbox{\hyperlink{lib_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00001}00001\ \textcolor{preprocessor}{\#ifndef\ LIB\_H}}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00002}00002\ \textcolor{preprocessor}{\#define\ LIB\_H}}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00004}00004\ \textcolor{preprocessor}{\#ifdef\ DEBUG}}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00006}00006\ \textcolor{preprocessor}{\#define\ ON\_DEBUG(...)\ \_\_VA\_ARGS\_\_}}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00008}00008\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00010}\doxymbox{\hyperlink{lib_8h_a1bdd7c1369b250215a080e8421d4ecf3}{00010}}\ \textcolor{preprocessor}{\#define\ ON\_DEBUG(...)}}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00012}00012\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00015}00015\ \textcolor{comment}{//\ \ Colors\ for\ terminal}}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00016}\doxymbox{\hyperlink{lib_8h_aabc8a60b2b78eecc6da447f98beacb95}{00016}}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{lib_8h_aabc8a60b2b78eecc6da447f98beacb95}{MY\_RED}}\ =\ \textcolor{stringliteral}{"{}\(\backslash\)033[31m"{}};}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00017}\doxymbox{\hyperlink{lib_8h_af733a2e19265664c7fb7fab3ff7910f3}{00017}}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{lib_8h_af733a2e19265664c7fb7fab3ff7910f3}{MY\_YELLOW}}\ =\ \textcolor{stringliteral}{"{}\(\backslash\)033[33m"{}};}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00018}\doxymbox{\hyperlink{lib_8h_a1c5e36af22d578c2458e0d5f18e3700a}{00018}}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{lib_8h_a1c5e36af22d578c2458e0d5f18e3700a}{MY\_GREEN}}\ =\ \textcolor{stringliteral}{"{}\(\backslash\)033[32m"{}};}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00019}\doxymbox{\hyperlink{lib_8h_a245f38fcd075b74c3f6ee738db944280}{00019}}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{lib_8h_a245f38fcd075b74c3f6ee738db944280}{MY\_RESET}}\ =\ \textcolor{stringliteral}{"{}\(\backslash\)033[0m"{}};}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00021}00021\ \textcolor{comment}{//\ \ Sizes\ of\ static\ arrays}}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00023}\doxymbox{\hyperlink{lib_8h_a42bc9ea40135c763cd21cdf9b8554670}{00023}}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{lib_8h_a42bc9ea40135c763cd21cdf9b8554670}{MAX\_STATEMENT\_LEN}}\ =\ 9;\ \textcolor{comment}{//\ >=\ 8\ to\ avoid\ warning}}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00024}\doxymbox{\hyperlink{lib_8h_a0bdc5ad93019f9e3db8ad418b39eacb2}{00024}}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{lib_8h_a0bdc5ad93019f9e3db8ad418b39eacb2}{MAX\_STATEMENTS}}\ =\ 10;}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00026}\doxymbox{\hyperlink{lib_8h_a4e34bb083d3349029a94995a2e3292b9}{00026}}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{lib_8h_a4e34bb083d3349029a94995a2e3292b9}{MAX\_FORMAT\_LINE\_LEN}}\ =\ 50;}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00027}\doxymbox{\hyperlink{lib_8h_ae70df03518a247f245d72df135cd480e}{00027}}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{lib_8h_ae70df03518a247f245d72df135cd480e}{MAX\_NUMBER\_LEN}}\ =\ 20;}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00028}\doxymbox{\hyperlink{lib_8h_a47c98bc90c67ed82124bf45f5d260e3f}{00028}}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{lib_8h_a47c98bc90c67ed82124bf45f5d260e3f}{MAX\_FILENAME\_LEN}}\ =\ 20;}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00030}00030\ \textcolor{comment}{//\ \ Trash\ char}}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00031}\doxymbox{\hyperlink{lib_8h_aabb926ac41416ac6499c4c1a7b47f8a5}{00031}}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ \doxymbox{\hyperlink{lib_8h_aabb926ac41416ac6499c4c1a7b47f8a5}{TRASH\_CHAR}}\ =\ \textcolor{charliteral}{'a'};}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00033}00033\ \textcolor{comment}{//\ \ Statuses}}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00035}\doxymbox{\hyperlink{lib_8h_a780cb1180cc5e51ff4ce71c1fc4e6422}{00035}}\ \textcolor{keyword}{enum}\ \doxymbox{\hyperlink{lib_8h_a780cb1180cc5e51ff4ce71c1fc4e6422}{INPUT\_MODE\_STATUS}}\ \{}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00036}\doxymbox{\hyperlink{lib_8h_a780cb1180cc5e51ff4ce71c1fc4e6422ab09b6d718c535c4d6fe77cc69ae8de0b}{00036}}\ \ \ \ \ \doxymbox{\hyperlink{lib_8h_a780cb1180cc5e51ff4ce71c1fc4e6422ab09b6d718c535c4d6fe77cc69ae8de0b}{SOLVING}}\ =\ 0,}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00037}\doxymbox{\hyperlink{lib_8h_a780cb1180cc5e51ff4ce71c1fc4e6422aca6c0848647c55068d1de35320dc1d11}{00037}}\ \ \ \ \ \doxymbox{\hyperlink{lib_8h_a780cb1180cc5e51ff4ce71c1fc4e6422aca6c0848647c55068d1de35320dc1d11}{TESTING}}\ =\ 1,}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00038}\doxymbox{\hyperlink{lib_8h_a780cb1180cc5e51ff4ce71c1fc4e6422ae3878a295794b6a8739a8eee58524112}{00038}}\ \ \ \ \ \doxymbox{\hyperlink{lib_8h_a780cb1180cc5e51ff4ce71c1fc4e6422ae3878a295794b6a8739a8eee58524112}{FUNCTION\_GRAPHIC}}\ =\ 2,}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00039}\doxymbox{\hyperlink{lib_8h_a780cb1180cc5e51ff4ce71c1fc4e6422a9b6bba8dc8a8905c42d8b88c12c774d1}{00039}}\ \ \ \ \ \doxymbox{\hyperlink{lib_8h_a780cb1180cc5e51ff4ce71c1fc4e6422a9b6bba8dc8a8905c42d8b88c12c774d1}{USER\_INPUT\_MODE\_ERROR}}\ =\ 3}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00040}00040\ \};}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00043}\doxymbox{\hyperlink{lib_8h_a4bbb217fb2817e448718577f63221d75}{00043}}\ \textcolor{keyword}{enum}\ \doxymbox{\hyperlink{lib_8h_a4bbb217fb2817e448718577f63221d75}{TESTING\_MODE\_STATUSES}}\ \{}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00044}\doxymbox{\hyperlink{lib_8h_a4bbb217fb2817e448718577f63221d75a1c0ecea4afff1ac5793a33f9bbd26ade}{00044}}\ \ \ \ \ \doxymbox{\hyperlink{lib_8h_a4bbb217fb2817e448718577f63221d75a1c0ecea4afff1ac5793a33f9bbd26ade}{MANUAL\_TESTING}}\ =\ 0,}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00045}\doxymbox{\hyperlink{lib_8h_a4bbb217fb2817e448718577f63221d75af9b0c2adf601be2d3699f647dff402b6}{00045}}\ \ \ \ \ \doxymbox{\hyperlink{lib_8h_a4bbb217fb2817e448718577f63221d75af9b0c2adf601be2d3699f647dff402b6}{FILE\_TESTING}}\ =\ 1,\ \textcolor{comment}{//\ input\ from\ file}}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00046}\doxymbox{\hyperlink{lib_8h_a4bbb217fb2817e448718577f63221d75a66f99c3a111e9adf9ac338e55ede42ff}{00046}}\ \ \ \ \ \doxymbox{\hyperlink{lib_8h_a4bbb217fb2817e448718577f63221d75a66f99c3a111e9adf9ac338e55ede42ff}{UNIT\_TESTING}}\ =\ 2,\ \textcolor{comment}{//\ testing\ on\ set\ of\ cases}}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00047}\doxymbox{\hyperlink{lib_8h_a4bbb217fb2817e448718577f63221d75adc6c3c530461925117d8dd7821a1af21}{00047}}\ \ \ \ \ \doxymbox{\hyperlink{lib_8h_a4bbb217fb2817e448718577f63221d75adc6c3c530461925117d8dd7821a1af21}{TESTING\_MODE\_INPUT\_ERROR}}\ =\ 3}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00048}00048\ \};}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00051}\doxymbox{\hyperlink{lib_8h_abced6a6f14d20822e71c39f39c75c0ae}{00051}}\ \textcolor{keyword}{enum}\ \doxymbox{\hyperlink{lib_8h_abced6a6f14d20822e71c39f39c75c0ae}{CHECK\_STATUSES}}\ \{}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00052}\doxymbox{\hyperlink{lib_8h_abced6a6f14d20822e71c39f39c75c0aeaaad2d36806162d71fef089ba24176b0f}{00052}}\ \ \ \ \ \doxymbox{\hyperlink{lib_8h_abced6a6f14d20822e71c39f39c75c0aeaaad2d36806162d71fef089ba24176b0f}{CHECK\_SUCCESS}}\ =\ 1,}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00053}\doxymbox{\hyperlink{lib_8h_abced6a6f14d20822e71c39f39c75c0aea0884b3f08d1e7360e25807b5dd8ee4cf}{00053}}\ \ \ \ \ \doxymbox{\hyperlink{lib_8h_abced6a6f14d20822e71c39f39c75c0aea0884b3f08d1e7360e25807b5dd8ee4cf}{CHECK\_FAIL}}\ =\ 0,}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00054}\doxymbox{\hyperlink{lib_8h_abced6a6f14d20822e71c39f39c75c0aeaac2692c8213efc1f1596e306a098e8ba}{00054}}\ \ \ \ \ \doxymbox{\hyperlink{lib_8h_abced6a6f14d20822e71c39f39c75c0aeaac2692c8213efc1f1596e306a098e8ba}{CHECK\_ERROR}}\ =\ -\/1}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00055}00055\ \};}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00058}\doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3}{00058}}\ \textcolor{keyword}{enum}\ \doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3}{INPUT\_STATUSES}}\ \{}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00059}\doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3a6d2ff4b7b6bf62bc7a0a327adfb1658c}{00059}}\ \ \ \ \ \doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3a6d2ff4b7b6bf62bc7a0a327adfb1658c}{INPUT\_ERROR\_FIRST}}\ =\ 0,}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00060}\doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3a3c5f0cea9872fb57fb1927105cef1d82}{00060}}\ \ \ \ \ \doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3a3c5f0cea9872fb57fb1927105cef1d82}{INPUT\_ERROR\_SECOND}}\ =\ 1,}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00061}\doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3aee4ce48316d423ac68114df49a6d678b}{00061}}\ \ \ \ \ \doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3aee4ce48316d423ac68114df49a6d678b}{INPUT\_ERROR\_THIRD}}\ =\ 2,}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00063}\doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3af6ed44afdcaed22db975a1a7a4b6ffe1}{00063}}\ \ \ \ \ \doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3af6ed44afdcaed22db975a1a7a4b6ffe1}{INPUT\_ERROR\_AFTER\_THIRD}}\ =\ 3,}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00064}\doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3a2b57a7a34e4cb133171bc2bcca941598}{00064}}\ \ \ \ \ \doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3a2b57a7a34e4cb133171bc2bcca941598}{INPUT\_ERROR\_BAD\_NUMBERS}}\ =\ 4,}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00065}\doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3a708b209286c89d99428496ec87ff02b8}{00065}}\ \ \ \ \ \doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3a708b209286c89d99428496ec87ff02b8}{UNKNOWN\_INPUT\_ERROR}}\ =\ 5,}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00066}\doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3a85532f7f4c9ad5482709c4233650db27}{00066}}\ \ \ \ \ \doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3a85532f7f4c9ad5482709c4233650db27}{INPUT\_CORRECT}}\ =\ 6}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00067}00067\ \};}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00069}\doxymbox{\hyperlink{lib_8h_a615beba20980376980ffc687b9201ca3}{00069}}\ \textcolor{keyword}{enum}\ \doxymbox{\hyperlink{lib_8h_a615beba20980376980ffc687b9201ca3}{RUN\_SINGLE\_TEST\_STATUSES}}\ \{}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00070}\doxymbox{\hyperlink{lib_8h_a615beba20980376980ffc687b9201ca3a93866eb62cc80c66316ccb6282ba3289}{00070}}\ \ \ \ \ \doxymbox{\hyperlink{lib_8h_a615beba20980376980ffc687b9201ca3a93866eb62cc80c66316ccb6282ba3289}{TEST\_CHECK\_SUCCESS}}\ =\ 0,}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00071}\doxymbox{\hyperlink{lib_8h_a615beba20980376980ffc687b9201ca3a551428584afa7900f2c84bdd04505757}{00071}}\ \ \ \ \ \doxymbox{\hyperlink{lib_8h_a615beba20980376980ffc687b9201ca3a551428584afa7900f2c84bdd04505757}{TEST\_CHECK\_FAIL}}\ =\ 1,}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00072}\doxymbox{\hyperlink{lib_8h_a615beba20980376980ffc687b9201ca3a6629d128037b7899fbaf1c4a02088d42}{00072}}\ \ \ \ \ \doxymbox{\hyperlink{lib_8h_a615beba20980376980ffc687b9201ca3a6629d128037b7899fbaf1c4a02088d42}{TEST\_CHECK\_ERROR}}\ =\ 2}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00073}00073\ \};}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00075}\doxymbox{\hyperlink{lib_8h_a5ab881fdb3a704bf01f559b8f29e97ee}{00075}}\ \textcolor{keyword}{enum}\ \doxymbox{\hyperlink{lib_8h_a5ab881fdb3a704bf01f559b8f29e97ee}{RUN\_ALL\_TESTS\_STATUSES}}\ \{}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00076}\doxymbox{\hyperlink{lib_8h_a5ab881fdb3a704bf01f559b8f29e97eea5482d7204e9fe0a20244009e009fe19e}{00076}}\ \ \ \ \ \doxymbox{\hyperlink{lib_8h_a5ab881fdb3a704bf01f559b8f29e97eea5482d7204e9fe0a20244009e009fe19e}{RUN\_ALL\_TESTS\_SUCCESS}}\ =\ 0,}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00077}\doxymbox{\hyperlink{lib_8h_a5ab881fdb3a704bf01f559b8f29e97eea2ff76a0f8414bc6b3d886a8884ad5fa4}{00077}}\ \ \ \ \ \doxymbox{\hyperlink{lib_8h_a5ab881fdb3a704bf01f559b8f29e97eea2ff76a0f8414bc6b3d886a8884ad5fa4}{RUN\_ALL\_TESTS\_ERROR}}\ =\ 1}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00078}00078\ \};}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00081}\doxymbox{\hyperlink{structstatementInfo}{00081}}\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{structstatementInfo}{statementInfo}}\ \{}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00082}\doxymbox{\hyperlink{structstatementInfo_ad0b3769e975359677cdf081691e2ffb1}{00082}}\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{structstatementInfo_ad0b3769e975359677cdf081691e2ffb1}{statements}}[\doxymbox{\hyperlink{lib_8h_a0bdc5ad93019f9e3db8ad418b39eacb2}{MAX\_STATEMENTS}}];}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00083}00083\ \};}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00085}\doxymbox{\hyperlink{lib_8h_a997ce61980fb638854974b855a8cf2a7}{00085}}\ \textcolor{keyword}{const}\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{structstatementInfo}{statementInfo}}\ \doxymbox{\hyperlink{lib_8h_a997ce61980fb638854974b855a8cf2a7}{YES\_NO}}\ =\ \{\{\textcolor{stringliteral}{"{}yes"{}},\ \textcolor{stringliteral}{"{}no"{}}\}\};}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00087}\doxymbox{\hyperlink{lib_8h_a8789bc8a5d14a41e1013b86e80e72eca}{00087}}\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{structstatementInfo}{statementInfo}}\ \doxymbox{\hyperlink{lib_8h_a8789bc8a5d14a41e1013b86e80e72eca}{SOLVE\_TEST\_GRAPHICAL}}\ =\ \{\{\textcolor{stringliteral}{"{}solve"{}},\ \textcolor{stringliteral}{"{}test"{}},\ \textcolor{stringliteral}{"{}graph"{}}\}\};}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00089}\doxymbox{\hyperlink{lib_8h_a9da2734c8489ad23b27fcda3daf4d839}{00089}}\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{structstatementInfo}{statementInfo}}\ \doxymbox{\hyperlink{lib_8h_a9da2734c8489ad23b27fcda3daf4d839}{MANUAL\_FILE\_AUTO}}\ =\ \{\{\textcolor{stringliteral}{"{}manual"{}},\ \textcolor{stringliteral}{"{}file"{}},\ \textcolor{stringliteral}{"{}unit"{}}\}\};}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00092}\doxymbox{\hyperlink{structequationCoefsTest}{00092}}\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{structequationCoefsTest}{equationCoefsTest}}\ \{}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00093}\doxymbox{\hyperlink{structequationCoefsTest_a7c6c308b47522b8646601f1b25712875}{00093}}\ \ \ \ \ \doxymbox{\hyperlink{structequationCoefs}{equationCoefs}}\ \doxymbox{\hyperlink{structequationCoefsTest_a7c6c308b47522b8646601f1b25712875}{coefs}};\ \textcolor{comment}{//defined\ in\ QuadraticSolver.h}}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00095}\doxymbox{\hyperlink{structequationCoefsTest_ac796ab130262b4093c55c579860a95aa}{00095}}\ \ \ \ \ \doxymbox{\hyperlink{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6}{QUADRATIC\_SOLVER\_STATUSES}}\ \doxymbox{\hyperlink{structequationCoefsTest_ac796ab130262b4093c55c579860a95aa}{refCntRoots}};}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00096}\doxymbox{\hyperlink{structequationCoefsTest_ac1118788719412a7aa8fbd2960238919}{00096}}\ \ \ \ \ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{structequationCoefsTest_ac1118788719412a7aa8fbd2960238919}{refRoot1}},\ \doxymbox{\hyperlink{structequationCoefsTest_accbdfbd289bc6b553365e0ce32a657c5}{refRoot2}};}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00097}00097\ \};}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00099}00099\ \textcolor{comment}{//\ \ Functions\ to\ work\ with\ structs}}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00101}00101\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{structequationCoefs}{equationCoefs}}\ \doxymbox{\hyperlink{lib_8h_af39db558900b826d7922fac1217a7d18}{equationCoefsInit}}(void);}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00103}00103\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{lib_8h_af30ce291bf231d6295202c155a59f680}{printEquationCoefsTest}}(\doxymbox{\hyperlink{structequationCoefsTest}{equationCoefsTest}}\ test);}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00107}00107\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{lib_8h_aaef59fc3966d753f08ffa9734cdd387f}{equationCoefsInitPointers}}(\doxymbox{\hyperlink{structequationCoefs}{equationCoefs}}*\ ptrCoefs);}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00109}00109\ \textcolor{comment}{//\ \ UI\ main\ menu\ functions}}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00112}00112\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{lib_8h_afe95cbf25cb718882af3b270d8444891}{greetings}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00114}00114\ \doxymbox{\hyperlink{lib_8h_a780cb1180cc5e51ff4ce71c1fc4e6422}{INPUT\_MODE\_STATUS}}\ \doxymbox{\hyperlink{lib_8h_a5989702ba297ec8e4991aeb494d72ac4}{userChoosingMode}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00116}00116\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{lib_8h_ab9efef65deae8e82d58379e256b5c478}{chooseMode}}(\doxymbox{\hyperlink{lib_8h_a780cb1180cc5e51ff4ce71c1fc4e6422}{INPUT\_MODE\_STATUS}}\ inputModeStatus);}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00118}00118\ \doxymbox{\hyperlink{lib_8h_a4bbb217fb2817e448718577f63221d75}{TESTING\_MODE\_STATUSES}}\ \doxymbox{\hyperlink{lib_8h_a79fdb792c6fe55861a046fdeff525584}{userChoosingTestingMode}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00120}00120\ \textcolor{comment}{//\ \ Functions\ to\ handle\ User\ text\ input}}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00123}00123\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{lib_8h_a5f2d1a509c4f0fc69cf24d99938ba14d}{getFormatLine}}(\textcolor{keywordtype}{char}*\ formatLine,\ \textcolor{keywordtype}{size\_t}\ scanfLen);}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00126}00126\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{lib_8h_a04893442fe652fb5f387f6ad1aed9ea9}{getStatementLine}}(\textcolor{keywordtype}{char}\ *statementLine,\ \doxymbox{\hyperlink{structstatementInfo}{statementInfo}}\ info);}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00129}00129\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{lib_8h_a9539a46a0bba9021e5be899fa8dc628b}{getStringCheckStatus}}(\doxymbox{\hyperlink{lib_8h_abced6a6f14d20822e71c39f39c75c0ae}{CHECK\_STATUSES}}\ checkStatus);}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00130}00130\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00131}00131\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00132}00132\ \textcolor{comment}{//\ Functions\ to\ process\ User\ input\ lines}}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00133}00133\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00135}00135\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{lib_8h_aca89ceac44a3d790fbce5240e20cb61a}{processEnd}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00136}00136\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00138}00138\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{lib_8h_a4fc23fd74c9f7aad4bfa17e91d0bdf99}{goodEnd}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00139}00139\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00141}00141\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{lib_8h_a99429615fd6ee98269269a9ef7287444}{readToEnd}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00142}00142\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00143}00143\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00145}00145\ \textcolor{comment}{//\ \ Functions\ to\ handle\ User\ attempts\ input}}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00146}00146\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00148}00148\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{lib_8h_a02f6d077b0b70a2a72df749935046ae8}{greetingsIntInput}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00149}00149\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00151}00151\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{lib_8h_a75a5da1a3042c8d8af5e0fd9db9e9bae}{getPositiveIntInputSafe}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00152}00152\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00153}00153\ \textcolor{comment}{//\ \ Functions,\ used\ in\ real\ time\ solving\ case}}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00154}00154\ \textcolor{comment}{//\ 1.Interaction\&Solve}}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00155}00155\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00158}00158\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{lib_8h_aae14dd629f9a45297506b274dee1cd70}{solveRealTime}}(\textcolor{keywordtype}{int}\ attempts);}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00159}00159\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00161}00161\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{lib_8h_acee85cf91ee5e73735fbf8717543844b}{resume}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00162}00162\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00163}00163\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{lib_8h_aaa0833d15df8a8bb183fd0354389d1d1}{printAttempts}}(\textcolor{keywordtype}{int}\ attempts);}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00164}00164\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00165}00165\ \textcolor{comment}{//\ \ 2.Check\ roots\ \&\ print\ them}}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00166}00166\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00168}00168\ \doxymbox{\hyperlink{lib_8h_abced6a6f14d20822e71c39f39c75c0ae}{CHECK\_STATUSES}}\ \doxymbox{\hyperlink{lib_8h_af92ddd5a250f8c03626f50a4ca3be608}{checkRoots}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{structequationCoefs}{equationCoefs}}\ coefs,}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00169}00169\ \ \doxymbox{\hyperlink{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6}{QUADRATIC\_SOLVER\_STATUSES}}\ \doxymbox{\hyperlink{structequationCoefs_a2a98ea5f2ec9f49f83af424d1e1d775c}{cntRoot}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{structequationCoefs_a2757be44e5d786cb5d9980fd5b993164}{eqRoot1}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{structequationCoefs_a720e54df1b45d3fd1ea7c59b2cefd8b6}{eqRoot2}});}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00170}00170\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00172}00172\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{lib_8h_a1fd441eac7a17e4f237e134b06485752}{checkSingleRoot}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{structequationCoefs}{equationCoefs}}\ coefs,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ x);}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00173}00173\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00177}00177\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{lib_8h_adb3188631463b61350d26c542f757030}{printRoots}}(\doxymbox{\hyperlink{QuadraticSolver_8h_a66dd4805cc234d7a933ebb5133f969e6}{QUADRATIC\_SOLVER\_STATUSES}}\ cntRoots,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{structequationCoefs_a2757be44e5d786cb5d9980fd5b993164}{eqRoot1}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{structequationCoefs_a720e54df1b45d3fd1ea7c59b2cefd8b6}{eqRoot2}});}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00178}00178\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00179}00179\ \textcolor{comment}{//\ Real\ time\ solving\ case\ ended}}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00180}00180\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00181}00181\ \ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00182}00182\ \textcolor{comment}{//\ Functions,\ handling\ coefficients\ input}}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00183}00183\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00185}00185\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{lib_8h_ad9ce0de5a3cffb3e56d4c3aa63d5f0e5}{getStringInputStatus}}(\doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3}{INPUT\_STATUSES}}\ inputStatus);}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00186}00186\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00188}00188\ \doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3}{INPUT\_STATUSES}}\ \doxymbox{\hyperlink{lib_8h_a185bfd0ed530066ecb37a8feda899c5b}{getCoefInput}}(\doxymbox{\hyperlink{structequationCoefs}{equationCoefs}}*\ ptrCoefs,\ FILE*\ ptrFile);}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00189}00189\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00190}00190\ \textcolor{comment}{//\ Functions\ for\ testing}}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00191}00191\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00193}00193\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{lib_8h_ab67d39cb6d6e9e15a4b222d8eb94e7fc}{getStringRunAllTestsStatus}}(\doxymbox{\hyperlink{lib_8h_a5ab881fdb3a704bf01f559b8f29e97ee}{RUN\_ALL\_TESTS\_STATUSES}}\ runAllTestsStatus);}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00194}00194\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00195}00195\ \doxymbox{\hyperlink{lib_8h_a5ab881fdb3a704bf01f559b8f29e97ee}{RUN\_ALL\_TESTS\_STATUSES}}\ \doxymbox{\hyperlink{lib_8h_a851414ac610f62aa5d48d3be9d41594a}{runAllTests}}(\doxymbox{\hyperlink{lib_8h_a4bbb217fb2817e448718577f63221d75}{TESTING\_MODE\_STATUSES}}\ testingModeStatus);}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00196}00196\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00198}00198\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{lib_8h_a4784b9a6ac16cb8f71050bf8e55aa3ee}{getStringTestCheckStatus}}(\doxymbox{\hyperlink{lib_8h_a615beba20980376980ffc687b9201ca3}{RUN\_SINGLE\_TEST\_STATUSES}}\ runSingleTestStatus);}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00199}00199\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00200}00200\ \doxymbox{\hyperlink{lib_8h_a615beba20980376980ffc687b9201ca3}{RUN\_SINGLE\_TEST\_STATUSES}}\ \doxymbox{\hyperlink{lib_8h_ac9854a7e8e2a9f22ea0466b5fcdae323}{runSingleTest}}(\doxymbox{\hyperlink{structequationCoefsTest}{equationCoefsTest}}\ test);}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00201}00201\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00202}00202\ \textcolor{comment}{//\ \ Function\ for\ manual\ \&\ file\ testing}}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00203}00203\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00205}00205\ \doxymbox{\hyperlink{lib_8h_a5ab881fdb3a704bf01f559b8f29e97ee}{RUN\_ALL\_TESTS\_STATUSES}}\ \doxymbox{\hyperlink{lib_8h_a40c366bec25315b1a72e9246b71d333d}{userTesting}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \textcolor{keyword}{const}\ mode);}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00206}00206\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00207}00207\ \textcolor{comment}{//\ \ Function\ for\ unit\ testing}}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00208}00208\ \doxymbox{\hyperlink{lib_8h_a5ab881fdb3a704bf01f559b8f29e97ee}{RUN\_ALL\_TESTS\_STATUSES}}\ \doxymbox{\hyperlink{lib_8h_a91a738d394fd68fa4a9caedd2a2bc8a1}{unitTesting}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00209}00209\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00210}00210\ \textcolor{comment}{//\ Function,\ covering\ case\ graphic\ function}}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00211}00211\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00213}00213\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{lib_8h_a62315d443bb153ce5e41b5bd2a6a5eeb}{buildFunctionGraphic}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00214}00214\ \textcolor{comment}{//\ End\ of\ case\ graphic\ function}}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00215}00215\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00216}00216\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00217}00217\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00218}00218\ \textcolor{comment}{//\ Working\ with\ files\&stdin\ functions}}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00219}00219\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00224}00224\ FILE*\ \doxymbox{\hyperlink{lib_8h_a35ac3e7cca9058a55ebd730f898e6b24}{acessFile}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{lib_8h_afe95cbf25cb718882af3b270d8444891}{greetings}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \textcolor{keyword}{const}\ mode);}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00225}00225\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00229}00229\ \doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3}{INPUT\_STATUSES}}\ \doxymbox{\hyperlink{lib_8h_adcdc3cdf2fd6ea693d54d533647af4f2}{fileCoefInput}}(\doxymbox{\hyperlink{structequationCoefs}{equationCoefs}}*\ ptrCoefs,\ FILE*\ ptrFile);\ \textcolor{comment}{//\ note:\ this\ function\ is\ used\ in\ real\ time\ case!}}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00230}00230\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00235}00235\ \doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3}{INPUT\_STATUSES}}\ \doxymbox{\hyperlink{lib_8h_a901953972f7efc25cbfc53a8d35c3e28}{fileRefInput}}(\doxymbox{\hyperlink{structequationCoefsTest}{equationCoefsTest}}*\ coefsTest,\ FILE*\ ptrFile);}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00236}00236\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00240}00240\ \doxymbox{\hyperlink{lib_8h_a4b1ba294b64e5ffffa9ae08c669920c3}{INPUT\_STATUSES}}\ \doxymbox{\hyperlink{lib_8h_a356a3ac4667279f39128e868f90b1753}{getRefInput}}(\doxymbox{\hyperlink{structequationCoefsTest}{equationCoefsTest}}*\ ptrTest,\ FILE*\ ptrFile);}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00241}00241\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00242}00242\ \textcolor{comment}{//\ \ Functions\ for\ checking\ User\ numeric\ input}}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00243}00243\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00245}00245\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{lib_8h_af832b6db4c503316d88806c7b5b7a142}{isGoodCoefs}}(\doxymbox{\hyperlink{structequationCoefs}{equationCoefs}}*\ ptrCoefs);}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00246}00246\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00248}00248\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{lib_8h_a375d049e58ab0c6e75ac8ed27a5ebca2}{isGoodRef}}(\doxymbox{\hyperlink{structequationCoefsTest}{equationCoefsTest}}*\ ptrTest);}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00249}00249\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00250}00250\ \textcolor{comment}{//\ math\ functions}}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00251}00251\ \textcolor{keywordtype}{size\_t}\ \doxymbox{\hyperlink{lib_8h_a79a14b1a43f36a7de4094322bf83873b}{max\_size\_t}}(\textcolor{keywordtype}{size\_t}\ op1,\ \textcolor{keywordtype}{size\_t}\ op2);}
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00252}00252\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00253}00253\ }
+\DoxyCodeLine{\Hypertarget{lib_8h_source_l00254}00254\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*LIB\_H*/}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}
