@@ -1,21 +1,19 @@
-name: CI for project
+name: CI for publishing documentation
 
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
 
 jobs:
-  hello-world:
+  deploy:
     runs-on: ubuntu-latest
     
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
       
-    - name: Say Hello
-      run: echo "Hello, GitHub Actions! This is my first workflow!"
-      
-    - name: Show date
-      run: date
+    - name: Deploy to Github Actions
+      uses: peaceiris/actions-gh-pages@v3
+      with: 
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./
