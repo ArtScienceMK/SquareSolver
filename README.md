@@ -30,7 +30,7 @@ AI sound design for greetings, errors and success statuses. To enable this featu
 
 ## Documentation
 
-Go to [this page](globals.html), then find the needed member. That's it!
+Go to [this page](https://artsciencemk.github.io/SquareSolver/md_README.html), then find the needed member. That's it!
 
 ## Contacts
 
