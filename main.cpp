@@ -69,6 +69,12 @@ void greetings() {
            "-------------\n");
 
     myPlaySound(GREETINGS_SOUND);
+    
+    greetingsLogo();
+}
+
+void greetingsLogo() {
+    printf("%s", RT_LOGO);
 }
 
 INPUT_MODE_STATUS userChoosingMode() {
@@ -833,32 +839,60 @@ void buildFunctionGraphic() {
         fprintf(ptrFile, "Warning: cannot open the debug output file! Redirecting to console...\n");
     }
 
-    equationCoefs coefs;
-
-    equationCoefs* ptrCoefs = &coefs;
-
-    equationCoefsInitPointers(ptrCoefs);
     
-    bool isBadInput = true;
+    int attempts = getPositiveIntInputSafe();
 
-    while (isBadInput) {
-        INPUT_STATUSES inputStatus = fileCoefInput(ptrCoefs, stdin);
+    equationCoefsGraph* coefsGraphArr = (equationCoefsGraph*)calloc(attempts, sizeof(coefsGraphArr[0]));
+
+    if (!coefsGraphArr) {
+        
+        printf("%s Not enough memory for storaging all coefs and colors!\n %s", MY_RED, MY_RESET);
+        
+        return;
+    }
+
+
+    for (int i = 0; i < attempts; i++) {
+        if (!resume()) {
+            break;
+        }
+        
+        INPUT_STATUSES inputStatus = fileCoefInput(&coefsGraphArr[i].coefs, stdin);
 
         if (inputStatus != INPUT_CORRECT) {
-            printf("Try another time!\n");
+            printf("Cannot process coefs input, try another time!\n");
             continue;
         }
 
         ON_DEBUG(printf("%s%lf %lf %lf\n%s", MY_YELLOW, 
-                ptrCoefs->a, ptrCoefs->b, ptrCoefs->c, MY_RESET));
+                coefsGraphArr[i].coefs.a, coefsGraphArr[i].coefs.b,
+                coefsGraphArr[i].coefs.c, MY_RESET));
             
-        if (isfinite(ptrCoefs->a) && isfinite(ptrCoefs->b) && isfinite(ptrCoefs->c)) {
-            isBadInput = false;
-        } else {
-            printf("Cannot process input! Try again!\n");
+        if (!isGoodCoefs(&coefsGraphArr[i].coefs)) {
+            coefsGraphArr[i].coefs.a = NAN;
+            coefsGraphArr[i].coefs.b = NAN;
+            coefsGraphArr[i].coefs.c = NAN;
+
+            printf("Cannot process input! Try again!\n");            
         }
 
-        fprintf(ptrFile, "a:%lf, b:%lf, c:%lf\n", ptrCoefs->a, ptrCoefs->b, ptrCoefs->c);
+        greetingsColor();
+        
+        char colorLine[MAX_STATEMENT_LEN] = "";
+
+        getStatementLine(colorLine, COLORS);
+        
+        coefsGraphArr[i].color = getColor(colorLine);
+
+        ON_DEBUG(printf("%s colorLine: %s\n%s", MY_YELLOW, colorLine, MY_RESET));
+        
+        if (isEqualColor((const Color)coefsGraphArr[i].color, BAD_INPUT_COLOR)) {
+            printf("Cannot process color input, try another time!\n");
+            continue;
+        }
+
+        fprintf(ptrFile, "a:%lf, b:%lf, c:%lf\n", coefsGraphArr[i].coefs.a,
+                coefsGraphArr[i].coefs.b, coefsGraphArr[i].coefs.c);
     }
 
     SetTargetFPS(TARGET_FPS);
@@ -873,13 +907,23 @@ void buildFunctionGraphic() {
         BeginDrawing();
         ClearBackground(RAYWHITE);
 
+        zoomCoef += GetMouseWheelMoveV().y;
+        
+        // BeginMode2D(camera);
+
         drawGrid(gridOffset, zoomCoef);
-        drawFunctionGraphic(ptrCoefs, drawFrom, drawTo, step, zoomCoef, ptrFile);
+
+        for (int i = 0; i < attempts; i++) {
+        // int i = 0;
+            if (isGoodCoefs(&coefsGraphArr[i].coefs) && !isEqualColor(coefsGraphArr[i].color, BAD_INPUT_COLOR)) {
+                drawFunctionGraphic(&coefsGraphArr[i].coefs, drawFrom, drawTo, step, zoomCoef, coefsGraphArr[i].color, ptrFile);
+                printParabolaApex(&coefsGraphArr[i].coefs, zoomCoef, ptrFile);
+            }
+        }
         drawAxes(zoomCoef);
         drawScale(zoomCoef);
-        printParabolaApex(ptrCoefs, zoomCoef, ptrFile);
 
-        zoomCoef += GetMouseWheelMoveV().y;
+
         if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) || IsMouseButtonDown(MOUSE_BUTTON_LEFT)) {
             drawMouseLines();
             // printMouseCoords();
@@ -887,6 +931,8 @@ void buildFunctionGraphic() {
             // Vector2 mouseCoords = GetMousePosition();
             // DrawLine(XMIN, mouseCoords.y, XMAX, mouseCoords.y, RED);
         }
+
+        // EndMode2D();
 
         if (IsKeyPressed(SCREENSHOT_KEY)) {
             // TakeScreenshot(SCREENSHOT_FILE);
@@ -897,7 +943,73 @@ void buildFunctionGraphic() {
         EndDrawing();
     }
     CloseWindow();
+
+    // free(coefsArr);
+    // free(colorArr);
 }
+
+Color getColor(const char* colorLine) {
+    if (strcmp(colorLine, COLORS.statements[0]) == 0) {
+        return GRAY;
+    }
+
+    if (strcmp(colorLine, COLORS.statements[1]) == 0) {
+        return YELLOW;
+    }
+
+    if (strcmp(colorLine, COLORS.statements[2]) == 0) {
+        return ORANGE;
+    }
+
+
+    if (strcmp(colorLine, COLORS.statements[3]) == 0) {
+        return PINK;
+    }
+
+    if (strcmp(colorLine, COLORS.statements[4]) == 0) {
+        return RED;
+    }
+
+    if (strcmp(colorLine, COLORS.statements[5]) == 0) {
+        return GREEN;
+    }
+
+    if (strcmp(colorLine, COLORS.statements[6]) == 0) {
+        return BLUE;
+    }
+
+    if (strcmp(colorLine, COLORS.statements[7]) == 0) {
+        return PURPLE;
+    }
+    
+    return BAD_INPUT_COLOR;
+}
+
+bool isEqualColor(const Color op1, const Color op2) {
+    return op1.a == op2.a && op1.r == op2.r &&
+           op1.g == op2.g && op1.b == op2.b;
+}
+
+void greetingsColor(void) {
+    printf("Choose graphic color:\n"
+           "For gray type %s\n"
+           "For yellow type %s\n"
+           "For orange type %s\n"
+           "For pink type %s\n"
+           "For red type %s\n"
+           "For green type %s\n"
+           "For blue type %s\n"
+           "For purple type %s\n"
+           "Choose color:", COLORS.statements[0],
+            COLORS.statements[1], 
+            COLORS.statements[2], 
+            COLORS.statements[3],
+            COLORS.statements[4], 
+            COLORS.statements[5], 
+            COLORS.statements[6],
+            COLORS.statements[7]);
+}
+
 
 // Working with files functions
 FILE* acessFile(const char* const greetings, const char* const mode) {

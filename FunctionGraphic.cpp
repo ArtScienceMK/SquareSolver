@@ -18,7 +18,7 @@ void drawGrid(double offset, double zoomCoef) {
     }
 }
  
-void drawFunctionGraphic(equationCoefs* ptrCoefs, double lX, double rX, double step, double zoomCoef, FILE* ptrFile) {
+void drawFunctionGraphic(equationCoefs* ptrCoefs, double lX, double rX, double step, double zoomCoef, Color color, FILE* ptrFile) {
     double a = ptrCoefs->a, b = ptrCoefs->b, c = ptrCoefs->c;   
 
     double x1 = ORIGIN.x, y1 = ORIGIN.y;
@@ -29,7 +29,7 @@ void drawFunctionGraphic(equationCoefs* ptrCoefs, double lX, double rX, double s
 
         // fprintf(ptrFile, "x:%i, y:%i, step:%lf, invDifY:%lf\n", x2, y2, step, invDifY);
         
-        DrawCircle(zoom(x2, X, zoomCoef), zoom(y2, Y, zoomCoef), FUNCTION_GRAPHIC_THICKNESS, GREEN);
+        DrawCircle(zoom(x2, X, zoomCoef), zoom(y2, Y, zoomCoef), FUNCTION_GRAPHIC_THICKNESS, color);
 
         step *= invDifY;
         step = max(step, MAX_STEP);
@@ -40,10 +40,10 @@ void drawFunctionGraphic(equationCoefs* ptrCoefs, double lX, double rX, double s
 }
  
 void drawAxes(double zoomCoef) {
-    DrawLine(ORIGIN.x, ORIGIN.y, XMAX, ORIGIN.y, BLUE);
+    DrawRectangle(ORIGIN.x, ORIGIN.y, XMAX - ORIGIN.x, AXES_THICKNESS, BLUE);
     DrawText("X", XMAX - DRAW_AXES_X_RIGHT_OFFSET, ORIGIN.y - DRAW_AXES_Y_ORIGIN_OFFSET, FONT_SIZE, BLACK);
 
-    DrawLine(ORIGIN.x, ORIGIN.y, ORIGIN.x, YMIN, RED);
+    DrawRectangle(ORIGIN.x, YMIN, AXES_THICKNESS, ORIGIN.y - YMIN, RED);
     DrawText("Y", ORIGIN.x + DRAW_AXES_X_ORIGIN_OFFSET, DRAW_AXES_Y_UP_OFFSET, FONT_SIZE, BLACK);
 }
 

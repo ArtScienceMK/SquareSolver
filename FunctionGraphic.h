@@ -14,6 +14,9 @@ const double XMAX = 2000;
 const double YMIN = 0;
 const double YMAX = 1500;
 
+const double CAMERA_TARGET_STEP_X = 10;
+const double CAMERA_TARGET_STEP_Y = 10;
+
 /// @brief Offset for X coord to place text for naming OX
 const double DRAW_AXES_X_RIGHT_OFFSET = 100;
 
@@ -26,6 +29,10 @@ const double DRAW_AXES_X_ORIGIN_OFFSET = 100;
 /// @brief Offset for Y coord to place text for naming OY
 const double DRAW_AXES_Y_UP_OFFSET = 20;
 
+const double AXES_THICKNESS = 10;
+
+/// @brief Coef to slow down the mouse speed, to make zoom smoother 
+const double ZOOM_SMOOTH_COEF = 100;
 
 const char* const AXES_SCALE_TEXT = "10";
 const double AXES_SCALE_X_ORIGIN_OFFSET = 10;
@@ -53,6 +60,11 @@ const double DRAW_APEX_Y_OFFSET = 20;
 enum COORD_TYPES {
     X = 0,
     Y = 1
+};
+
+struct equationCoefsGraph {
+    equationCoefs coefs;
+    Color color;
 };
 
 //  Drawing Functions

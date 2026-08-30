@@ -18,6 +18,9 @@ const char* const MY_YELLOW = "\033[33m";
 const char* const MY_GREEN = "\033[32m";
 const char* const MY_RESET = "\033[0m";
 
+// Color for graphics
+const Color BAD_INPUT_COLOR = BLACK;
+
 //  Sizes of static arrays
 /// @brief Len less than 8 will have warning from stack protector
 const int MAX_STATEMENT_LEN = 9; // >= 8 to avoid warning
@@ -88,6 +91,9 @@ const statementInfo SOLVE_TEST_GRAPHICAL = {{"solve", "test", "graph"}};
 
 const statementInfo MANUAL_FILE_AUTO = {{"manual", "file", "unit"}};
 
+const statementInfo COLORS = {{"GRAY", "YELLOW", "ORANGE", "PINK", 
+                               "RED", "GREEN", "BLUE", "PURPLE"}};
+
 /// @brief Structs to store info about tests
 struct equationCoefsTest {
     equationCoefs coefs; //defined in QuadraticSolver.h
@@ -111,6 +117,8 @@ void equationCoefsInitPointers(equationCoefs* ptrCoefs);
 /// @brief Greets User by printing text
 void greetings(void);
 
+void greetingsLogo(void);
+
 INPUT_MODE_STATUS userChoosingMode(void);
 
 void chooseMode(INPUT_MODE_STATUS inputModeStatus);
@@ -131,7 +139,7 @@ const char* const getStringCheckStatus(CHECK_STATUSES checkStatus);
 
 // Functions to process User input lines
 
-/// @brief Skips all ' ' and '\t' chars and if current char is '\n' or EOF, then stop, otherwise read to such symbol
+/// @brief Skips all ' ' and '\t' chars and if current char      '\n' or EOF, then stop, otherwise read to such symbol
 bool processEnd(void);
 
 /// @brief Skips all ' ' and '\t' chars and if current char is '\n' or EOF, then returns true, otherwise - false  
@@ -207,11 +215,21 @@ RUN_ALL_TESTS_STATUSES userTesting(const char* const mode);
 //  Function for unit testing
 RUN_ALL_TESTS_STATUSES unitTesting(void);
 
-// Function, covering case graphic function
+// Functions, covering case graphic function
 
 /// @brief Function, handling graphical mode
 void buildFunctionGraphic(void);
-// End of case graphic function
+
+/// @brief Function turns User input line into the color, if impossible returns BAD_INPUT_COLOR   
+Color getColor(const char* colorLine);
+
+/// @brief Compares two values with type Color 
+bool isEqualColor(const Color op1, const Color op2);
+
+/// @brief Asks User to enter color name 
+void greetingsColor(void);
+
+// End of case graphic functions
 
 
 
@@ -250,5 +268,14 @@ bool isGoodRef(equationCoefsTest* ptrTest);
 // math functions
 size_t max_size_t(size_t op1, size_t op2);
 
-
+const char* const RT_LOGO =  "XXXXXXXXXX     XXXXXXXXXX\n"
+                             "X        X         XX    \n"
+                             "X        X         XX    \n"
+                             "X        X         XX    \n"
+                             "XXXXXXXXXX         XX    \n"
+                             "X         X        XX    \n"
+                             "X          X       XX    \n"
+                             "X           X      XX    \n"
+                             "X            X     XX    \n"
+                             "X             X    XX    \n";
 #endif /*LIB_H*/
