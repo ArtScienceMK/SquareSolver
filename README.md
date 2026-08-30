@@ -7,10 +7,12 @@
 ## Table of contents
 - [About](#-about)
 - [Quickstart](#-quickstart)
+- [Dependencies](#-dependencies)
+- [Building](#-building)
 - [What's New](#-whats-new)
 - [Documentation](#-documentation)
 - [Contacts](#%EF%B8%8F-contacts)
-- [Just meme](#-just-memes)
+- [Just memes](#-just-memes)
 
 ## About
 
@@ -24,6 +26,27 @@ From this place we will consider eqautions only with power less than 3 :)
 ## Quickstart
 
 Download latest version from releases :) That's it!
+
+## Dependencies
+
+This and the following parts are relevant only for Linux users! The list of dependencies:
+1) g++ compiler 16.2.1 and newer
+2) [raylib](https://www.raylib.com/)
+
+## Building
+
+This part is releveant only for Linux users! If you want to build this project on your machine follow this steps:
+
+0) Check dependencies
+1) ``` mkdir SquareSolver ```
+2) ``` cd SquareSolver ```
+3) ``` git clone https://github.com/ArtScienceMK/SquareSolver ```
+4) ``` g++ main.cpp -lraylib -lGL -lm -lpthread -ldl -lrt -lX11 -o main ``` to disable any debug output
+
+   ``` g++ main.cpp -lraylib -lGL -lm -lpthread -ldl -lrt -lX11 -DDEBUG -o main ``` to enable all debug output into console
+5) ``` ./main ```
+
+Congratulations!
 
 ## What's New
 
@@ -39,6 +62,8 @@ If you will have any questions, suggestions and so on, just text me)
 
 Mail: 55555artem.kulakov@gmail.com
 
-## Just meme
+## Just memes
 
-![Parabola joke](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTV_L0KB1dCMfeGE6UDYfP-JKlaeZZL94CgI82yMdODxF5LVNlLMXrdh2J&s=10)
+![Parabola joke](https://i.redd.it/edxfz53mnq681.jpg)
+
+![Parabola joke2](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTV_L0KB1dCMfeGE6UDYfP-JKlaeZZL94CgI82yMdODxF5LVNlLMXrdh2J&s=10)
